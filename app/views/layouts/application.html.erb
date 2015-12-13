@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BrokeGamer</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  	<meta charset="utf-8">
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="Your description">
+		<meta name="keywords" content="Your,Keywords">
+		<meta name="author" content="ResponsiveWebInc">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Styles -->
+		
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+</head>
+	<body>
+		<% flash.each do |name, message| %>
+		<p> </p>
+		<div class="alert alert-<%= name %> alert-dismissible" role="alert">
+			<%= message %>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		</div>
+		<% end %>
+		<!-- Shopping cart Modal -->
+     <div class="modal fade" id="shoppingcart" tabindex="-1" role="dialog" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title">Shopping Cart</h4>
+           </div>
+           <div class="modal-body">
+           
+            <!-- Items table -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="single-item.html">HTC One</a></td>
+                  <td>2</td>
+                  <td>$250</td>
+                </tr>
+                <tr>
+                  <td><a href="single-item.html">Apple iPhone</a></td>
+                  <td>1</td>
+                  <td>$502</td>
+                </tr>
+                <tr>
+                  <td><a href="single-item.html">Galaxy Note</a></td>
+                  <td>4</td>
+                  <td>$1303</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>Total</th>
+                  <th>$2405</th>
+                </tr>
+              </tbody>
+            </table>
+            
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
+             <button type="button" class="btn btn-info">Checkout</button>
+           </div>
+         </div><!-- /.modal-content -->
+       </div><!-- /.modal-dialog -->
+     </div><!-- /.modal -->
+           
+		<!-- Logo & Navigation starts -->
+      
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-2">
+					  <!-- Logo -->
+					  <div class="logo">
+						 <h1><a href="/index.html">BrokeGamer</a></h1>
+					  </div>
+				   </div>
+					<div class="col-md-6 col-sm-5">
+						<!-- Navigation menu -->
+						<div class="navi">
+							<div id="ddtopmenubar" class="mattblackmenu">
+								<ul>
+									<li><a href="/" rel="ddsubmenu1">Home</a>
+										<ul id="ddsubmenu1" class="ddsubmenustyle">
+										</ul>
+									</li>
+									<li><a href="#" rel="ddsubmenu1">Account</a>
+										<ul id="ddsubmenu1" class="ddsubmenustyle">
+											<li><a href="account.html">My Account</a></li>
+											<li><a href="viewcart.html">View Cart</a></li>
+											<li><a href="checkout.html">Checkout</a></li>
+											<li><a href="wishlist.html">Wish List</a></li>
+											<li><a href="orderhistory.html">Order History</a></li>
+											<li><a href="editprofile.html">Edit Profile</a></li>
+											<li><a href="confirmation.html">Confirmation</a></li>
+										</ul>
+									</li>
+									<li><a href="#" rel="ddsubmenu1">Pages</a>
+										<ul id="ddsubmenu1" class="ddsubmenustyle">
+											<li><a href="404.html">404</a></li>
+											<li><a href="faq.html">FAQ</a></li>
+											<li><a href="blog.html">Blog</a></li>
+											<li><a href="careers.html">Careers</a></li>
+											<li><a href="comingsoon.html">Coming Soon</a></li>
+											<li><a href="support.html">Support</a></li>
+											<li><a href="aboutus.html">About</a></li>
+										</ul>
+									</li>
+									<li><a href="#" rel="ddsubmenu1">Computers</a>
+										<ul id="ddsubmenu1" class="ddsubmenustyle">
+											<li><a href="items.html">Desktop</a></li>
+											<li><a href="items.html">Laptop</a></li>
+											<li><a href="items.html">NetBook</a></li>
+											<li><a href="items.html">All-In-One PC</a></li>
+											<li><a href="items.html">Alienware</a></li>
+										</ul>
+									</li>                       
+									<li><a href="contactus.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+            <div class="pull-right">
+             <%= form_tag "/search", method: :post do %>
+             <%= text_field_tag :search %>
+             <%= submit_tag "Search" %>
+             <% end %>
+           </div>
+						<!-- Dropdown NavBar -->
+						<div class="navis"></div>                   
+					</div>
+
+          <div class="col-md-4 col-sm-5">
+          	<div class="kart-links">
+              <% if current_user %>
+							 <%= link_to "Sign Out", "/users/sign_out", method: :delete %>
+               <% else %>
+               <a href="/users/sign_in">Login</a> 
+               <a href="/users/sign_out">Signup</a>
+               <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+      
+      <!-- Logo & Navigation ends -->
+      
+		<div class="clearfix">    
+    <%= yield %>
+    </div>
+      
+      
+      <!-- Footer starts -->
+      <footer>
+         <div class="container">
+         
+               <div class="row">
+
+                        <div class="col-md-4 col-sm-4">
+                           <div class="fwidget">
+                           
+                              <h4>Oslon de<span class="color">'</span> Techno</h4>
+                              <hr />
+                              <p>Duis leo risus, vehicula luctus nunc.  Quiue rhoncus, a sodales enim arcu quis turpis. Duis leo risus, condimentum ut posuere ac, vehicula luctus nunc.  Quisque rhoncus, a sodales enim arcu quis turpis.</p>
+                              
+                              <div class="social">
+                                 <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                 <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                 <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                                 <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+                              </div>
+                           </div>
+                       </div>
+
+                       <div class="col-md-4 col-sm-4">
+                         <div class="fwidget">
+                           <h4>Categories</h4>
+                           <hr />
+                           <ul>
+                             <li><a href="#">Sed eu leo orci, condimentum gravida metus</a></li>
+                             <li><a href="#">Etiam at nulla ipsum, in rhoncus purus</a></li>
+                             <li><a href="#">Fusce vel magna faucibus felis dapibus facilisis</a></li>
+                             <li><a href="#">Vivamus scelerisque dui in massa</a></li>
+                             <li><a href="#">Pellentesque eget adipiscing dui semper</a></li>
+                           </ul>
+                         </div>
+                       </div>        
+
+                       
+
+                       <div class="col-md-4 col-sm-4">
+                         <div class="fwidget">
+                           
+                           <h4>Get In Touch</h4>
+                           <hr />
+                           <div class="address">
+                              <p><i class="fa fa-home color contact-icon"></i> #12, Plot No.14, Raj Karmara Street, </p>
+                              <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5th Stage, Koramangala, Madiwala,</p>
+                              <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Bangalore - 493922, Karananana.</p>
+                              <p><i class="fa fa-phone color contact-icon"></i> +94-948-323-5532</p>
+                              <p><i class="fa fa-envelope color contact-icon"></i> <a href="mailto:something@gmail.com">some.thing@gmail.com</a></p>
+                           </div>
+                           
+                         </div>
+                       </div>
+
+                     </div>
+
+         
+         
+            <hr />
+            
+            <div class="copy text-center">
+               Copyright 2013 &copy; - <a href="http://responsivewebinc.com/bootstrap-themes">Bootstrap Themes</a>
+            </div>
+         </div>
+      </footer>
+      <!-- Footer ends -->
+      
+      <!-- Scroll to top -->
+      <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span> 
+      
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<!-- <script src="js/jquery.js"></script> -->
+		<!-- Bootstrap JS -->
+		<!-- <script src="js/bootstrap.min.js"></script> -->
+		<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+		<!-- <script src="js/jquery.themepunch.tools.min.js"></script> -->
+		<!-- <script src="js/jquery.themepunch.revolution.min.js"></script> -->
+		<!-- Dropdown menu -->
+		<!-- <script src="js/ddlevelsmenu.js"></script> -->
+		<!-- Countdown -->
+		<!-- <script src="js/jquery.plugin.min.js"></script> -->
+		<!-- <script src="js/jquery.countdown.min.js"></script>  -->  
+		<!-- jQuery Navco -->
+		<!-- <script src="js/jquery.navgoco.min.js"></script> -->
+		<!-- Filter for support page -->
+		<!-- <script src="js/filter.js"></script>     -->     
+		<!-- Respond JS for IE8 -->
+		<!-- <script src="js/respond.min.js"></script> -->
+		<!-- HTML5 Support for IE -->
+		<!-- <script src="js/html5shiv.js"></script> -->
+		<!-- Custom JS -->
+		<!-- <script src="js/custom.js"></script> -->
+		<!-- <script>
+		// 	/* JS for SLIDER REVOLUTION */
+		// 	jQuery(document).ready(function() {
+		// 	   jQuery('.tp-banner').revolution(
+		// 		{
+		// 			delay: 9000,
+		// 			startheight: 450,
+					
+		// 			hideThumbs: 10,
+					
+		// 			navigationType:"none",	
+					
+					
+		// 			hideArrowsOnMobile:"on",
+					
+		// 			touchenabled:"on",
+		// 			onHoverStop:"on",
+					
+		// 			navOffsetHorizontal:0,
+		// 			navOffsetVertical:20,
+					
+		// 			stopAtSlide:-1,
+		// 			stopAfterLoops:-1,
+
+		// 			shadow:0,
+					
+		// 			fullWidth:"on",
+		// 			fullScreen:"off"
+		// 		});
+		// 	});
+		// </script> -->
+	</body>	
+</html>

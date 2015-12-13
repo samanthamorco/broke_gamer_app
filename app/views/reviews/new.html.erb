@@ -1,0 +1,19 @@
+
+<div class="container">
+<h1>Add Review</h1>
+<%= form_for @review do |f| %>
+
+<div>
+  <%= f.label :rating %>
+  <%= f.select :rating, (1..10) %>
+</div>
+
+<div>
+  <%= f.label :comments %>
+  <%= f.text_field :comments, class: "box_size" %>
+</div>
+
+
+<div><%= f.submit %></div>
+<% end %>
+</div>

@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
 
+  
   def new
     @review = Review.new
   end
@@ -7,7 +9,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      @review = @review.update(date: Time.now)
+      @review = @review.update(date: Time.now, user_id: current_user.id)
+
       flash[:success] = "Review Added"
       redirect_to "/index"
     else

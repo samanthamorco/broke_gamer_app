@@ -1,5 +1,7 @@
 class DealsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @deal = Deal.new
   end
@@ -7,8 +9,8 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(review_params)
     if @deal.save
-      @deal = @deal.update(date: Time.now)
-      flash[:success] = "deal Added"
+      @deal = @deal.update(user_id: current_user.id)
+      flash[:success] = "Deal Added"
       redirect_to "/index"
     else
       flash[:danger] = "Error!"
@@ -19,6 +21,6 @@ class DealsController < ApplicationController
 
 
   def review_params
-    params.require(:deal).permit(:price, :comment, :url)
+    params.require(:deal).permit(:price, :comment, :url, :date)
   end
 end

@@ -37,15 +37,15 @@
                             <!-- Item details -->
                             <div class="item-details">
                               <!-- Name -->
-                              <h6><a href="single-item.html"><%= game["name"] %></a></h6>
+                              <h6><a href="/products/<%= game["sku"] %>"><%= game["name"] %></a></h6>
                               <div class="clearfix"></div>
                               <!-- Para. Note more than 2 lines. -->
                               <p><%= game["shortDescription"] %></p>
                               <hr />
                               <!-- Price -->
-                              <div class="item-price pull-left"><%= game["salePrice"] %></div>
+                              <div class="item-price pull-right"><%= game["salePrice"] %></div>
                               <!-- Add to cart -->
-                              <div class="pull-right"><a href="#" class="btn btn-danger btn-sm">Add to Cart</a></div>
+                            
                               <div class="clearfix"></div>
                             </div>
                           </div>

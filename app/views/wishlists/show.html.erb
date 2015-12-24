@@ -35,8 +35,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <% if @wishlists.length == 0 %>
-                    <% "Wishlist Empty" %>
+                    <% if @wishlists == nil %>
+                    "Wishlist Empty"
                     <% else %>
                     <% counter = 1 %>
                     <% @wishlists.each do |wish| %>

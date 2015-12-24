@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require theme/jquery.countdown.min
 //= require theme/jquery
 //= require theme/ddlevelsmenu
-//= require theme/jquery.countdown.min
 //= require jquery_ujs
 //= require turbolinks
 //= require theme/bootstrap

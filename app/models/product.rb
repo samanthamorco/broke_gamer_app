@@ -29,10 +29,10 @@ has_many :reviews
 #       "3DS" => "pcmcat235500050004", "DS" => "abcat0707002",
 #       "PC" => "pcmcat174700050005"
 #     }
-#     products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=genre,sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=5rnsy6rxdnw33npjhqnj4m4q").body
+#     products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=genre,sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
 #     systems.each do |system, id|
 #       if params[:system] == system
-#         products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=5rnsy6rxdnw33npjhqnj4m4q").body
+#         products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
 #       end
 #     end
 #   products_hash.each do |game|

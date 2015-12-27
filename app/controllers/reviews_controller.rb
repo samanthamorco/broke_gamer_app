@@ -7,9 +7,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    # @review = Review.new(review_params)
+    @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
     if @review.save
-      @review = @review.update(date: Time.now, user_id: current_user.id)
+      # @review = @review.update(date: Time.now, user_id: current_user.id)
 
       flash[:success] = "Review Added"
       redirect_to "/index"
@@ -21,9 +22,9 @@ class ReviewsController < ApplicationController
 
 
 
-  def review_params
-    params.require(:review).permit(:rating, :comments)
-  end
+  # def review_params
+  #   params.require(:review).permit(:rating, :comments)
+  # end
 
 end
 

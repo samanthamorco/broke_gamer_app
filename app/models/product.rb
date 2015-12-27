@@ -41,8 +41,8 @@ has_many :reviews
 #   return products
 # end
 
-
-
+@products = null
+return @products
 
 
 end

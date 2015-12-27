@@ -4,21 +4,13 @@ class DealsController < ApplicationController
 
   def new
     @deal = Deal.new
-    @product_id = params[:id]
-    p "test new"
-    p params[:id]
-    p @product_id
-    p "test new end"
   end
 
   def create
-    p "test create begin"
-    p @product_id
-    p "test create end"
-    @deal = Deal.new(review_params)
-    @product_id = params[:id]
+    # @deal = Deal.new(deal_params)
+    @deal = Deal.new(product_id: params[:product_id], price: params[:price], url: params[:url], comment: params[:comments])    
     if @deal.save
-      @deal = @deal.update(user_id: current_user.id, product_id: @product_id)
+      # @deal = @deal.update(user_id: current_user.id, product_id: @product_id)
       flash[:success] = "Deal Added"
       redirect_to "/index"
     else
@@ -29,7 +21,7 @@ class DealsController < ApplicationController
 
 
 
-  def review_params
-    params.require(:deal).permit(:price, :comment, :url, :date)
-  end
+  # def deals_params
+  #   params.require(:deal).permit(:price, :comment, :url, :date)
+  # end
 end

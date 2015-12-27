@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/show', to: "pages#show"
 
 
+
   get '/wishlist', to: 'wishlists#show'
   delete '/wishlist/:id', to: 'wishlists#destroy'
 

@@ -39,7 +39,23 @@
                         <div class="col-md-5 col-xs-7">
                           <!-- Title -->
                             <h4><%= @product["name"] %></h4>
-                            <h5><strong>Price : $<%= @product["salePrice"] %></strong></h5>
+                            <% if @deal != false %>
+                            <% if @product["salePrice"] <= @deal.price %>
+                              <h5><strong>Price</strong> : $<%= @product["salePrice"] %></h5>
+
+
+                              
+
+                              <% else %>
+                              <h5 class="deal"><strong>Lowest Price</strong> : $<%= @deal.price %></h5>
+                              
+                              <h5><strong>Original Price</strong> : $<%= @product["salePrice"] %></h5>
+                              
+                              <% end %>
+                              <% else %>
+                              <h5><strong>Price</strong> : $<%= @product["salePrice"] %></h5>
+                            <% end %>
+
                             <p><strong>Manufacturer</strong> : <%= @product["manufacturer"] %></p>
                             <p><strong>Platform</strong> : <%= @product["platform"] %></p>
 
@@ -47,8 +63,8 @@
                             
 
                                     <!-- Add to wish list -->
-                                    <a href="wishlist.html">+ Add to Wish List</a>
-                                    <a href="/deals/new?id=<%= @product["sku"] %>">Add Deal</a>
+                                    <p><a href="wishlist.html">+ Add to Wish List</a></p>
+                                    <p><a href="/deals/new?id=<%= @product["sku"] %>">+ Add Deal</a></p> 
 
 
                                     <!-- Share button -->
@@ -65,7 +81,7 @@
                       <!-- Use uniqe name for "href" in below anchor tags -->
                       <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
                       <li><a href="#tab2" data-toggle="tab">Specs</a></li>
-                      <li><a href="#tab3" data-toggle="tab">Review (5)</a></li>
+                      <li><a href="#tab3" data-toggle="tab">Review (<%= @reviews.length %>)</a></li>
                     </ul>
 
                     <!-- Tab Content -->
@@ -102,16 +118,18 @@
                       <div class="tab-pane fade" id="tab3">
                         <h5><strong>Product Reviews :</strong></h5>
                         <hr />
+                        <% @reviews.each do |review| %>
                         <div class="item-review">
-                          <h5>Ravi Kumar - <span class="color">4/5</span></h5>
-                          <p class="rmeta">27/1/2012</p>
-                          <p>Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit sed rhoncus erat hendrerit. Vivamus vel ultricies elit. Curabitur lacinia nulla vel tellus elementum non mollis justo aliquam.</p>
+                          <h5><%= review.user.email %> - <span class="color"><%= review.rating %>/5</span></h5>
+                          <p class="rmeta"><%= review.date %></p>
+                          <p><%= review.comments %></p>
                         </div>
+                        <% end %>
 
                         <hr />
-                        <h5><strong>Write a Review</strong></h5>
+                        <h5><strong><p><a href="/reviews/new?id=<%= @product["sku"] %>">Write A Review</a></p></strong></h5>
                         <hr />
-                                              <form role="form">
+                                              <!-- <form role="form">
                                                <div class="form-group">
                                                  <label for="name">Your Name</label>
                                                  <input type="text" class="form-control" id="name" placeholder="Enter Name">
@@ -123,7 +141,7 @@
                                                <div class="form-group">
                                                    <label for="rating">Rating</label>
                                                    <!-- Dropdown menu -->
-                                                   <select class="form-control">
+                                                   <!-- <select class="form-control">
                                                      <option>Rating</option>
                                                      <option>1</option>
                                                      <option>2</option>
@@ -138,7 +156,7 @@
                                                </div>  
                                                <button type="submit" class="btn btn-info">Send</button>
                                                <button type="reset" class="btn btn-default">Reset</button>
-                                             </form>
+                                             </form> -->
 
                       </div>
 

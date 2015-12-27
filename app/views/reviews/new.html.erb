@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
 <h1>Add Review</h1>
 <%= form_for @review do |f| %>
@@ -16,4 +16,33 @@
 
 <div><%= f.submit %></div>
 <% end %>
+</div> -->
+
+<div class="container">
+  <h1>Add Review</h1>
+
+  <%= form_tag("/reviews", method: "post") do %>
+  <div>
+    <%= hidden_field_tag :product_id, "#{params[:id]}" %>
+  </div>
+  <div>
+    <%= label_tag(:comments, "Comments:") %>
+    <%= text_field_tag :comments %>
+  </div>
+
+  <div>
+  <%= label_tag(:rating, "Rating:") %>
+  <% n = 1 %>
+  <% 5.times do %>
+    <%= radio_button_tag(:rating, "#{n}") %>
+    <%= label_tag(:rating, "#{n}") %>
+    <% n += 1 %>
+  <% end %>
+  </div>
+
+  <div>
+    <%= submit_tag ("Submit") %>
+  </div>
+  <% end %>
+
 </div>

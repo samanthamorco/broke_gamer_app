@@ -19,6 +19,9 @@ gem 'thematic'
 gem 'devise'
 gem 'unirest'
 gem 'dotenv-rails'
+# gem 'faraday_middleware'
+# gem 'her'
+gem 'activemodel'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -37,6 +40,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

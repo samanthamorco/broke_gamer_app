@@ -3,8 +3,12 @@ class DealsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @deal = Deal.new
-  end
+    if params[:id]
+      @deal = Deal.new
+    else
+      flash[:danger] = "Please select a product!"
+      redirect_to "/"
+    end  end
 
   def create
     # @deal = Deal.new(deal_params)

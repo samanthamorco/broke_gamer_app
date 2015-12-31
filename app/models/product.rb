@@ -1,4 +1,6 @@
 class Product
+  # include Her::Model
+
 
 has_many :deals
 has_many :reviews
@@ -40,9 +42,6 @@ has_many :reviews
 #   end
 #   return products
 # end
-
-@products = null
-return @products
 
 
 end

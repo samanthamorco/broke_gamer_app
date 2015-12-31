@@ -3,7 +3,12 @@ class ReviewsController < ApplicationController
 
   
   def new
-    @review = Review.new
+    if params[:id]
+      @review = Review.new
+    else
+      flash[:danger] = "Please select a product!"
+      redirect_to "/"
+    end
   end
 
   def create

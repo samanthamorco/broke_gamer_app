@@ -25,6 +25,9 @@
                <div class="col-md-9">
                   <h3><i class="fa fa-user color"></i> &nbsp;Wish List</h3>
                   <table class="table table-striped tcart">
+                    <% if @wishlists == nil %>
+                    Wishlist Empty.
+                    <% else %>
                     <thead>
                       <tr>
                         <th>#</th>
@@ -34,9 +37,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <% if @wishlists == nil %>
-                    "Wishlist Empty"
-                    <% else %>
                     <% counter = 1 %>
                     <% @wishlists.each do |wish| %>
                       <tr>

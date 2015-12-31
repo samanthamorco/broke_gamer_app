@@ -26,6 +26,8 @@
                  <!-- Items List starts -->
 
               <% @products.each do |game| %>
+              <% deals = Deal.where(product_id: game["sku"], status: "active") %>
+              <% deal = deals.order('price ASC').first %>
                         <!-- Item #1 -->
                         <div class="col-md-4 col-sm-6 col-xs-12">
                           <div class="item">
@@ -40,10 +42,16 @@
                               <h6><a href="/products/<%= game["sku"] %>"><%= game["name"] %></a></h6>
                               <div class="clearfix"></div>
                               <!-- Para. Note more than 2 lines. -->
-                              <p><%= game["shortDescription"] %></p>
-                              <hr />
+<!--                               <p><%= game["shortDescription"] %></p>
+ -->                              <hr />
                               <!-- Price -->
-                              <div class="item-price pull-right"><%= game["salePrice"] %></div>
+                              <% if deals.empty? == false %>
+                              <div class="item-icon"><span>SALE</span></div>
+
+                              <div class="item-price pull-right"><%= deal.price %></div>     
+                              <% else %>
+                             <div class="item-price pull-right"><%= game["salePrice"] %></div>
+                             <% end %>
                               <!-- Add to cart -->
                             
                               <div class="clearfix"></div>

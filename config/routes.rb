@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
 
   get '/wishlist', to: 'wishlists#show'
+  get '/wishlist/new', to: 'wishlists#new'
+  post '/wishlist/:id', to: 'wishlists#create'
   delete '/wishlist/:id', to: 'wishlists#destroy'
 
 

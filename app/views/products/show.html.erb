@@ -41,29 +41,33 @@
                             <h4><%= @product["name"] %></h4>
                             <% if @deal != false %>
                             <% if @product["salePrice"] <= @deal.price %>
-                              <h5><strong>Price</strong> : $<%= @product["salePrice"] %></h5>
+                              <h5><strong>Price</strong>: $<%= @product["salePrice"] %></h5>
 
 
                               
 
                               <% else %>
-                              <h5 class="deal"><strong>Lowest Price</strong> : $<%= @deal.price %></h5>
+                              <h5 class="deal"><strong>Lowest Price</strong> : $<%= @deal.price %></h5> 
                               
-                              <h5><strong>Original Price</strong> : $<%= @product["salePrice"] %></h5>
+                              <h5><strong>Original Price</strong>: $<%= @product["salePrice"] %></h5>
+                              <h5 class="deal"><strong>Save</strong>:  $<%= @savings %></h5>
                               
+                              <a href="<%= @deal.url %>" target="_blank"><div class="btn-group" role="group" aria-label="...">
+                              <button type="button" class="btn btn-group-sm btn-info">Buy Now!</button>
+                              </div></a>
                               <% end %>
                               <% else %>
-                              <h5><strong>Price</strong> : $<%= @product["salePrice"] %></h5>
+                              <h5><strong>Price</strong>: $<%= @product["salePrice"] %></h5>
                             <% end %>
 
-                            <p><strong>Manufacturer</strong> : <%= @product["manufacturer"] %></p>
-                            <p><strong>Platform</strong> : <%= @product["platform"] %></p>
+                            <p><strong>Manufacturer</strong>: <%= @product["manufacturer"] %></p>
+                            <p><strong>Platform</strong>: <%= @product["platform"] %></p>
 
-                            <p><strong>Release Date</strong> : <%= @product["releaseDate"] %></p><br />
+                            <p><strong>Release Date</strong>: <%= @product["releaseDate"] %></p><br />
                             
 
                                     <!-- Add to wish list -->
-                                    <p><a href="wishlist.html">+ Add to Wish List</a></p>
+                                    <p><a href="/wishlist/new?id=<%= @product["sku"] %>">+ Add to Wish List</a></p>
                                     <p><a href="/deals/new?id=<%= @product["sku"] %>">+ Add Deal</a></p> 
 
 

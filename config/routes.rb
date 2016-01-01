@@ -2,22 +2,24 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#index'
 
-  resources :reviews
-  resources :deals
+  # resources :reviews
+  # resources :deals
   resources :products
 
   
   get '/index', to: "pages#index"
-  get '/show', to: "pages#show"
-
 
 
   get '/wishlist', to: 'wishlists#show'
   get '/wishlist/new', to: 'wishlists#new'
-  post '/wishlist/:id', to: 'wishlists#create'
+  post '/wishlist/', to: 'wishlists#create'
+
+  get '/reviews/new', to: 'reviews#new'
+  post '/reviews/:id', to: 'reviews#create'
+  post '/deals/:id', to: 'deals#create'
+  get '/deals/new', to: 'deals#new'
+
   delete '/wishlist/:id', to: 'wishlists#destroy'
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

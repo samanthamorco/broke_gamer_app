@@ -1,9 +1,8 @@
 class Product
-  # include Her::Model
-
-
-has_many :deals
-has_many :reviews
+#   include ActiveModel::Model
+#   include ActiveModel::Associations
+# has_many :deals
+# has_many :reviews
 
 # attr_accessor :name, :sku, :shortDescription, :longDescription, :salePrice, :image, :manufacturer, :categoryPath, :platform, :releaseDate, :id
 
@@ -21,7 +20,7 @@ has_many :reviews
 #   @id = hash["id"]
 # end
 
-# def self.all
+# def self.all(params)
 #   products = []
 #     systems = {
 #       "XboxOne" => "pcmcat303600050005", "Xbox360" => "abcat0701002",
@@ -33,7 +32,7 @@ has_many :reviews
 #     }
 #     products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=genre,sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
 #     systems.each do |system, id|
-#       if params[:system] == system
+#       if params == system
 #         products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
 #       end
 #     end

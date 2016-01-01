@@ -1,42 +1,9 @@
-<!-- 
-<div class="container">
-<h1>Add Deal</h1>
-<%= form_for @deal do |f| %>
 
-<div>
-  <%= f.label :date %>
-  <%= f.datetime_select :date %>
-</div> 
-
-<div>
-<%= f.label :price %>
-<%= f.text_field :price %>
-</div>
-
-<div>
-  <%= f.label :url %>
-  <%= f.text_field :url %>
-</div>
-
-<div>
-  <%= f.label :comment %>
-  <%= f.text_field :comment %>
-</div>
-
-<div>
-  <%= f.label :product_id %>
-  <%= f.text_field :product_id %>
-</div>
-
-
-<div><%= f.submit %></div>
-<% end %>
-</div> -->
 
 <div class="container">
   <h1>New Deal Information</h1>
 
-  <%= form_tag("/deals", method: "post") do %>
+  <%= form_tag("/deals/#{params[:id]}", method: "post") do %>
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>

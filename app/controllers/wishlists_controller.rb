@@ -4,6 +4,7 @@ class WishlistsController < ApplicationController
   def show
     if current_user && current_user.wishlists.any?
       @wishlists = current_user.wishlists.all
+      @wishlists = @wishlists.sort_by {|product| product.priority}
     end
   end
 
@@ -14,20 +15,19 @@ class WishlistsController < ApplicationController
     flash[:danger] = "Item Removed"
     redirect_to "/wishlist"
   end
+
+  def new
+    @wishlist = Wishlist.new
+  end
+
+  def create
+    @wishlist = Wishlist.new(product_id: params[:product_id], product_name: params[:product_name], price: params[:price], user_id: current_user.id)
+    if @wishlist.save
+      flash[:success] = "Game Added"
+      redirect_to "/wishlist"
+    else
+      flash[:danger] = "Game Not Added. Error!"
+      render :new
+    end
+  end
 end
-
-
-# def index
-#     if current_user && current_user.carted_products.where(status: "carted").any?
-#       @carted_products = current_user.carted_products.where(status: "carted")
-#       @subtotal = calculate_subtotal(@carted_products)
-#       @tax = calculate_tax(@carted_products)
-#       @total = @subtotal + @tax
-#       if params[:remove]
-#         @remove = @carted_products.find_by(id: params[:remove])
-#         @remove.update(status: "removed")
-#       end
-#     else
-#       redirect_to "/"
-#     end
-#   end

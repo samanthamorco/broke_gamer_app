@@ -1,27 +1,8 @@
-<!-- 
-<div class="container">
-<h1>Add Review</h1>
-<%= form_for @review do |f| %>
-
-<div>
-  <%= f.label :rating %>
-  <%= f.select :rating, (1..10) %>
-</div>
-
-<div>
-  <%= f.label :comments %>
-  <%= f.text_field :comments, class: "box_size" %>
-</div>
-
-
-<div><%= f.submit %></div>
-<% end %>
-</div> -->
 
 <div class="container">
   <h1>Add Review</h1>
 
-  <%= form_tag("/reviews", method: "post") do %>
+  <%= form_tag("/reviews/#{params[:id]}", method: "post") do %>
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>

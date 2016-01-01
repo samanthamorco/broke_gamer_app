@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Wishlist Entry</h1>
 
-  <%= form_tag("/wishlist", method: "post") do %>
+  <%= form_tag("/wishlist/", method: post) do %>
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>

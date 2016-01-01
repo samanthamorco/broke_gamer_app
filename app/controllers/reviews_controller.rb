@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
       # @review = @review.update(date: Time.now, user_id: current_user.id)
 
       flash[:success] = "Review Added"
-      redirect_to "/index"
+      redirect_to "/products/#{params[:product_id]}"
     else
       flash[:danger] = "Error!"
       render :new

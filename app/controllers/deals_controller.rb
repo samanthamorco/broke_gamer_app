@@ -16,7 +16,7 @@ class DealsController < ApplicationController
     if @deal.save
       # @deal = @deal.update(user_id: current_user.id, product_id: @product_id)
       flash[:success] = "Deal Added"
-      redirect_to "/index"
+      redirect_to "/products/#{params[:product_id]}"
     else
       flash[:danger] = "Error!"
       render :new

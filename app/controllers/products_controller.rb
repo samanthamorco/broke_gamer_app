@@ -22,6 +22,9 @@ class ProductsController < ApplicationController
       end
     end
     @products = hash["products"]
+
+    
+    # @products = Product.all(params[:system])
   end
 
   def show

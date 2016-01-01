@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220230942) do
+ActiveRecord::Schema.define(version: 20151231024657) do
 
   create_table "deals", force: :cascade do |t|
     t.decimal  "price",                    precision: 8, scale: 2
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151220230942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",      limit: 4
+    t.integer  "priority",     limit: 4
   end
 
 end

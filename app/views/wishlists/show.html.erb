@@ -32,20 +32,18 @@
                       <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Price</th>
+                        <th>Desired Price</th>
                         <th>Remove</th>
                       </tr>
                     </thead>
                     <tbody>
-                    <% counter = 1 %>
                     <% @wishlists.each do |wish| %>
                       <tr>
-                        <td><%= counter %></td>
-                        <td><%= wish.product_name %></td>
+                        <td><%= wish.priority %></td>
+                        <td><a href="/products/<%= wish.product_id %>"><%= wish.product_name %></a></td>
                         <td><%= number_to_currency(wish.price) %></td>
                         <td><%= link_to "Remove?", "/wishlist/#{wish.id}", method: :delete %>
                       </tr>
-                      <% counter += 1 %>
                       <% end %>                                                        
                       <% end %>                               
                     </tbody>

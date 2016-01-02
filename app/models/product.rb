@@ -4,43 +4,75 @@ class Product
 # has_many :deals
 # has_many :reviews
 
-# attr_accessor :name, :sku, :shortDescription, :longDescription, :salePrice, :image, :manufacturer, :categoryPath, :platform, :releaseDate, :id
+attr_accessor :name, :sku, :shortDescription, :longDescription, :salePrice, :image, :manufacturer, :categoryPath, :platform, :releaseDate, :products, :id
 
-# def initialize(hash)
-#   @name = hash["name"]
-#   @sku = hash["sku"]
-#   @shortDescription = hash["shortDescription"]
-#   @longDescription = hash["longDescription"]
-#   @salePrice = hash["salePrice"]
-#   @image = hash["image"]
-#   @manufacturer = hash["manufacturer"]
-#   @categoryPath = hash["categoryPath"]
-#   @platform = hash["platform"]
-#   @releaseDate = hash["releaseDate"]
-#   @id = hash["id"]
-# end
+def initialize(hash)
+  @name = hash["name"]
+  @genre = hash["genre"]
+  @sku = hash["sku"]
+  @shortDescription = hash["shortDescription"]
+  @longDescription = hash["longDescription"]
+  @salePrice = hash["salePrice"]
+  @image = hash["image"]
+  @manufacturer = hash["manufacturer"]
+  @categoryPath = hash["categoryPath"]
+  @platform = hash["platform"]
+  @releaseDate = hash["releaseDate"]
+  @onSale = hash["onSale"]
+  @id = hash["id"]
+  @products = hash["products"]
+end
 
-# def self.all(params)
-#   products = []
-#     systems = {
-#       "XboxOne" => "pcmcat303600050005", "Xbox360" => "abcat0701002",
-#       "PS4" => "pcmcat296300050018", "PS3" => "abcat0703002", "PS2" => "abcat0704002",
-#       "PSVita" => "pcmcat265900050010", "PSP" => "abcat0705002",
-#       "WiiU" => "pcmcat274600050017", "Wii" => "abcat0706002",
-#       "3DS" => "pcmcat235500050004", "DS" => "abcat0707002",
-#       "PC" => "pcmcat174700050005"
-#     }
-#     products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=genre,sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
-#     systems.each do |system, id|
-#       if params == system
-#         products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
-#       end
-#     end
-#   products_hash.each do |game|
-#     products << Product.new(game)
-#   end
-#   return products
-# end
+def self.all
+  products = []
+  products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
+  products_many = products_hash["products"]
+  products_many.each do |game|
+    products << Product.new(game)
+  end
+  return products
+end
+
+def self.system(system_type, page)
+  products = []
+
+  systems = {
+    "All" => "abcat0700000", "XboxOne" => "pcmcat303600050005", "Xbox360" => "abcat0701002",
+    "PS4" => "pcmcat296300050018", "PS3" => "abcat0703002", "PS2" => "abcat0704002",
+    "PSVita" => "pcmcat265900050010", "PSP" => "abcat0705002",
+    "WiiU" => "pcmcat274600050017", "Wii" => "abcat0706002",
+    "3DS" => "pcmcat235500050004", "DS" => "abcat0707002",
+    "PC" => "pcmcat174700050005"
+    }
+
+  systems.each do |system, id|
+    if system_type == system
+      products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,productID,salePrice,onSale&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
+      products_many = products_hash["products"]
+      products_many.each do |game|
+        products << Product.new(game)
+      end
+      return products
+    end
+end
+
+end
+
+def self.find(id)
+  product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
+  product_initial = Product.new(product_hash)
+  product = product_initial.products.first
+  return product
+end
+
+    systems = {
+      "All" => "abcat0700000", "XboxOne" => "pcmcat303600050005", "Xbox360" => "abcat0701002",
+      "PS4" => "pcmcat296300050018", "PS3" => "abcat0703002", "PS2" => "abcat0704002",
+      "PSVita" => "pcmcat265900050010", "PSP" => "abcat0705002",
+      "WiiU" => "pcmcat274600050017", "Wii" => "abcat0706002",
+      "3DS" => "pcmcat235500050004", "DS" => "abcat0707002",
+      "PC" => "pcmcat174700050005"
+    }
 
 
 end

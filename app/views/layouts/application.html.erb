@@ -108,10 +108,10 @@
                     <a href="#" rel="ddsubmenu1">Account</a>
                     <% end %>
 										<ul id="ddsubmenu1" class="ddsubmenustyle">
-											<li><a href="account.html">My Account</a></li>
-											<li><a href="wishlist.html">Wish List</a></li>
-											<li><a href="editprofile.html">Edit Profile</a></li>
-										</ul>
+<!-- 											<li><a href="account.html">My Account</a></li>
+ -->											<li><a href="/wishlist.html">Wish List</a></li>
+<!-- 											<li><a href="editprofile.html">Edit Profile</a></li>
+ -->										</ul>
 									</li>
 <!-- 									<li><a href="#" rel="ddsubmenu1">Pages</a>
 										<ul id="ddsubmenu1" class="ddsubmenustyle">
@@ -137,7 +137,7 @@
 							</div>
 						</div>
             <div class="pull-right">
-             <%= form_tag "/search", method: :post do %>
+             <%= form_tag "/products/search", method: :post do %>
              <%= text_field_tag :search %>
              <%= submit_tag "Search" %>
              <% end %>

@@ -1,15 +1,19 @@
 class Product
-#   include ActiveModel::Model
-#   include ActiveModel::Associations
+  include ActiveModel::Model
+  include ActiveModel::Naming
+  include ActiveModel::Conversion
+  # include ActiveModel::Associations
 # has_many :deals
 # has_many :reviews
+# belongs_to :wishlist
 
 attr_accessor :name, :sku, :shortDescription, :longDescription, :salePrice, :image, :manufacturer, :categoryPath, :platform, :releaseDate, :products, :id
+attr_reader :product_ids
 
 def initialize(hash)
   @name = hash["name"]
   @genre = hash["genre"]
-  @sku = hash["sku"]
+  @id = hash["sku"]
   @shortDescription = hash["shortDescription"]
   @longDescription = hash["longDescription"]
   @salePrice = hash["salePrice"]
@@ -19,7 +23,6 @@ def initialize(hash)
   @platform = hash["platform"]
   @releaseDate = hash["releaseDate"]
   @onSale = hash["onSale"]
-  @id = hash["id"]
   @products = hash["products"]
 end
 
@@ -52,6 +55,7 @@ def self.system(system_type, page)
       products_many.each do |game|
         products << Product.new(game)
       end
+      p products
       return products
     end
 end
@@ -60,19 +64,26 @@ end
 
 def self.find(id)
   product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
-  product_initial = Product.new(product_hash)
-  product = product_initial.products.first
-  return product
+  product_initial = product_hash["products"]
+  product = Product.new(product_initial.first)
 end
 
-    systems = {
-      "All" => "abcat0700000", "XboxOne" => "pcmcat303600050005", "Xbox360" => "abcat0701002",
-      "PS4" => "pcmcat296300050018", "PS3" => "abcat0703002", "PS2" => "abcat0704002",
-      "PSVita" => "pcmcat265900050010", "PSP" => "abcat0705002",
-      "WiiU" => "pcmcat274600050017", "Wii" => "abcat0706002",
-      "3DS" => "pcmcat235500050004", "DS" => "abcat0707002",
-      "PC" => "pcmcat174700050005"
-    }
+def self.search(search_params, page)
+  products = []
+  products_hash = Unirest.get("http://api.bestbuy.com/v1/products((search=#{search_params})&categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,salePrice,onSale&pageSize=12&format=json&apiKey=#{ENV['API_KEY']}").body
+    products_many = products_hash["products"]
+    products_many.each do |game|
+        products << Product.new(game)
+      end
+    return products
+end
 
+def self.reviews(id)
+  Review.where(product_id: id)
+end
+
+def persisted?
+  false
+end
 
 end

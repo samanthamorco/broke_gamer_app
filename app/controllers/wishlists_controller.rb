@@ -17,6 +17,7 @@ class WishlistsController < ApplicationController
   end
 
   def new
+    id = params[:id]
     @wishlist = Wishlist.new
   end
 

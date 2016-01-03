@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   
   get '/index', to: "pages#index"
-
+  post '/products/search', to:'products#search'
 
   get '/wishlist', to: 'wishlists#show'
   get '/wishlist/new', to: 'wishlists#new'

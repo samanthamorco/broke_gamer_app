@@ -27,16 +27,14 @@ class ProductsController < ApplicationController
     end
   end
 
-  # def search
-  #   search_term = params[:search]
-  #   if params[:page]
-  #     page = params[:page]
-  #   else
-  #     page = 1
-  #   end
-  #   hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000?show=sku,image,name,shortDescription,productID,salePrice,onSale&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
-  #   @products = hash.where("name LIKE ? OR shortDescription LIKE ?", "%#{search_term}%", "%#{search_term}%")
-  #   render :index 
-  # end
+  def search
+    if params[:page]
+      page = params[:page]
+    else
+      page = 1
+    end
+    @products = Product.search(params[:search], page)
+    render :index
+  end
 
 end

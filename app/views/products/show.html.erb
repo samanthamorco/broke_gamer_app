@@ -1,7 +1,7 @@
      <!-- Page title -->
       <div class="page-title">
          <div class="container">
-            <h2><i class="fa fa-desktop color"></i> <%= @product["name"] %><small></small></h2>
+            <h2><i class="fa fa-desktop color"></i> <%= @product.name %><small></small></h2>
             <hr />
          </div>
       </div>
@@ -18,8 +18,8 @@
                
                   <!-- Breadcrumb -->
                  <ul class="breadcrumb">
-                  <% @product["categoryPath"].each do |category| %>
-                  <% if category == @product["categoryPath"].first %>
+                  <% @product.categoryPath.each do |category| %>
+                  <% if category == @product.categoryPath.first %>
                   <% else %>
                    <li><%= category["name"] %></a> <span class="divider"></span></li>
                    <% end %>
@@ -31,44 +31,44 @@
                         <div class="col-md-4 col-xs-5">
 
                           <div class="item-image">
-                              <img src="<%= @product["image"] %>" alt="" />
+                              <img src="<%= @product.image %>" alt="" />
                           </div>
                               
 
                         </div>
                         <div class="col-md-5 col-xs-7">
                           <!-- Title -->
-                            <h4><%= @product["name"] %></h4>
+                            <h4><%= @product.name %></h4>
                             <% if @deal != false %>
-                            <% if @product["salePrice"] <= @deal.price %>
-                              <h5><strong>Price</strong>: $<%= @product["salePrice"] %></h5>
+                            <% if @product.salePrice <= @deal.price %>
+                              <h5><strong>Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
 
 
                               
 
                               <% else %>
-                              <h5 class="deal"><strong>Lowest Price</strong> : $<%= @deal.price %></h5> 
+                              <h5 class="deal"><strong>Lowest Price</strong> : <%= number_to_currency(@deal.price) %></h5> 
                               
-                              <h5><strong>Original Price</strong>: $<%= @product["salePrice"] %></h5>
-                              <h5 class="deal"><strong>Save</strong>:  $<%= @savings %></h5>
+                              <h5><strong>Original Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
+                              <h5 class="deal"><strong>Save</strong>:  <%= number_to_currency(@savings) %></h5>
                               
                               <a href="<%= @deal.url %>" target="_blank"><div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-group-sm btn-info">Buy Now!</button>
                               </div></a>
                               <% end %>
                               <% else %>
-                              <h5><strong>Price</strong>: $<%= @product["salePrice"] %></h5>
+                              <h5><strong>Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
                             <% end %>
 
-                            <p><strong>Manufacturer</strong>: <%= @product["manufacturer"] %></p>
-                            <p><strong>Platform</strong>: <%= @product["platform"] %></p>
+                            <p><strong>Manufacturer</strong>: <%= @product.manufacturer %></p>
+                            <p><strong>Platform</strong>: <%= @product.platform %></p>
 
-                            <p><strong>Release Date</strong>: <%= @product["releaseDate"] %></p><br />
+                            <p><strong>Release Date</strong>: <%= @product.releaseDate %></p><br />
                             
 
                                     <!-- Add to wish list -->
-                                    <p><a href="/wishlist/new?id=<%= @product["sku"] %>">+ Add to Wish List</a></p>
-                                    <p><a href="/deals/new?id=<%= @product["sku"] %>">+ Add Deal</a></p> 
+                                    <p><a href="/wishlist/new?id=<%= @product.id %>">+ Add to Wish List</a></p>
+                                    <p><a href="/deals/new?id=<%= @product.id %>">+ Add Deal</a></p> 
 
 
                                     <!-- Share button -->
@@ -92,8 +92,8 @@
                     <div id="myTabContent" class="tab-content">
                       <!-- Description -->
                       <div class="tab-pane fade in active" id="tab1">
-                        <h5><strong><%= @product["name"] %></strong></h5>
-                        <p><%= @product["longDescription"] %>.</p>
+                        <h5><strong><%= @product.name %></strong></h5>
+                        <p><%= @product.longDescription %>.</p>
                         
                       </div>
 
@@ -105,11 +105,11 @@
                           <tbody>
                             <tr>
                               <td><strong>Publisher</strong></td>
-                              <td><%= @product["manufacturer"] %></td>
+                              <td><%= @product.manufacturer %></td>
                             </tr>
                             <tr>
                               <td><strong>Platform</strong></td>
-                              <td><%= @product["platform"] %></td>
+                              <td><%= @product.platform %></td>
                             </tr>
          
                                                                                         
@@ -131,7 +131,7 @@
                         <% end %>
 
                         <hr />
-                        <h5><strong><p><a href="/reviews/new?id=<%= @product["sku"] %>">Write A Review</a></p></strong></h5>
+                        <h5><strong><p><a href="/reviews/new?id=<%= @product.id %>">Write A Review</a></p></strong></h5>
                         <hr />
                                               <!-- <form role="form">
                                                <div class="form-group">

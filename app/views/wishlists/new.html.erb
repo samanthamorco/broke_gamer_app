@@ -1,6 +1,33 @@
 <div class="container">
   <h1>Wishlist Entry</h1>
 
+  <% product = Product.find(params[:id]) %>
+  <%= form_tag("/wishlist", method: "post") do %>
+  <div>
+    <%= hidden_field_tag :product_id, "#{params[:id]}" %>
+  </div>
+  <div>
+    <%= label_tag(:product_name, "Game:") %>
+    <%= text_field_tag :product_name %>
+<!--     <%= text_field_tag :product_name, "#{product.name}" %>
+ -->  </div>
+  <div>
+    <%= label_tag(:price, "Price Desired:") %>
+    <%= text_field_tag :price %>
+  </div>
+
+  <div>
+    <%= submit_tag ("Submit") %>
+  </div>
+  <% end %>
+
+</div>
+
+
+
+<!-- <div class="container">
+  <h1>Wishlist Entry</h1>
+
   <%= form_tag("/wishlist/", method: post) do %>
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
@@ -19,4 +46,4 @@
   </div>
   <% end %>
 
-</div>
+</div> -->

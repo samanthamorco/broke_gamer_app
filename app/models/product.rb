@@ -1,7 +1,7 @@
 class Product
-  include ActiveModel::Model
-  include ActiveModel::Naming
-  include ActiveModel::Conversion
+  # include ActiveModel::Model
+  # include ActiveModel::Naming
+  # include ActiveModel::Conversion
   # include ActiveModel::Associations
 # has_many :deals
 # has_many :reviews

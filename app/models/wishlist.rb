@@ -1,7 +1,7 @@
 class Wishlist < ActiveRecord::Base
-  include ActiveModel::Model
-  include ActiveModel::Naming
-  include ActiveModel::Conversion
+  # include ActiveModel::Model
+  # include ActiveModel::Naming
+  # include ActiveModel::Conversion
 
 
   belongs_to :user

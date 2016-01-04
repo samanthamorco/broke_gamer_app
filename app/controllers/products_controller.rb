@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
       @deal = false
     else
       @deal = deals.order('price ASC').first
-      @savings = @product["salePrice"] - @deal.price
+      @savings = @product.salePrice - @deal.price
     end
   end
 

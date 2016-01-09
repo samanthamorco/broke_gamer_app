@@ -14,9 +14,8 @@ class ReviewsController < ApplicationController
   def create
     # @review = Review.new(review_params)
     @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
-    if @review.save
-      # @review = @review.update(date: Time.now, user_id: current_user.id)
 
+    if @review.save
       flash[:success] = "Review Added"
       redirect_to "/products/#{params[:product_id]}"
     else

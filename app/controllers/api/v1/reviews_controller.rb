@@ -15,11 +15,12 @@ class Api::V1::ReviewsController < ApplicationController
   def create
     # @review = Review.new(review_params)
     # @review = Review.new(comments: params[:comments], rating: params[:rating])
-    @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
+    # @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
+    @review = Review.new(date: Time.now, comments: params[:comments], rating: params[:rating])
     if @review.save
       flash[:success] = "Review Added"
-      render json: @review
-      redirect_to "/products/#{params[:product_id]}"
+      render json: @reviews
+      # redirect_to "/products/#{params[:product_id]}"
     else
       flash[:danger] = "Error!"
       render json: { errors: @review.errors.full_messages}, status: 422

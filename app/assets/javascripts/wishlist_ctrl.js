@@ -1,11 +1,11 @@
 (function (){
   "use strict";
 
-  angular.module("app").controller("reviewCtrl", function($scope, $http){
+  angular.module("app").controller("wishlistCtrl", function($scope, $http){
 
     $scope.setup = function() {
-      $http.get("/api/v1/reviews.json").then(function(response){
-        $scope.reviews = response.data
+      $http.get("/api/v1/wishlist.json").then(function(response){
+        $scope.wishlists = response.data
       });
     }
 

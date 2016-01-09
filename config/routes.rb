@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :reviews
+        get '/wishlist', to: 'wishlists#index'
+        get '/wishlist/new', to: 'wishlists#new'
+        post '/wishlist/', to: 'wishlists#create'
     end
   end
+  
   get '/index', to: "pages#index"
   post '/products/search', to:'products#search'
 

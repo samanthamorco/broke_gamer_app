@@ -39,11 +39,13 @@
                     <tbody>
                     <% @wishlists.each do |wish| %>
                       <tr>
+                      <div class="drag_and_drop">
                         <td><%= wish.priority %></td>
                         <td><a href="/products/<%= wish.product_id %>"><%= wish.product_name %></a></td>
                         <td><%= number_to_currency(wish.price) %></td>
                         <td><%= link_to "Remove?", "/wishlist/#{wish.id}", method: :delete %>
                       </tr>
+                      </div>
                       <% end %>                                                        
                       <% end %>                               
                     </tbody>

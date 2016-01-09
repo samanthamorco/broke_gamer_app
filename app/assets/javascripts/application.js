@@ -13,8 +13,9 @@
 //= require theme/jquery.countdown.min
 //= require theme/jquery
 //= require theme/ddlevelsmenu
-//= require jquery.turbolinks
 //= require jquery_ujs
+//= require angular
+//= require angular-animate
 //= require theme/bootstrap
 //= require theme/custom
 //= require theme/filter
@@ -25,5 +26,4 @@
 //= require theme/jquery.themepunch.revolution.min
 //= require theme/jquery.themepunch.tools.min
 //= require theme/respond.min
-//= require turbolinks
 //= require_tree .

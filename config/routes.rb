@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   # resources :deals
   resources :products
 
-  
+  namespace :api do
+    namespace :v1 do
+      resources :reviews
+    end
+  end
   get '/index', to: "pages#index"
   post '/products/search', to:'products#search'
 

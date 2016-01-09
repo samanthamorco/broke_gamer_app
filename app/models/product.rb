@@ -70,7 +70,7 @@ end
 
 def self.search(search_params, page)
   products = []
-  products_hash = Unirest.get("http://api.bestbuy.com/v1/products((search=#{search_params})&categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,salePrice,onSale&pageSize=12&format=json&apiKey=#{ENV['API_KEY']}").body
+  products_hash = Unirest.get("http://api.bestbuy.com/v1/products((name=#{search_params}*)&categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,salePrice,onSale&pageSize=12&format=json&apiKey=#{ENV['API_KEY']}").body
     products_many = products_hash["products"]
     products_many.each do |game|
         products << Product.new(game)

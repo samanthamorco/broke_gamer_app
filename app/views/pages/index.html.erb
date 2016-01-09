@@ -8,7 +8,7 @@
         <div class="row">
            <div class="col-md-12">
             <!-- Catchy title -->
-            <h3>Broke Gamers</h3>
+            <h3 class="animated fadeIn">Broke Gamers</h3>
             <p>You're broke? So are we! Here we work together to keep video game deals on one page so we can all save as much money as possible.</p>
            </div>
         </div>
@@ -22,14 +22,14 @@
 
       <div class="shop-items blocky">
         <div class="container">
-          
+
          <div class="row">
             <!-- Item #1 -->
               <% @products.each do |game| %>
 
                         <!-- Item #1 -->
                       <div class="col-md-3 col-sm-6 col-xs-12">
-                          <div class="item">
+                          <div class="item animated fadeIn">
                             <!-- Item image -->
                             <div class="item-image">
                               <a href="single-item.html"><img src="<%= game.image %>" alt="" class="img-responsive"/></a>

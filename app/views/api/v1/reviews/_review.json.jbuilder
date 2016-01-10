@@ -1,4 +1,4 @@
-
+  json.id review.id
   json.product_id review.product_id
   json.date review.date
   json.rating review.rating

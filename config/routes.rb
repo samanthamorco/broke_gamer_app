@@ -12,6 +12,10 @@ Rails.application.routes.draw do
         get '/wishlist', to: 'wishlists#index'
         get '/wishlist/new', to: 'wishlists#new'
         post '/wishlist/', to: 'wishlists#create'
+        get '/wishlist/:id', to: 'wishlists#show'
+        get '/wishlist/:id/edit', to: 'wishlists#edit'
+        patch '/wishlist/:id', to: 'wishlists#update'
+        delete '/wishlist/:id', to: 'wishlists#destroy'
     end
   end
   
@@ -24,8 +28,8 @@ Rails.application.routes.draw do
 
   get '/reviews/new', to: 'reviews#new'
   post '/reviews/:id', to: 'reviews#create'
-  post '/deals/:id', to: 'deals#create'
-  get '/deals/new', to: 'deals#new'
+  resources :deals
+  get '/deals/pending', to: 'deals#show'
 
   delete '/wishlist/:id', to: 'wishlists#destroy'
 

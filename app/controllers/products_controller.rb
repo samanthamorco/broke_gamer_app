@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index 
-    @products = Product.all
+    # @products = Product.all
     if params[:system]
       if params[:page]
         page = params[:page]

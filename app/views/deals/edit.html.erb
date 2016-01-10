@@ -1,0 +1,30 @@
+<%= form_tag "/deals/#{@deal.id}", method: :patch do %>
+
+Fill out the following form to add a game to the list:
+<div>
+  <%= label_tag :name, "Game ID:" %>
+  <%= text_field_tag :name, @deal.product_id %>
+</div>
+<div>
+  <%= label_tag :name, "Deal Price:" %>
+  <%= text_field_tag :name, @deal.price %>
+</div>
+<div>
+  <%= label_tag :name, "Deal URL:" %>
+  <%= text_field_tag :name, @deal.url %>
+</div>
+<div>
+  <%= label_tag :name, "Comments:" %>
+  <%= text_field_tag :name, @deal.comment %>
+</div>
+<div>
+  <%= label_tag :name, "Status:" %>
+  <%= text_field_tag :name, @deal.status %>
+</div>
+
+
+<div>
+  <%= submit_tag "Update Deal" %>
+</div>
+
+<% end %>

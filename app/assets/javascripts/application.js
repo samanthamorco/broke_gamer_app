@@ -10,16 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require theme/jquery.countdown.min
 //= require theme/jquery
 //= require theme/ddlevelsmenu
 //= require jquery_ujs
 //= require jquery-ui
-//= require jquery-ui.min
 //= require angular
 //= require angular-animate
+//= require ng-infinite-scroll
 //= require sortable
-//= require sortable.min
 //= require theme/bootstrap
 //= require theme/custom
 //= require theme/filter

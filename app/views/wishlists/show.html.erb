@@ -26,31 +26,27 @@
                </div>
     <div class="col-md-9">
     <h3><i class="fa fa-user color"></i> &nbsp;Wish List</h3>
-
-    <table class="table table-striped tcart">
-    <% if @wishlists == nil %>
-    Wishlist Empty.
-    <% else %>
+    <table class="table table-striped ">
       <thead>
+        <th>Index</th>
         <th>#</th>
         <th>Name</th>
         <th>Desired Price</th>
         <th>Delete?</th>
       </thead>
-      <tbody ui:sortable>
+      <tbody ui:sortable="sortableOptions" ng-model="wishlists">
       <tr ng-repeat="wishlist in wishlists" style="cursor: move;">
-        <td>{{wishlist.priority}}</td>
+        <td> {{$index + 1}} </td>
+        <td> {{wishlist.priority}}</td>
         <td><a href="/products/{{wishlist.product_id}}">{{wishlist.product_name}}</a></td>
         <td>{{wishlist.price}}</td>
-        <td>Remove?</td>
+        <td><a href="#" ng-click="deleteGame(wishlist.id)">Delete</a></td>
       </tr>
       </tbody>
     </table>
-    <% end %>
     </div>
               
             
-            <div class="sep-bor"></div>
          </div>
       </div>
      
@@ -77,7 +73,7 @@
                   <div class="s-item">
                     <!-- Image link -->
                     <a href="single-item.html">
-                      <img src="img/items/2.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/2.png" class="img-responsive" alt="" />
                     </a>
                     <!-- portfolio caption -->
                     <div class="s-caption">
@@ -90,7 +86,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/3.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/3.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -101,7 +97,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/4.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/4.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -112,7 +108,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/5.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/5.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -127,7 +123,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/6.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/6.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -138,7 +134,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/7.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/7.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -149,7 +145,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/8.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/8.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -160,7 +156,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/9.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/9.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>

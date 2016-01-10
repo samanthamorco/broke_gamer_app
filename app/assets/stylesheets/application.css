@@ -12,11 +12,8 @@
  *
  *= require animate
  *= require jquery-ui
- *= require jquery-ui.min
  *= require jquery-ui.structure
- *= require jquery-ui.structure.min
  *= require jquery-ui.theme
- *= require jquery-ui.theme.min
  *= require theme/animate.min
  *= require theme/bootstrap
  *= require theme/ddlevelsmenu-base

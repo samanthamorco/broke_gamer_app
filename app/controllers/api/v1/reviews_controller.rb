@@ -4,19 +4,14 @@ class Api::V1::ReviewsController < ApplicationController
 
   
   def new
-    if params[:id]
-      @review = Review.new
-    else
-      flash[:danger] = "Please select a product!"
-      redirect_to "/"
-    end
+    @review = Review.new
   end
 
   def create
     # @review = Review.new(review_params)
     # @review = Review.new(comments: params[:comments], rating: params[:rating])
     # @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
-    @review = Review.new(date: Time.now, comments: params[:comments], rating: params[:rating])
+    @review = Review.new(comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
     if @review.save
       flash[:success] = "Review Added"
       render json: @reviews
@@ -28,12 +23,15 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def index
+    
     # @reviews = Review.where(product_id: params[:id])
     @reviews = Review.all
   end
 
   def show
   end
+
+
 
 
 end

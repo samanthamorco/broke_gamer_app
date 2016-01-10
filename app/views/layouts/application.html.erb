@@ -110,6 +110,9 @@
 										<ul id="ddsubmenu1" class="ddsubmenustyle">
 <!-- 											<li><a href="account.html">My Account</a></li>
  -->											<li><a href="/wishlist.html">Wish List</a></li>
+                          <% if current_user && current_user.id == (1 || 3) %>
+                            <li><a href="/deals/pending">Pending Deals</a></li>
+                            <% end %>
 <!-- 											<li><a href="editprofile.html">Edit Profile</a></li>
  -->										</ul>
 									</li>
@@ -130,7 +133,8 @@
 											<li><a href="/products?system=PS4">PS4</a></li>
 											<li><a href="/products?system=WiiU">Wii U</a></li>
 											<li><a href="/products?system=3DS">Nintendo 3DS</a></li>
-                      <li><a href="/products?system=PSVita">PS Vita</a></li>									<li><a href="/products?system=All">More</a></li>
+                      <li><a href="/products?system=PSVita">PS Vita</a></li>									
+                      <li><a href="/deals">Deals</a></li>
 										</ul>
 									</li>                       
 								</ul>
@@ -152,7 +156,7 @@
 							 <%= link_to "Sign Out", "/users/sign_out", method: :delete %>
                <% else %>
                <a href="/users/sign_in">Login</a> 
-               <a href="/users/sign_out">Signup</a>
+               <a href="/users/sign_up">Signup</a>
                <% end %>
 					</div>
 				</div>

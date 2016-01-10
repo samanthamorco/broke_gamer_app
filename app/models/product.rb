@@ -24,6 +24,7 @@ def initialize(hash)
   @releaseDate = hash["releaseDate"]
   @onSale = hash["onSale"]
   @products = hash["products"]
+  @total_pages = hash["totalPages"]
 end
 
 def self.all
@@ -51,11 +52,11 @@ def self.system(system_type, page)
   systems.each do |system, id|
     if system_type == system
       products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,productID,salePrice,onSale&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
+      $total_pages = products_hash["totalPages"]
       products_many = products_hash["products"]
       products_many.each do |game|
         products << Product.new(game)
       end
-      p products
       return products
     end
 end

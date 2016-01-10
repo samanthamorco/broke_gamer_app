@@ -53,7 +53,7 @@
                               <h5 class="deal"><strong>Save</strong>:  <%= number_to_currency(@savings) %></h5>
                               
                               <a href="<%= @deal.url %>" target="_blank"><div class="btn-group" role="group" aria-label="...">
-                              <button type="button" class="btn btn-group-sm btn-info">Buy Now!</button>
+                              <button type="button" class="btn btn-custom">Buy Now!</button>
                               </div></a>
                               <% end %>
                               <% else %>
@@ -132,15 +132,9 @@
                         </div>
                         <% end %>
 
-   <div ng-app="app">
-  <div ng-controller="reviewCtrl" ng-init="setup()">
-    <div ng-repeat="review in reviews track by $index">
 
-      <p>User: {{review.user_id.email}}</p>
-      <p>Date Added: {{review.date}}</p>
-      <p>Rating: {{review.rating}}</p>
-      <p>Comments: {{review.comments}}</p>
-    </div>
+                         <div ng-app="app">
+  <div ng-controller="reviewCtrl" ng-init="setup()">
     <div>
       <h3>Add Review:</h3>
 <!--       <ul>
@@ -158,13 +152,19 @@
         Comments: <input ng-model="reviewComments">
       </div>
       <div>
-        <input type="hidden" ng-model="reviewProductId" value="42" ng-init="reviewProductId=<%= @product.id %>;">
-      </div>      
+        Product ID: <label><input type="hidden" ng-model="reviewProductId" value="<%= @product.id %>">{{product.id}}</label>
+      </div>
       <div>
-        <input type="hidden" ng-model="reviewUser" value="42" ng-init="reviewProductId=<%= current_user.id %>;">
       </div>
 
-      <button ng-click="addReview(reviewComments, reviewRating, reviewProductId, reviewUser)">Submit</button>
+      <button ng-click="addReview(reviewComments, reviewRating)">Submit</button>
+    </div>
+
+    
+    <div ng-repeat="review in reviews track by $index">
+
+      <p>Rating: {{review.rating}}</p>
+      <p>Comments: {{review.comments}}</p>
     </div>
 
 
@@ -175,34 +175,6 @@
                         <hr />
                         <h5><strong><p><a href="/reviews/new?id=<%= @product.id %>">Write A Review</a></p></strong></h5>
                         <hr />
-                                              <!-- <form role="form">
-                                               <div class="form-group">
-                                                 <label for="name">Your Name</label>
-                                                 <input type="text" class="form-control" id="name" placeholder="Enter Name">
-                                               </div>                                    
-                                               <div class="form-group">
-                                                 <label for="exampleInputEmail1">Email address</label>
-                                                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                               </div>
-                                               <div class="form-group">
-                                                   <label for="rating">Rating</label>
-                                                   <!-- Dropdown menu -->
-                                                   <!-- <select class="form-control">
-                                                     <option>Rating</option>
-                                                     <option>1</option>
-                                                     <option>2</option>
-                                                     <option>3</option>
-                                                     <option>4</option>
-                                                     <option>5</option>
-                                                   </select>
-                                                </div>
-                                               <div class="form-group">
-                                                 <label for="exampleInputEmail1">Review</label>
-                                                 <textarea class="form-control" rows="3"></textarea>
-                                               </div>  
-                                               <button type="submit" class="btn btn-info">Send</button>
-                                               <button type="reset" class="btn btn-default">Reset</button>
-                                             </form> -->
 
                       </div>
 
@@ -255,7 +227,7 @@
                      <div class="sitem">
                        <div class="onethree-left">
                          <!-- Image -->
-                         <a href="single-item.html"><img src="img/items/2.png" alt="" class="img-responsive"/></a>
+                         <a href="single-item.html"><img src="/assets/theme/items/2.png" alt="" class="img-responsive"/></a>
                        </div>
                        <div class="onethree-right">
                          <!-- Title -->
@@ -270,7 +242,7 @@
 
                      <div class="sitem">
                        <div class="onethree-left">
-                         <a href="single-item.html"><img src="img/items/3.png" alt="" class="img-responsive"/></a>
+                         <a href="single-item.html"><img src="/assets/theme/items/3.png" alt="" class="img-responsive"/></a>
                        </div>
                        <div class="onethree-right">
                          <a href="single-item.html">Sony One V</a>
@@ -282,7 +254,7 @@
 
                      <div class="sitem">
                        <div class="onethree-left">
-                         <a href="single-item.html"><img src="img/items/4.png" alt="" class="img-responsive"/></a>
+                         <a href="single-item.html"><img src="/assets/theme/items/4.png" alt="" class="img-responsive"/></a>
                        </div>
                        <div class="onethree-right">
                          <a href="single-item.html">Nokia One V</a>
@@ -294,7 +266,7 @@
 
                      <div class="sitem">
                        <div class="onethree-left">
-                         <a href="single-item.html"><img src="img/items/5.png" alt="" class="img-responsive"/></a>
+                         <a href="single-item.html"><img src="/assets/theme/items/5.png" alt="" class="img-responsive"/></a>
                        </div>
                        <div class="onethree-right">
                          <a href="single-item.html">Samsung One V</a>
@@ -335,7 +307,7 @@
                   <div class="s-item">
                     <!-- Image link -->
                     <a href="single-item.html">
-                      <img src="img/items/2.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/2.png" class="img-responsive" alt="" />
                     </a>
                     <!-- portfolio caption -->
                     <div class="s-caption">
@@ -348,7 +320,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/3.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/3.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -359,7 +331,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/4.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/4.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -370,7 +342,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/5.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/5.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -385,7 +357,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/6.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/6.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -396,7 +368,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/7.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/7.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -407,7 +379,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/8.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/8.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>
@@ -418,7 +390,7 @@
                 <div class="col-md-3 col-sm-6">
                   <div class="s-item">
                     <a href="single-item.html">
-                      <img src="img/items/9.png" class="img-responsive" alt="" />
+                      <img src="/assets/theme/items/9.png" class="img-responsive" alt="" />
                     </a>
                     <div class="s-caption">
                       <h4><a href="#">Finibus Bonorum</a></h4>

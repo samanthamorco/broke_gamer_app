@@ -26,8 +26,6 @@
                  <!-- Items List starts -->
 
                  <% @products.each do |game| %>
-                 <% deals = Deal.where(product_id: game.id, status: "active") %>
-                 <% deal = deals.order('price ASC').first %>
                  <!-- Item #1 -->
                  <div class="col-md-4 col-sm-6 col-xs-12">
                   <div class="item">
@@ -43,13 +41,10 @@
                       <!-- <p><%= game.shortDescription %></p> -->
                       <hr />
                       <!-- Price -->
-                      <% if deals.empty? == false %>
                       <div class="item-icon"><span>SALE</span></div>
 
-                      <div class="item-price pull-right"><%= number_to_currency(deal.price) %></div>     
-                      <% else %>
-                      <div class="item-price pull-right"><%= number_to_currency(game.salePrice) %></div>
-                      <% end %>
+                      <div class="item-price pull-right"><%= number_to_currency(@deal.price) %></div>     
+
                       <!-- Add to cart -->
                       
                       <div class="clearfix"></div>
@@ -67,9 +62,9 @@
                     <!-- Pagination -->
                     <ul class="pagination">
                       <li class="disabled"><a href="#">&laquo;</a></li>
-                      <% $total_pages.times do |counter| %>
+                      <% @total_pages.times do |counter| %>
 
-                      <li><a href="/products?system=<%= @system %>&page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li>
+                      <li><a href="/deals?page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li>
                       <% end %>
                       <li><a href="#">&raquo;</a></li>
                     </ul> 
@@ -111,8 +106,7 @@
                          <li><a href="/products?system=PC">PC Gaming</a></li>
                        </ul>
                      </li>
-                     <li><a href="/deals"><i class="fa"></i>Deals</a>
-                     </li>
+                     <li><a href="/deals/"><i class="fa"></i>Deals</a></li>
                    </ul>
                  </div>
                  

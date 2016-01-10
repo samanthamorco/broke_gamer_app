@@ -1,12 +1,5 @@
  <div ng-app="app">
   <div ng-controller="reviewCtrl" ng-init="setup()">
-    <div ng-repeat="review in reviews track by $index">
-
-      <p>User: {{review.user_id.email}}</p>
-      <p>Date Added: {{review.date}}</p>
-      <p>Rating: {{review.rating}}</p>
-      <p>Comments: {{review.comments}}</p>
-    </div>
     <div>
       <h3>Add Review:</h3>
 <!--       <ul>
@@ -24,7 +17,18 @@
         Comments: <input ng-model="reviewComments">
       </div>
 
+      <div>
+      </div>
+
       <button ng-click="addReview(reviewComments, reviewRating)">Submit</button>
+    </div>
+
+
+    
+    <div ng-repeat="review in reviews track by $index">
+
+      <p>Rating: {{review.rating}}</p>
+      <p>Comments: {{review.comments}}</p>
     </div>
 
 

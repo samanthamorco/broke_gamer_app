@@ -8,6 +8,10 @@ class Api::V1::WishlistsController < ApplicationController
     end
   end
 
+  def show
+    @wishlist = Wishlist.find(params[:id])
+  end
+
   def destroy
     id = params[:id]
     @wishlist = Wishlist.find_by(id: id)
@@ -30,5 +34,13 @@ class Api::V1::WishlistsController < ApplicationController
       flash[:danger] = "Game Not Added. Error!"
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @wishlist = Wishlist.find(params[:id])
+    @wishlist.update(priority: params[:priority])
   end
 end

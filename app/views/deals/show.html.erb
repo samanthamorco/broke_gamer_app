@@ -1,0 +1,27 @@
+<div class="page-title">
+
+  <div class="container">
+    <h1 class="modal-title">Verify Deals</h1>
+    <table class="table table-striped">
+      <th>
+        <td>Product ID</td>
+        <td>Price</td>
+        <td>Comment</td>
+        <td>Edit Deal</td>
+        <td>Delete Deal</td>
+      </th>
+
+      <% @deals.each do |deal| %>
+      <tr>
+        <td></td>
+        <td><a href="/products/<%= deal.product_id %>"><%= deal.product_id %></a></td>
+        <td><%= deal.price %></td>
+        <td><%= deal.comment %></td>
+        <td><%= link_to "Edit", "/deals/#{deal.id}/edit" %></td>
+        <td><%= link_to "Delete", "/deals/#{deal.id}", method: :delete %></td>
+      </tr>
+
+      <% end %>
+    </table>
+  </div>
+</div>

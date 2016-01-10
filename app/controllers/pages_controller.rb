@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def index
     @products = []
-    @deals = Deal.all
+    @deals = Deal.where(status: "active")
     count = 1
     @deals.first(8).each do |deal|
       if count % 2 == 1
@@ -11,10 +11,6 @@ class PagesController < ApplicationController
         product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
 
       end
-      p ENV['API_KEY']
-      p ENV['API_KEYS']
-      # product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEYS']}").body
-      # puts count
       count += 1
       product_initial = product_hash["products"].first
       p product_hash["products"]

@@ -41,7 +41,7 @@
                               <div class="clearfix"></div>
                               <hr />
                               <!-- Price -->
-                              <div class="item-price pull-right"><%= Deal.find_by(product_id: game.id).price %></div>
+                              <div class="item-price pull-right"><%= number_to_currency(Deal.find_by(product_id: game.id).price) %></div>
                             
                               <div class="clearfix"></div>
                             </div>

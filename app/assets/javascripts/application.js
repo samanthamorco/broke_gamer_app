@@ -14,8 +14,12 @@
 //= require theme/jquery
 //= require theme/ddlevelsmenu
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery-ui.min
 //= require angular
 //= require angular-animate
+//= require sortable
+//= require sortable.min
 //= require theme/bootstrap
 //= require theme/custom
 //= require theme/filter

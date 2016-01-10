@@ -1,3 +1,5 @@
+ <div ng-app="app">
+  <div ng-controller="wishlistCtrl" ng-init="setup()">
      <!-- Page title -->
       <div class="page-title">
          <div class="container">
@@ -22,32 +24,30 @@
  -->                     </ul>
                   </div>
                </div>
-
- <div ng-app="app" class="col-md-9">
-  <div ng-controller="wishlistCtrl" ng-init="setup()">
+    <div class="col-md-9">
     <h3><i class="fa fa-user color"></i> &nbsp;Wish List</h3>
 
     <table class="table table-striped tcart">
     <% if @wishlists == nil %>
     Wishlist Empty.
     <% else %>
-      <tr>
+      <thead>
         <th>#</th>
         <th>Name</th>
         <th>Desired Price</th>
         <th>Delete?</th>
-      </tr>
-
-      <tr ng-repeat="wishlist in wishlists">
+      </thead>
+      <tbody ui:sortable>
+      <tr ng-repeat="wishlist in wishlists" style="cursor: move;">
         <td>{{wishlist.priority}}</td>
-        <td>{{wishlist.product_name}}</td>
+        <td><a href="/products/{{wishlist.product_id}}">{{wishlist.product_name}}</a></td>
         <td>{{wishlist.price}}</td>
         <td>Remove?</td>
       </tr>
+      </tbody>
     </table>
     <% end %>
-  </div>
-</div>
+    </div>
               
             
             <div class="sep-bor"></div>
@@ -370,3 +370,5 @@
          </div>
       </div>
       <!-- CTA Ends -->
+  </div>
+</div>

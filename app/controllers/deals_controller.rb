@@ -1,29 +1,34 @@
 class DealsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_admin!, except: [:index]
 
   def index
     @products = []
+    @prices = []
     @deals = Deal.where(status: "active")
-    count = 0
+    count = 1
     if params[:page]
       page = params[:page]
     else
       page = 1
     end
+
     @total_pages = (@deals.length / 9)
     if (@deals.length % 9) > 0
       @total_pages += 1
     end
     p @total_pages
+
     if ((@deals.length / page.to_i) - 9) < 1
       i = (@deals.length / page.to_i).to_i
     else
       i = 9
     end
+
     i.times do
-      @deal = @deals[count * page.to_i]
-      p @deal
+      @deal = @deals[(count * page.to_i) - 1]
+      @prices << @deal.price
       if @deal == nil
         break
       else
@@ -79,7 +84,7 @@ class DealsController < ApplicationController
     @deal = Deal.find_by(id: params[:id])
     @deal.update(status: params[:status], url: params[:url], comment: params[:comment])
     flash[:success] = "This game has been updated!"
-    redirect_to "/deals"
+    redirect_to "/deals/pending"
   end
 
   def destroy

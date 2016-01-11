@@ -22,17 +22,23 @@
     $scope.sortableOptions = {
       disabled: false,
       update: function(event) {
-        $scope.changePriority();
+        $scope.test();
       }
     };
 
-    $scope.changePriority = function() {
+    $scope.test = function() {
       var wishlist = $scope.wishlists
       for (var i = 0; i <= 3; i++) {
         console.log(wishlist[i].priority);
-        // if ((i + 1) = wishlist[i].priority
       };
+        console.log("");
     };
+
+    // $scope.changePriority = function(index, priority) {
+    //   console.log(index);
+    //   console.log(priority);
+    //   }
+    // }
 
     window.$scope = $scope;
   });

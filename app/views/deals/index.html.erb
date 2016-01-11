@@ -24,7 +24,7 @@
                  </ul> -->
                  
                  <!-- Items List starts -->
-
+                 <% count = 0%>
                  <% @products.each do |game| %>
                  <!-- Item #1 -->
                  <div class="col-md-4 col-sm-6 col-xs-12">
@@ -43,7 +43,7 @@
                       <!-- Price -->
                       <div class="item-icon"><span>SALE</span></div>
 
-                      <div class="item-price pull-right"><%= number_to_currency(@deal.price) %></div>     
+                      <div class="item-price pull-right"><%= number_to_currency(@prices[count]) %></div>     
 
                       <!-- Add to cart -->
                       
@@ -51,6 +51,7 @@
                     </div>
                   </div>
                 </div>
+                 <% count += 1 %>
                 <% end %>
 
 
@@ -60,18 +61,18 @@
                 <div class="row">
                   <div class="col-md-12">
                     <!-- Pagination -->
-                    <ul class="pagination">
-                      <li class="disabled"><a href="#">&laquo;</a></li>
-                      <% @total_pages.times do |counter| %>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></button>
+                      <ul class="dropdown-menu scrollable-menu" role="menu">                      
+                        <% @total_pages.times do |counter| %>
 
-                      <li><a href="/deals?page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li>
-                      <% end %>
-                      <li><a href="#">&raquo;</a></li>
-                    </ul> 
+                        <li><a href="/deals?page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li>
+                        <% end %>
+                      </ul> 
+                    </div>
+                  </div>
                   </div>
                 </div>
-                
-              </div>
               
               
               <div class="col-md-3 col-md-pull-9">

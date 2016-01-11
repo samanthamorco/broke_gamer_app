@@ -22,7 +22,7 @@
 
       <div class="shop-items blocky">
         <div class="container">
-
+        <h3 class="animated fadeIn">Current Deals:</h3>
          <div class="row">
             <!-- Item #1 -->
               <% @products.each do |game| %>
@@ -32,6 +32,8 @@
                           <div class="item animated fadeIn">
                             <!-- Item image -->
                             <div class="item-image">
+                                                  <div class="item-icon"><span>SALE</span></div>
+
                               <a href="single-item.html"><img src="<%= game.image %>" alt="" class="img-responsive"/></a>
                             </div>
                             <!-- Item details -->
@@ -49,6 +51,8 @@
                         </div>
               <% end %>
               </div>
+              <a href="/deals/"><button type="button" class="btn btn-custom btn-lg">See All Deals</button></a>
+
               </div>
               </div>
 

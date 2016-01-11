@@ -2,24 +2,31 @@
 
 Fill out the following form to add a game to the list:
 <div>
-  <%= label_tag :name, "Game ID:" %>
-  <%= text_field_tag :name, @deal.product_id %>
+  <%= label_tag :product_id, "Game ID:" %>
+  <%= text_field_tag :product_id, @deal.product_id %>
 </div>
 <div>
-  <%= label_tag :name, "Deal Price:" %>
-  <%= text_field_tag :name, @deal.price %>
+  <%= label_tag :price, "Deal Price:" %>
+  <%= text_field_tag :price, @deal.price %>
 </div>
 <div>
-  <%= label_tag :name, "Deal URL:" %>
-  <%= text_field_tag :name, @deal.url %>
+  <%= label_tag :url, "Deal URL:" %>
+  <%= text_field_tag :url, @deal.url %>
 </div>
 <div>
-  <%= label_tag :name, "Comments:" %>
-  <%= text_field_tag :name, @deal.comment %>
+  <%= label_tag :comment, "Comments:" %>
+  <%= text_field_tag :comment, @deal.comment %>
 </div>
+
+
 <div>
-  <%= label_tag :name, "Status:" %>
-  <%= text_field_tag :name, @deal.status %>
+  <%= label_tag :status, "Status:" %>
+  <%= radio_button_tag(:status, "pending") %> 
+  <%= label_tag(:status, "pending") %>
+  <%= radio_button_tag(:status, "active") %>
+  <%= label_tag(:status, "active") %>  
+  <%= radio_button_tag(:status, "inactive") %>
+  <%= label_tag(:status, "inactive") %>
 </div>
 
 

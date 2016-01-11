@@ -28,8 +28,12 @@ Rails.application.routes.draw do
 
   get '/reviews/new', to: 'reviews#new'
   post '/reviews/:id', to: 'reviews#create'
-  resources :deals
+
+  get '/deals/', to: 'deals#index'
+  get '/deals/new', to: 'deals#new' 
   get '/deals/pending', to: 'deals#show'
+  get '/deals/:id/edit', to: 'deals#edit'
+  post '/products/:id', to: 'deals#create'
 
   delete '/wishlist/:id', to: 'wishlists#destroy'
 

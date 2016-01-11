@@ -24,3 +24,9 @@
   -o-animation: fadeOut 1s;
   animation: fadeOut 1s;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}

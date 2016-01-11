@@ -15,3 +15,16 @@
   -o-animation: fadeOut 1s;
   animation: fadeOut 1s;
 }
+
+.btn-custom {
+  background-color: #16cbe6;
+  color: white;
+  margin: 0 auto;
+  display: block;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}

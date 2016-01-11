@@ -3,7 +3,7 @@
 <div class="container">
   <h1>New Deal Information</h1>
 
-  <%= form_tag("/deals/#{params[:id]}", method: "post") do %>
+  <%= form_tag("/products/#{params[:id]}", method: "post") do %>
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>

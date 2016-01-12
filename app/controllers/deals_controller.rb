@@ -18,28 +18,37 @@ class DealsController < ApplicationController
     if (@deals.length % 9) > 0
       @total_pages += 1
     end
+    p "Total pages " 
     p @total_pages
+    p "Deals length " 
+    p @deals.length
 
     if ((@deals.length / page.to_i) - 9) < 1
       i = (@deals.length / page.to_i).to_i
+      p "products on this page:"
+      p i
     else
       i = 9
     end
 
     i.times do
-      @deal = @deals[(count * page.to_i) - 1]
+      @deal = @deals[(9 * (page.to_i - 1) + count) - 1]
+      p "product number:"
+      p (9 * (page.to_i - 1) + count)
       @prices << @deal.price
       if @deal == nil
         break
       else
         if count % 2 == 1
           product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{@deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEYS']}").body
+          p "odd"
         else
           product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{@deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
+          p "even"
         end
           count += 1
           product_initial = product_hash["products"].first
-          p product_hash["products"]
+          # p product_hash["products"]
           product = Product.new(product_initial)
           @products << product
         end

@@ -25,6 +25,7 @@ def initialize(hash)
   @onSale = hash["onSale"]
   @products = hash["products"]
   @total_pages = hash["totalPages"]
+  # @relatedProducts.sku = hash["relatedProducts.sku"]
 end
 
 def self.all

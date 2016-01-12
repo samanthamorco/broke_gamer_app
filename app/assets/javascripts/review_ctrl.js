@@ -5,26 +5,21 @@
 
     $scope.setup = function() {
       $http.get("/api/v1/reviews.json").then(function(response){
-        var reviews = response.data;
-        $scope.reviews
+        $scope.reviews = response.data;
         console.log(response.data)
       });
     }
 
-    $scope.addReview = function(reviewComments, reviewRating, reviewProductId) {
+    $scope.addReview = function(reviewComments, reviewRating) {
       if (reviewComments) {
         var reviewInfo = {
           rating: reviewRating,
           comments: reviewComments,
-          product_id: reviewProductId
         };
         console.log(reviewInfo)
         $http.post("/api/v1/reviews.json", reviewInfo).then(function(response){
-          var reviewCallback = response.data;
-          console.log("happy path!");
-          $scope.reviews.push(reviewCallback);
+          $scope.reviews.push(reviewInfo);
         }, function(error){
-          console.log("sad path :(");
           $scope.errorMessages = error.data.errors;
         });
       }

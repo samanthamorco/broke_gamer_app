@@ -10,8 +10,8 @@ class Api::V1::ReviewsController < ApplicationController
   def create
     # @review = Review.new(review_params)
     # @review = Review.new(comments: params[:comments], rating: params[:rating])
-    # @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
-    @review = Review.new(comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
+    @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
+    # @review = Review.new(comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
     if @review.save
       flash[:success] = "Review Added"
       render json: @reviews

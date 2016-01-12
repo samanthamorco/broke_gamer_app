@@ -31,14 +31,18 @@
           console.log("the following should be the variable update:")
           console.log(update);
           $http.patch('/api/v1/wishlist/' + wishlist[i - 1].id + '.json', update).then(function(response){
-            // var test = response.data;
-            // $scope.wishlists.push(wishlistCallback);
+            // var wishlistCallback = response.data;
+            // console.log(response.data);
+            // $scope.wishlists.patch(wishlistCallback);
 
             // console.log(test);
           });
         }
       };
+      alert("Changes Saved");
     }
+
+    
 
 
     window.$scope = $scope;

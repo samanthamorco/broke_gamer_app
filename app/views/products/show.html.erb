@@ -133,43 +133,43 @@
                         <% end %>
 
 
-                         <div ng-app="app">
-  <div ng-controller="reviewCtrl" ng-init="setup()">
-    <div>
-      <h3>Add Review:</h3>
+                        <div ng-app="app">
+                          <div ng-controller="reviewCtrl" ng-init="setup()">
+                            <div>
+                              <h3>Add Review:</h3>
 <!--       <ul>
         <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
       </ul> -->
-      <div>
-        Rating: 
-        <label><input type="radio" ng-model="reviewRating" value="1">1</label>
-        <label><input type="radio" ng-model="reviewRating" value="2">2</label>
-        <label><input type="radio" ng-model="reviewRating" value="3">3</label>
-        <label><input type="radio" ng-model="reviewRating" value="4">4</label>
-        <label><input type="radio" ng-model="reviewRating" value="5">5</label>
-      </div>      
-      <div>
-        Comments: <input ng-model="reviewComments">
-      </div>
-      <div>
-        Product ID: <label><input type="hidden" ng-model="reviewProductId" value="<%= @product.id %>">{{product.id}}</label>
-      </div>
-      <div>
-      </div>
+                            <div>
+                              Rating: 
+                              <label><input type="radio" ng-model="reviewRating" value="1">1</label>
+                              <label><input type="radio" ng-model="reviewRating" value="2">2</label>
+                              <label><input type="radio" ng-model="reviewRating" value="3">3</label>
+                              <label><input type="radio" ng-model="reviewRating" value="4">4</label>
+                              <label><input type="radio" ng-model="reviewRating" value="5">5</label>
+                            </div>      
+                            <div>
+                              Comments: <input ng-model="reviewComments">
+                            </div>
+                            <div>
+                              Product ID: <label><input type="hidden" ng-model="reviewProductId" value="<%= @product.id %>">{{product.id}}</label>
+                            </div>
+                            <div>
+                            </div>
 
-      <button ng-click="addReview(reviewComments, reviewRating)">Submit</button>
-    </div>
+                            <button ng-click="addReview(reviewComments, reviewRating)">Submit</button>
+                          </div>
 
-    
-    <div ng-repeat="review in reviews track by $index">
+                          
+                          <div ng-repeat="review in reviews track by $index">
 
-      <p>Rating: {{review.rating}}</p>
-      <p>Comments: {{review.comments}}</p>
-    </div>
+                            <p>Rating: {{review.rating}}</p>
+                            <p>Comments: {{review.comments}}</p>
+                          </div>
 
 
-  </div>
-</div>
+                        </div>
+                      </div>
 
 
                         <hr />

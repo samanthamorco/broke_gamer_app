@@ -16,8 +16,6 @@ class Api::V1::WishlistsController < ApplicationController
     id = params[:id]
     @wishlist = Wishlist.find_by(id: id)
     @wishlist.destroy
-    flash[:danger] = "Item Removed"
-    redirect_to "/wishlist"
   end
 
   def new
@@ -28,10 +26,7 @@ class Api::V1::WishlistsController < ApplicationController
   def create
     @wishlist = Wishlist.new(product_id: params[:product_id], product_name: params[:product_name], price: params[:price], user_id: current_user.id)
     if @wishlist.save
-      flash[:success] = "Game Added"
-      redirect_to "/wishlist"
     else
-      flash[:danger] = "Game Not Added. Error!"
       render :new
     end
   end
@@ -42,5 +37,6 @@ class Api::V1::WishlistsController < ApplicationController
   def update
     @wishlist = Wishlist.find(params[:id])
     @wishlist.update(priority: params[:priority])
+    render :show
   end
 end

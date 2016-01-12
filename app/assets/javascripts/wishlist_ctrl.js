@@ -9,16 +9,6 @@
       });
     }
 
-    $scope.deleteGame = function(id) {
-      // $scope.wishlists.splice(index, 1)
-      console.log(id);
-      $http.delete('/api/v1/wishlist/' + id + '.json', id).then(function(response) {
-        var wishlistCallback = response.data;
-        console.log(wishlistCallback);
-        console.log("happy path!");
-      });
-    }
-
     $scope.sortableOptions = {
       disabled: false,
       update: function(event) {
@@ -27,18 +17,29 @@
     };
 
     $scope.test = function() {
-      var wishlist = $scope.wishlists
-      for (var i = 0; i <= 3; i++) {
-        console.log(wishlist[i].priority);
-      };
-        console.log("");
+      console.log("cool");
     };
 
-    // $scope.changePriority = function(index, priority) {
-    //   console.log(index);
-    //   console.log(priority);
-    //   }
-    // }
+    $scope.updatePriority = function () {
+      console.log($scope.wishlists);
+      var wishlist = $scope.wishlists
+      for (var i = 1; i <= $scope.wishlists.length; i++) {
+        if (i !== wishlist[i - 1].priority) {
+          var update = {
+            priority: i
+          };
+          console.log("the following should be the variable update:")
+          console.log(update);
+          $http.patch('/api/v1/wishlist/' + wishlist[i - 1].id + '.json', update).then(function(response){
+            // var test = response.data;
+            // $scope.wishlists.push(wishlistCallback);
+
+            // console.log(test);
+          });
+        }
+      };
+    }
+
 
     window.$scope = $scope;
   });

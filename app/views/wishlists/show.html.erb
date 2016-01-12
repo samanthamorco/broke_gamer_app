@@ -26,10 +26,10 @@
                </div>
     <div class="col-md-9">
     <h3><i class="fa fa-user color"></i> &nbsp;Wish List</h3>
+               <p>Drag and drop the table rows to change the priority!</p>
     <table class="table table-striped ">
       <thead>
-        <th>Index</th>
-        <th>#</th>
+        <th>Priority</th>
         <th>Name</th>
         <th>Desired Price</th>
         <th>Delete?</th>
@@ -37,13 +37,15 @@
       <tbody ui:sortable="sortableOptions" ng-model="wishlists">
       <tr ng-repeat="wishlist in wishlists" style="cursor: move;">
         <td> {{$index + 1}} </td>
-        <td> {{wishlist.priority}}</td>
         <td><a href="/products/{{wishlist.product_id}}">{{wishlist.product_name}}</a></td>
         <td>{{wishlist.price}}</td>
         <td><a href="#" ng-click="deleteGame(wishlist.id)">Delete</a></td>
       </tr>
       </tbody>
     </table>
+
+    <button ng-click="updatePriority()">Update</button>
+
     </div>
               
             

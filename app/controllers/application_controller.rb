@@ -3,11 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery 
 
+  before_filter :check_deal_status, :check_wishlist
+
   after_filter :set_csrf_cookie_for_ng
 
-def set_csrf_cookie_for_ng
-  cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
-end
+  def set_csrf_cookie_for_ng
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
 
 protected
 
@@ -19,6 +21,37 @@ protected
   def authenticate_admin!
     redirect_to "/" unless current_user && (current_user.admin? || current.user.mod?)
     flash[:danger] = "Please don't hack me D:" unless current_user && (current_user.admin? || current.user.mod?)
+  end
+
+  def check_deal_status
+    deals = Deal.where(status: "active")
+    i = 0
+    deals.each do |deal|
+      if Time.now > deal.date
+        deal.update(status: "inactive")
+      end
+    end
+  end
+
+  def check_wishlist
+    if current_user && current_user.wishes.any?
+      wishes = current_user.wishes.all
+    end
+
+    deals = Deal.where(status: "active")
+    wishes.each do |wish|
+      deals.each do |deal|
+        if wish.product_id == deal.product_id
+          if (wish.price >= deal.price) && (wish.notified == false)
+            link = link = "<a href=\"#{deal.url}\">Buy now!</a>" 
+            flash[:notice] = %Q[#{wish.product_name} is on sale! #{link}]
+            wish.update(notified: true)
+          end
+        end
+      end
+    end
+    
+
   end
   
 end

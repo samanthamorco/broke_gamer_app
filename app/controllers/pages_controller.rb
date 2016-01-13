@@ -13,7 +13,6 @@ class PagesController < ApplicationController
       end
       count += 1
       product_initial = product_hash["products"].first
-      p product_hash["products"]
       product = Product.new(product_initial)
       @products << product
     end

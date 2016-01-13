@@ -19,7 +19,7 @@
                   <div class="sidey">
                      <ul class="nav">
 <!--                          <li><a href="account.html">My Account</a></li>
- -->                         <li><a href="wishlist.html">Wish List</a></li>
+ -->                         <li><a href="/wishes">Wish List</a></li>
 <!--                          <li><a href="editprofile.html">Edit Profile</a></li>
  -->                     </ul>
                   </div>
@@ -35,13 +35,13 @@
         <th>Desired Price</th>
         <th>Delete?</th>
       </thead>
-      <tbody ui:sortable="sortableOptions" ng-model="wishlists">
-      <tr ng-repeat="wishlist in wishlists" style="cursor: move;">
-        <!-- <td>{{wishlist.priority}}</td> -->
+      <tbody ui:sortable="sortableOptions" ng-model="wishes">
+      <tr ng-repeat="wish in wishes" style="cursor: move;">
+        <!-- <td>{{wish.priority}}</td> -->
         <td> {{$index + 1}} </td>
-        <td><a href="/products/{{wishlist.product_id}}">{{wishlist.product_name}}</a></td>
-        <td>{{wishlist.price}}</td>
-        <td><a href="#" ng-click="deleteGame(wishlist.id)">Delete</a></td>
+        <td><a href="/products/{{wish.product_id}}">{{wish.product_name}}</a></td>
+        <td>{{wish.price}}</td>
+        <td><a href="#" ng-click="deleteGame(wish.id)">Delete</a></td>
       </tr>
       </tbody>
     </table>

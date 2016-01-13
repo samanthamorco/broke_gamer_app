@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110211127) do
+ActiveRecord::Schema.define(version: 20160113045958) do
 
   create_table "deals", force: :cascade do |t|
     t.decimal  "price",                    precision: 8, scale: 2
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160110211127) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "wishlists", force: :cascade do |t|
+  create_table "wishes", force: :cascade do |t|
     t.integer  "product_id",   limit: 4
     t.string   "product_name", limit: 255
     t.decimal  "price",                    precision: 8, scale: 2
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160110211127) do
     t.datetime "updated_at"
     t.integer  "user_id",      limit: 4
     t.integer  "priority",     limit: 4,                           default: 1
+    t.boolean  "notified"
   end
 
 end

@@ -3,57 +3,6 @@ class DealsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :authenticate_admin!, except: [:index]
 
-  def index
-    @products = []
-    @prices = []
-    @deals = Deal.where(status: "active")
-    count = 1
-    if params[:page]
-      page = params[:page]
-    else
-      page = 1
-    end
-
-    @total_pages = (@deals.length / 9)
-    if (@deals.length % 9) > 0
-      @total_pages += 1
-    end
-    p "Total pages " 
-    p @total_pages
-    p "Deals length " 
-    p @deals.length
-
-    if ((@deals.length / page.to_i) - 9) < 1
-      i = (@deals.length / page.to_i).to_i
-      p "products on this page:"
-      p i
-    else
-      i = 9
-    end
-
-    i.times do
-      @deal = @deals[(9 * (page.to_i - 1) + count) - 1]
-      p "product number:"
-      p (9 * (page.to_i - 1) + count)
-      @prices << @deal.price
-      if @deal == nil
-        break
-      else
-        if count % 2 == 1
-          product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{@deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEYS']}").body
-          p "odd"
-        else
-          product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{@deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
-          p "even"
-        end
-          count += 1
-          product_initial = product_hash["products"].first
-          # p product_hash["products"]
-          product = Product.new(product_initial)
-          @products << product
-        end
-      end
-  end
 
   def show
     @deals = Deal.where(status: "pending")
@@ -70,7 +19,9 @@ class DealsController < ApplicationController
 
   def create
     # @deal = Deal.new(deal_params)
-    @deal = Deal.new(product_id: params[:product_id], price: params[:price], url: params[:url], comment: params[:comments], user_id: current_user.id)  
+    param_date = params[:date]
+    date = param_date.to_datetime.strftime('%m/%d/%Y')
+    @deal = Deal.new(product_id: params[:product_id], price: params[:price], url: params[:url], comment: params[:comments], user_id: current_user.id, date: date)  
     if @deal.save
       if current_user.role_id == 2
         @deal = @deal.update(status: "pending")
@@ -103,4 +54,45 @@ class DealsController < ApplicationController
     redirect_to "/deals"
   end
 
+  def index
+    @products = []
+    @prices = []
+    @deals = Deal.where(status: "active")
+    count = 0
+    if params[:page]
+      page = params[:page]
+    else
+      page = 1
+    end
+
+    @total_pages = (@deals.length / 9)
+    if (@deals.length % 9) > 0
+      @total_pages += 1
+    end
+
+    if ((@deals.length / page.to_i) - 9) < 1
+      i = (@deals.length / page.to_i).to_i
+    else
+      i = 9
+    end
+
+    i.times do
+      @deal = @deals[(9 * (page.to_i - 1) + count)]
+      @prices << @deal.price
+      if @deal == nil
+        break
+      else
+        if count % 2 == 1
+          product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{@deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEYS']}").body
+        else
+          product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{@deal.product_id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
+        end
+          count += 1
+          product_initial = product_hash["products"].first
+          # p product_hash["products"]
+          product = Product.new(product_initial)
+          @products << product
+        end
+      end
+  end
 end

@@ -6,5 +6,6 @@ class Deal < ActiveRecord::Base
   # include ActiveModel::Associations
 
   belongs_to :user
+  has_many :wishlistitems
   # belongs_to :product
 end

@@ -4,8 +4,8 @@
   angular.module("app").controller("wishlistCtrl", function($scope, $http){
 
     $scope.setup = function() {
-      $http.get("/api/v1/wishlist.json").then(function(response){
-        $scope.wishlists = response.data
+      $http.get("/api/v1/wishes.json").then(function(response){
+        $scope.wishes = response.data
       });
     }
 
@@ -21,19 +21,18 @@
     };
 
     $scope.updatePriority = function () {
-      console.log($scope.wishlists);
-      var wishlist = $scope.wishlists
-      for (var i = 1; i <= $scope.wishlists.length; i++) {
-        if (i !== wishlist[i - 1].priority) {
+      var wish = $scope.wishes
+      for (var i = 1; i <= $scope.wishes.length; i++) {
+        if (i !== wish[i - 1].priority) {
           var update = {
             priority: i
           };
           console.log("the following should be the variable update:")
           console.log(update);
-          $http.patch('/api/v1/wishlist/' + wishlist[i - 1].id + '.json', update).then(function(response){
+          $http.patch('/api/v1/wishes/' + wish[i - 1].id + '.json', update).then(function(response){
             // var wishlistCallback = response.data;
             // console.log(response.data);
-            // $scope.wishlists.patch(wishlistCallback);
+            // $scope.wishes.patch(wishlistCallback);
 
             // console.log(test);
           });
@@ -42,6 +41,9 @@
       alert("Changes Saved");
     }
 
+    $scope.deleteGame = function() {
+      
+    }
     
 
 

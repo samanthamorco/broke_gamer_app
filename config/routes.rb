@@ -5,26 +5,18 @@ Rails.application.routes.draw do
   # resources :reviews
   # resources :deals
   resources :products
+  resources :wishes
 
   namespace :api do
     namespace :v1 do
       resources :reviews
-        get '/wishlist', to: 'wishlists#index'
-        get '/wishlist/new', to: 'wishlists#new'
-        post '/wishlist/', to: 'wishlists#create'
-        get '/wishlist/:id', to: 'wishlists#show'
-        get '/wishlist/:id/edit', to: 'wishlists#edit'
-        patch '/wishlist/:id', to: 'wishlists#update'
-        delete '/wishlist/:id', to: 'wishlists#destroy'
+      resources :wishes
     end
   end
   
   get '/index', to: "pages#index"
   post '/products/search', to:'products#search'
 
-  get '/wishlist', to: 'wishlists#show'
-  get '/wishlist/new', to: 'wishlists#new'
-  post '/wishlist/', to: 'wishlists#create'
 
   get '/reviews/new', to: 'reviews#new'
   post '/reviews/:id', to: 'reviews#create'
@@ -35,7 +27,7 @@ Rails.application.routes.draw do
   get '/deals/:id/edit', to: 'deals#edit'
   post '/products/:id', to: 'deals#create'
 
-  delete '/wishlist/:id', to: 'wishlists#destroy'
+  # delete '/wishlist/:id', to: 'wishlists#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

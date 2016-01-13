@@ -1,0 +1,1 @@
+json.partial! @wish, partial: 'wish', as: :wish

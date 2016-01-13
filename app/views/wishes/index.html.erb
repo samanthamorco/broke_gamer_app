@@ -1,7 +1,9 @@
+ <div ng-app="app">
+  <div ng-controller="wishlistCtrl" ng-init="setup()">
      <!-- Page title -->
       <div class="page-title">
          <div class="container">
-            <h2><i class="fa fa-desktop color"></i> <%= @product.name %><small></small></h2>
+            <h2><i class="fa fa-desktop color"></i> My Account <small>Subtext for header</small></h2>
             <hr />
          </div>
       </div>
@@ -9,277 +11,46 @@
       
       <!-- Page content -->
       
-      <div class="shop-items">
+      <div class="account-content">
          <div class="container">
             
             <div class="row">
-               
-               <div class="col-md-9 col-md-push-3">
-               
-                  <!-- Breadcrumb -->
-                 <ul class="breadcrumb">
-                  <% @product.categoryPath.each do |category| %>
-                  <% if category == @product.categoryPath.first %>
-                  <% else %>
-                   <li><%= category["name"] %></a> <span class="divider"></span></li>
-                   <% end %>
-                   <% end %>
-                 </ul>
-               
-                  <div class="single-item">
-                      <div class="row">
-                        <div class="col-md-4 col-xs-5">
-
-                          <div class="item-image">
-                              <img src="<%= @product.image %>" alt="" />
-                          </div>
-                              
-
-                        </div>
-                        <div class="col-md-5 col-xs-7">
-                          <!-- Title -->
-                            <h4><%= @product.name %></h4>
-                            <% if @deal != false %>
-                            <% if @product.salePrice <= @deal.price %>
-                              <h5><strong>Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
-
-
-                              
-
-                              <% else %>
-                              <h5 class="deal"><strong>Lowest Price</strong> : <%= number_to_currency(@deal.price) %></h5> 
-                              
-                              <h5><strong>Original Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
-                              <h5 class="deal"><strong>Save</strong>:  <%= number_to_currency(@savings) %></h5>
-                              
-                              <a href="<%= @deal.url %>" target="_blank"><div class="btn-group" role="group" aria-label="...">
-                              <button type="button" class="btn btn-custom center">Buy Now!</button>
-                              </div></a>
-                              <% end %>
-                              <% else %>
-                              <h5><strong>Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
-                            <% end %>
-
-                            <p><strong>Manufacturer</strong>: <%= @product.manufacturer %></p>
-                            <p><strong>Platform</strong>: <%= @product.platform %></p>
-
-                            <p><strong>Release Date</strong>: <%= @product.releaseDate %></p><br />
-                            
-
-                                    <!-- Add to wish list -->
-                                    <p><a href="/wishes/new?id=<%= @product.id %>"><button type="button" class="btn btn-custom">Add to Wishlist</button>
-</a></p>
-                                    <p><a href="/deals/new?id=<%= @product.id %>"><button type="button" class="btn btn-custom">Add New Deal</button>
-</a></p> 
-
-
-                                    <!-- Share button -->
-                            
-                        </div>
-                      </div>
-                    </div>
-
-            <br />
-                    
-                    <!-- Description, specs and review -->
-
-                    <ul id="myTab" class="nav nav-tabs">
-                      <!-- Use uniqe name for "href" in below anchor tags -->
-                      <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
-                      <li><a href="#tab2" data-toggle="tab">Specs</a></li>
-                      <li><a href="#tab3" data-toggle="tab">Review (<%= @reviews.length %>)</a></li>
-                    </ul>
-
-                    <!-- Tab Content -->
-                    <div id="myTabContent" class="tab-content">
-                      <!-- Description -->
-                      <div class="tab-pane fade in active" id="tab1">
-                        <h5><strong><%= @product.name %></strong></h5>
-                        <p><%= @product.longDescription %></p>
-                        
-                      </div>
-
-                      <!-- Sepcs -->
-                      <div class="tab-pane fade" id="tab2">
-                        
-                        <h5><strong>Product Specs:</strong></h5>
-                        <table class="table table-striped">
-                          <tbody>
-                            <tr>
-                              <td><strong>Publisher</strong></td>
-                              <td><%= @product.manufacturer %></td>
-                            </tr>
-                            <tr>
-                              <td><strong>Platform</strong></td>
-                              <td><%= @product.platform %></td>
-                            </tr>
-         
-                                                                                        
-                          </tbody>
-                        </table>
-
-                      </div>
-
-                      <!-- Review -->
-                      <div class="tab-pane fade" id="tab3">
-                        <h5><strong>Product Reviews :</strong></h5>
-                        <hr />
-                        <% @reviews.each do |review| %>
-                        <div class="item-review">
-                          <h5><%= review.user.email %> - <span class="color"><%= review.rating %>/5</span></h5>
-                          <p class="rmeta"><%= review.date %></p>
-                          <p><%= review.comments %></p>
-                        </div>
-                        <% end %>
-
-
-                        <div ng-app="app">
-                          <div ng-controller="reviewCtrl" ng-init="setup()">
-                            <div>
-                              <h3>Add Review:</h3>
-<!--       <ul>
-        <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
-      </ul> -->
-                            <div>
-                              Rating: 
-                              <label><input type="radio" ng-model="reviewRating" value="1">1</label>
-                              <label><input type="radio" ng-model="reviewRating" value="2">2</label>
-                              <label><input type="radio" ng-model="reviewRating" value="3">3</label>
-                              <label><input type="radio" ng-model="reviewRating" value="4">4</label>
-                              <label><input type="radio" ng-model="reviewRating" value="5">5</label>
-                            </div>      
-                            <div>
-                              Comments: <input ng-model="reviewComments">
-                            </div>
-                            <div>
-                              Product ID: <label><input type="hidden" ng-model="reviewProductId" value="<%= @product.id %>">{{product.id}}</label>
-                            </div>
-                            <div>
-                            </div>
-
-                            <button ng-click="addReview(reviewComments, reviewRating)">Submit</button>
-                          </div>
-
-                          
-                          <div ng-repeat="review in reviews">
-                            <p>Rating: {{review.rating}}</p>
-                            <p>Comments: {{review.comments}}</p>
-                          </div>
-
-
-                        </div>
-                      </div>
-
-
-                        <hr />
-                        <h5><strong><p><a href="/reviews/new?id=<%= @product.id %>">Write A Review</a></p></strong></h5>
-                        <hr />
-
-                      </div>
-
-                    </div>
-               
-               </div>
-               
-                              <div class="col-md-3 col-md-pull-9">
+               <div class="col-md-3">
                   <div class="sidey">
                      <ul class="nav">
-                         <li><a href="index.html"><i class="fa fa-home"></i> &nbsp;Home</a>
-                         <li><a href="#"><i class="fa fa-laptop"></i> &nbsp;Playstation</a>
-                             <ul>
-                                 <li><a href="/products?system=PS4">PS4</a></li>
-                                 <li><a href="/products?system=PS3">PS3</a></li>
-                                 <li><a href="/products?system=PSVita">PS Vita</a></li>
-                                 <li><a href="/products?system=PSP">PSP</a></li>
-                                 <li><a href="/products?system=PS2">PS2</a></li>
-                             </ul>
-                         </li>
-                         <li><a href="#"><i class="fa fa-briefcase"></i> &nbsp;Nintendo</a>
-                             <ul>
-                                 <li><a href="/products?system=3DS">3DS</a></li>
-                                 <li><a href="/products?system=WiiU">Wii U</a></li>
-                                 <li><a href="/products?system=DS">DS</a></li>
-                                 <li><a href="/products?system=Wii">Wii</a></li>
-                             </ul>
-                         </li>
-                         <li><a href="#"><i class="fa fa-mobile-phone"></i> &nbsp;Xbox</a>
-                             <ul>
-                                 <li><a href="/products?system=XboxOne">Xbox One</a></li>
-                                 <li><a href="/products?system=Xbox360">Xbox 360</a></li>
-                             </ul>
-                         </li>
-                         <li><a href="#"><i class="fa fa-camera"></i> &nbsp;PC Gaming</a>
-                             <ul>
-                                 <li><a href="/products?system=PC">PC Gaming</a></li>
-                             </ul>
-                         </li>
-                     </ul>
+<!--                          <li><a href="account.html">My Account</a></li>
+ -->                         <li><a href="/wishes">Wish List</a></li>
+<!--                          <li><a href="editprofile.html">Edit Profile</a></li>
+ -->                     </ul>
                   </div>
-                  
-                  <!-- Sidebar items (featured items)-->
-
-                   <div class="sidebar-items">
-
-                     <h5>Featured Items</h5>
-
-                     <!-- Item #1 -->
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <!-- Image -->
-                         <a href="single-item.html"><img src="/assets/theme/items/2.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <!-- Title -->
-                         <a href="single-item.html">HTC One V</a>
-                         <!-- Para -->
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <!-- Price -->
-                         <p class="bold">$199</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/3.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">Sony One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$399</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/4.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">Nokia One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$159</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/5.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">Samsung One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$299</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-                                             
-                   </div>
                </div>
-            </div>
+    <div class="col-md-9">
+    <h3><i class="fa fa-user color"></i> &nbsp;Wish List</h3>
+               <p>Drag and drop the table rows to change the priority.</p>
+    <table class="table table-striped ">
+      <thead>
+        <th>Priority</th>
+        <!-- <th>Index</th> -->
+        <th>Name</th>
+        <th>Desired Price</th>
+        <th>Delete?</th>
+      </thead>
+      <tbody ui:sortable="sortableOptions" ng-model="wishes">
+      <tr ng-repeat="wish in wishes" style="cursor: move;">
+        <!-- <td>{{wishlistitem.priority}}</td> -->
+        <td> {{$index + 1}} </td>
+        <td><a href="/products/{{wish.product_id}}">{{wish.product_name}}</a></td>
+        <td>{{wish.price}}</td>
+        <td><a href="#" ng-click="deleteGame(wish.id)">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <button ng-click="updatePriority()">Save Changes</button>
+
+    </div>
+              
             
-            <div class="sep-bor"></div>
          </div>
       </div>
      
@@ -599,3 +370,5 @@
          </div>
       </div>
       <!-- CTA Ends -->
+  </div>
+</div>

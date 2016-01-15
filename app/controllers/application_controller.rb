@@ -33,7 +33,6 @@ protected
   end
 
   def check_wishlist
-
     users = User.all
     users.each do |user|
       if user.wishes.any?
@@ -44,28 +43,15 @@ protected
             if wish.product_id == deal.product_id
               if (wish.price >= deal.price) && (wish.notified == false)
                 UserMailer.notify_user(current_user, wish.product_name, deal).deliver_now
+                if user == current_user
+                  flash[:success] = "#{wish.product_name} is on sale for $#{deal.price}!"
+                end
                 wish.update(notified: true)
               end
             end
           end
         end
       end
-
-    # if current_user && current_user.wishes.any?
-    #   wishes = current_user.wishes.all
-
-    #   deals = Deal.where(status: "active")
-    #   wishes.each do |wish|
-    #     deals.each do |deal|
-    #       if wish.product_id == deal.product_id
-    #         if (wish.price >= deal.price) && (wish.notified == false)
-    #           flash[:success] = "#{wish.product_name} is on sale for $#{deal.price}!"
-    #           UserMailer.notify_user(current_user, wish.product_name, deal).deliver_now
-    #           wish.update(notified: true)
-    #         end
-    #       end
-    #     end
-    #   end
     end
     
 

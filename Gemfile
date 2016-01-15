@@ -21,6 +21,8 @@ gem 'unirest'
 gem 'dotenv-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'activemodel'
+gem 'groupdate'
+
 # gem 'activemodel-associations'
 
 # Use jquery as the JavaScript library

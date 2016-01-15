@@ -62,17 +62,18 @@
                 <!-- Items List ends -->
                 
                 
+
                 <div class="row">
                   <div class="col-md-12">
                     <!-- Pagination -->
                     <div class="btn-group">
+                     <% if params[:search] %>
+                        <p></p>
+                        <% else %>
                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></button>
                       <ul class="dropdown-menu scrollable-menu" role="menu">                    
                         <% $total_pages.times do |counter| %>
-                        <% if params[:search] %>
-                        <li>Hello!</li>
-                        <li><a href="?page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li>
-                        <% else %>
+                        <!-- <li><a href="?page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li> -->
                         <li><a href="/products?system=<%= @system %>&page=<%= (counter + 1) %>"><%= (counter + 1) %></a></li>
                         <% end %>
                         <% end %>

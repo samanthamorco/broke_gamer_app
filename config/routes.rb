@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/deals/pending', to: 'deals#show'
   get '/deals/:id/edit', to: 'deals#edit'
   post '/products/:id', to: 'deals#create'
+  patch '/deals/pending', to: 'deals#update'
 
   # delete '/wishlist/:id', to: 'wishlists#destroy'
 

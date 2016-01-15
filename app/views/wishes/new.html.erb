@@ -2,7 +2,7 @@
   <h1>Wishlist Entry</h1>
 
   <% product = Product.find(params[:id]) %>
-  <%= form_tag("/wishlist", method: "post") do %>
+  <%= form_tag("/wishes", method: "post") do %>
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>

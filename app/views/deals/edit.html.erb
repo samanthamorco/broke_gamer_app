@@ -1,6 +1,9 @@
-<%= form_tag "/deals/#{@deal.id}", method: :patch do %>
+<%= form_tag "/deals/pending", method: :patch do %>
 
 Fill out the following form to add a game to the list:
+<div>
+  <%= hidden_field_tag :id, @deal.id %>
+</div>
 <div>
   <%= label_tag :product_id, "Game ID:" %>
   <%= text_field_tag :product_id, @deal.product_id %>

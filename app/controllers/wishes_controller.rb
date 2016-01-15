@@ -29,7 +29,7 @@ class WishesController < ApplicationController
   end
 
   def create
-    @wish = Wish.new(product_id: params[:product_id], product_name: params[:product_name], price: params[:price], user_id: current_user.id)
+    @wish = Wish.new(product_id: params[:product_id], product_name: params[:product_name], price: params[:price], user_id: current_user.id, notified: false)
     if @wish.save
       flash[:success] = "Game Added"
       redirect_to "/wishes"

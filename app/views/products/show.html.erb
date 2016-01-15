@@ -51,6 +51,10 @@
                               
                               <h5><strong>Original Price</strong>: <%= number_to_currency(@product.salePrice) %></h5>
                               <h5 class="deal"><strong>Save</strong>:  <%= number_to_currency(@savings) %></h5>
+                              <% if @deal.comment != "" %>
+                              <h5><strong>Additional Comments:</strong></h5> 
+                              <p><%= @deal.comment %></p>
+                              <% end %>
                               
                               <a href="<%= @deal.url %>" target="_blank"><div class="btn-group" role="group" aria-label="...">
                               <button type="button" class="btn btn-custom center">Buy Now!</button>

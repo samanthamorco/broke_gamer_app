@@ -20,12 +20,11 @@ protected
 
   def authenticate_admin!
     redirect_to "/" unless current_user && (current_user.admin? || current.user.mod?)
-    flash[:danger] = "Please don't hack me D:" unless current_user && (current_user.admin? || current.user.mod?)
+    flash[:danger] = "You must be a moderator or admin to access this." unless current_user && (current_user.admin? || current.user.mod?)
   end
 
   def check_deal_status
     deals = Deal.where(status: "active")
-    i = 0
     deals.each do |deal|
       if Time.now > deal.date
         deal.update(status: "inactive")
@@ -36,16 +35,16 @@ protected
   def check_wishlist
     if current_user && current_user.wishes.any?
       wishes = current_user.wishes.all
-    end
 
-    deals = Deal.where(status: "active")
-    wishes.each do |wish|
-      deals.each do |deal|
-        if wish.product_id == deal.product_id
-          if (wish.price >= deal.price) && (wish.notified == false)
-            link = link = "<a href=\"#{deal.url}\">Buy now!</a>" 
-            flash[:notice] = %Q[#{wish.product_name} is on sale! #{link}]
-            wish.update(notified: true)
+      deals = Deal.where(status: "active")
+      wishes.each do |wish|
+        deals.each do |deal|
+          if wish.product_id == deal.product_id
+            if (wish.price >= deal.price) && (wish.notified == false)
+              flash[:success] = "#{wish.product_name} is on sale for $#{deal.price}!"
+              UserMailer.notify_user(current_user, wish.product_name, deal).deliver_now
+              wish.update(notified: true)
+            end
           end
         end
       end

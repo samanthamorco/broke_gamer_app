@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def index
     @products = []
-    @deals = Deal.where(status: "active")
+    @deals = Deal.where(status: "active").order('created_at DESC')
     count = 1
     @deals.first(8).each do |deal|
       if count % 2 == 1

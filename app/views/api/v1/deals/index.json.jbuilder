@@ -1,0 +1,1 @@
+json.array! @deals, partial: 'deal', as: :deal

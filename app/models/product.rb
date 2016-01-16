@@ -7,7 +7,7 @@ class Product
 # has_many :reviews
 # belongs_to :wishlist
 
-attr_accessor :name, :sku, :shortDescription, :longDescription, :salePrice, :image, :manufacturer, :categoryPath, :platform, :releaseDate, :products, :id
+attr_accessor :name, :sku, :shortDescription, :longDescription, :salePrice, :image, :manufacturer, :categoryPath, :platform, :releaseDate, :products, :id, :relatedProducts
 attr_reader :product_ids
 
 def initialize(hash)
@@ -25,7 +25,7 @@ def initialize(hash)
   @onSale = hash["onSale"]
   @products = hash["products"]
   @total_pages = hash["totalPages"]
-  # @relatedProducts.sku = hash["relatedProducts.sku"]
+  @relatedProducts = hash["relatedProducts"]
 end
 
 def self.all
@@ -52,7 +52,7 @@ def self.system(system_type, page)
 
   systems.each do |system, id|
     if system_type == system
-      products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,productID,salePrice,onSale&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
+      products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,productID,salePrice,onSale,relatedProducts.sku&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
       $total_pages = products_hash["totalPages"]
       products_many = products_hash["products"]
       products_many.each do |game|
@@ -65,7 +65,7 @@ end
 end
 
 def self.find(id)
-  product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath, platform,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
+  product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath,platform,relatedProducts.sku,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
   product_initial = product_hash["products"]
   product = Product.new(product_initial.first)
 end
@@ -83,6 +83,22 @@ end
 def self.reviews(id)
   Review.where(product_id: id)
 end
+
+# def self.related_products(id)
+#   product = Product.find(id)
+#   related = []
+#   related_products = []
+#   product.relatedProducts.each do |game|
+#     related << game["sku"]
+#   end
+#   related.each do |id|
+#     if id != related[0]
+#       related_products << Product.find(id)
+#     end
+#   end
+
+#   return related_products
+# end
 
 def persisted?
   false

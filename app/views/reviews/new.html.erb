@@ -7,12 +7,12 @@
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>
   <div>
-    <%= label_tag(:comments, "Comments:") %>
-    <%= text_field_tag :comments %>
+    <%= label_tag(:comments, "Comments:") %><br>
+    <%= text_area_tag :comments %>
   </div>
 
   <div>
-  <%= label_tag(:rating, "Rating:") %>
+  <%= label_tag(:rating, "Rating:") %><br>
   <% n = 1 %>
   <% 5.times do %>
     <%= radio_button_tag(:rating, "#{n}") %>

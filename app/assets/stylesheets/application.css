@@ -14,6 +14,7 @@
  *= require jquery-ui
  *= require jquery-ui.structure
  *= require jquery-ui.theme
+ *= require morris
  *= require theme/animate.min
  *= require theme/bootstrap
  *= require theme/ddlevelsmenu-base

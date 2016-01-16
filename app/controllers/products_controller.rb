@@ -25,6 +25,11 @@ class ProductsController < ApplicationController
       @deal = deals.order('price ASC').first
       @savings = @product.salePrice - @deal.price
     end
+    @deals_all = Deal.where(product_id: id)
+
+    # @related_products = Product.related_products(id)
+    # p @related_products
+    # p first
   end
 
   def search

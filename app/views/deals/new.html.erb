@@ -8,21 +8,22 @@
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>
   <div>
-    <%= label_tag(:price, "New Price:") %>
+    <%= label_tag(:price, "New Price:") %><br>
     <%= text_field_tag :price %>
   </div>
   <div>
-    <%= label_tag(:url, "Link to Deal:") %>
+    <%= label_tag(:url, "Link to Deal:") %><br>
     <%= text_field_tag :url %>
   </div>
   <div>
-    <%= label_tag(:comments, "Comments (if applicable):") %>
-    <%= text_field_tag :comments %>
+    <%= label_tag(:comments, "Comments (if applicable):") %><br>
+    <%= text_area_tag :comments %>
   </div>
   <div>
-    <%= label_tag(:date, "Date deal expires (approximate):") %>
-    <%= text_field_tag :date, "Please enter in YYYY/MM/DD format" %>
-  </div>
+    <%= label_tag(:date, "Date deal expires (approximate):") %><br>
+    <%= text_field_tag :date, "YYYY/MM/DD format please" %>
+  <!-- <%= datetime_field(:date, :date) %>-->
+   </div>
 
   <div>
     <%= submit_tag ("Submit") %>

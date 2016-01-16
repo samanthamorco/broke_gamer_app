@@ -90,7 +90,7 @@
                     <ul id="myTab" class="nav nav-tabs">
                       <!-- Use uniqe name for "href" in below anchor tags -->
                       <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
-                      <li><a href="#tab2" data-toggle="tab">Specs</a></li>
+                      <li><a href="#tab2" data-toggle="tab">Price History</a></li>
                       <li><a href="#tab3" data-toggle="tab">Review (<%= @reviews.length %>)</a></li>
                     </ul>
 
@@ -105,8 +105,15 @@
 
                       <!-- Sepcs -->
                       <div class="tab-pane fade" id="tab2">
-                        
-                        <h5><strong>Product Specs:</strong></h5>
+
+                      <!-- <h3>History of Game Deals</h3> -->
+
+                      <% if @deals_all == nil %>
+                        This game has not been on sale before.
+                      <% else %>
+                         <%= line_chart @deals_all.group_by_month(:created_at).minimum(:price), {height: "500px", width: "750px", library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}}} %>
+                       <% end %>
+                        <!-- <h5><strong>Product Specs:</strong></h5>
                         <table class="table table-striped">
                           <tbody>
                             <tr>
@@ -120,7 +127,7 @@
          
                                                                                         
                           </tbody>
-                        </table>
+                        </table> -->
 
                       </div>
 
@@ -128,22 +135,27 @@
                       <div class="tab-pane fade" id="tab3">
                         <h5><strong>Product Reviews :</strong></h5>
                         <hr />
-                        <% @reviews.each do |review| %>
-                        <div class="item-review">
-                          <h5><%= review.user.email %> - <span class="color"><%= review.rating %>/5</span></h5>
-                          <p class="rmeta"><%= review.date %></p>
-                          <p><%= review.comments %></p>
-                        </div>
+                        <% if @reviews.empty? %>
+                        There are no reviews yet! Be the first one to write a review.
+                        <% else %>
+                          <% @reviews.each do |review| %>
+                          <div class="item-review">
+                            <h5><%= review.user.email %> - <span class="color"><%= review.rating %>/5</span></h5>
+                            <p class="rmeta"><%= review.date %></p>
+                            <p><%= review.comments %></p>
+                          </div>
+                        <% end %>
                         <% end %>
 
 
-                        <div ng-app="app">
+
+<!--                         <div ng-app="app">
                           <div ng-controller="reviewCtrl" ng-init="setup()">
                             <div>
                               <h3>Add Review:</h3>
-<!--       <ul>
+       <ul>
         <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
-      </ul> -->
+      </ul> 
                             <div>
                               Rating: 
                               <label><input type="radio" ng-model="reviewRating" value="1">1</label>
@@ -172,11 +184,12 @@
 
 
                         </div>
-                      </div>
+                      </div> -->
 
 
                         <hr />
-                        <h5><strong><p><a href="/reviews/new?id=<%= @product.id %>">Write A Review</a></p></strong></h5>
+<!--                         <h5><strong><p><a href="/reviews/new?id=<%= @product.id %>">Write A Review</a></p></strong></h5> -->
+                        <a href="/reviews/new?id=<%= @product.id %>"><button type="button" class="btn btn-custom">Write A Review</button></a>
                         <hr />
 
                       </div>
@@ -185,10 +198,10 @@
                
                </div>
                
-                              <div class="col-md-3 col-md-pull-9">
+                <div class="col-md-3 col-md-pull-9">
                   <div class="sidey">
                      <ul class="nav">
-                         <li><a href="index.html"><i class="fa fa-home"></i> &nbsp;Home</a>
+                         <li><a href="/products?system=All"><i class="fa fa-home"></i> &nbsp;All</a>
                          <li><a href="#"><i class="fa fa-laptop"></i> &nbsp;Playstation</a>
                              <ul>
                                  <li><a href="/products?system=PS4">PS4</a></li>
@@ -221,23 +234,18 @@
                   </div>
                   
                   <!-- Sidebar items (featured items)-->
-
+<!-- 
                    <div class="sidebar-items">
 
                      <h5>Featured Items</h5>
 
-                     <!-- Item #1 -->
                      <div class="sitem">
                        <div class="onethree-left">
-                         <!-- Image -->
                          <a href="single-item.html"><img src="/assets/theme/items/2.png" alt="" class="img-responsive"/></a>
                        </div>
                        <div class="onethree-right">
-                         <!-- Title -->
                          <a href="single-item.html">HTC One V</a>
-                         <!-- Para -->
                          <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <!-- Price -->
                          <p class="bold">$199</p>
                        </div>
                        <div class="clearfix"></div>
@@ -286,35 +294,29 @@
             <div class="sep-bor"></div>
          </div>
       </div>
-     
+      -->
       
       <!-- Recent posts Starts -->
-  
+<!--   
       <div class="recent-posts blocky">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <!-- Section title -->
                   <div class="section-title">
                      <h4><i class="fa fa-desktop color"></i> &nbsp;Whats New</h4>
                   </div>    
                   
           <div id="item-carousel" class="carousel slide" data-ride="carousel">
               
-          <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
               <div class="row">
                 <div class="col-md-3 col-sm-6">
-                  <!-- single item -->
                   <div class="s-item">
-                    <!-- Image link -->
                     <a href="single-item.html">
                       <img src="/assets/theme/items/2.png" class="img-responsive" alt="" />
                     </a>
-                    <!-- portfolio caption -->
                     <div class="s-caption">
-                      <!-- heading and paragraph -->
                       <h4><a href="#">Finibus Bonorum</a></h4>
                       <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
                     </div>
@@ -403,203 +405,20 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           
             <!-- Controls -->
-          <a class="left c-control" href="#item-carousel" data-slide="prev">
+<!--           <a class="left c-control" href="#item-carousel" data-slide="prev">
             <i class="fa fa-chevron-left"></i>
           </a>
           <a class="right c-control" href="#item-carousel" data-slide="next">
             <i class="fa fa-chevron-right"></i>
           </a>
 
-        </div>
+        </div> -->
           
                </div>
             </div>
          </div>
       </div>
       
-      <!-- Recent posts Ends -->    
-      
-      
-      <!-- Catchy starts -->
-      <div class="catchy blocky">
-         <div class="catchy-inner1">
-            <div class="catchy-inner2">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-5">
-                        <div class="catchy-subscribe">
-                           <h3>Join Us!</h3>
-                           <p>Lorem tristique est sit amet diam ipsum  dolor sit  diam interdum diam ipsum  dolor sit diam ipsum  dolor sit tristique semper.</p>
-                           <br />
-                           <form class="form-inline" role="form">
-                             <div class="form-group">
-                               <input type="text" class="form-control " id="exampleInputEmail2" placeholder="Enter your email">
-                             </div>
-                             <button type="submit" class="btn btn-danger">Subscribe</button>
-                           </form>
-
-                        </div>
-                     </div>
-                     <div class="col-md-7">
-                     
-                        <div class="report">
-                           <div class="report-bor">
-                              <div class="row">
-                                 <!-- Report data starts -->
-                                 <div class="col-md-4 col-sm-4">
-                                    <div class="report-data">
-                                       <div class="row">
-                                          <div class="col-md-4 col-sm-4 col-xs-4">
-                                             <!-- Icon -->
-                                             <div class="report-icon">
-                                                <i class="fa fa-group color"></i>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-8 col-md-8 col-xs-8">
-                                             <!-- Details -->
-                                             <span class="report-big color">40,000</span> <span>Customers</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Report data ends -->
-                                 
-                                 <!-- Report data starts -->
-                                 <div class="col-md-4 col-sm-4">
-                                    <div class="report-data">
-                                       <div class="row">
-                                          <div class="col-md-4 col-sm-4 col-xs-4">
-                                             <!-- Icon -->
-                                             <div class="report-icon">
-                                                <i class="fa fa-calendar color"></i>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-8 col-md-8 col-xs-8">
-                                             <!-- Details -->
-                                              <span>Since</span><span class="report-big color">1857</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Report data ends -->
-
-                                 <!-- Report data starts -->
-                                 <div class="col-md-4 col-sm-4">
-                                    <div class="report-data">
-                                       <div class="row">
-                                          <div class="col-md-4 col-sm-4 col-xs-4">
-                                             <!-- Icon -->
-                                             <div class="report-icon">
-                                                <i class="fa fa-android color"></i>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-8 col-md-8 col-xs-8">
-                                             <!-- Details -->
-                                             <span class="report-big color">30,000</span> <span>Revenue</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Report data ends -->
-                                 
-                              </div>
-                              
-                              <hr class="hidden-xs">
-                              
-                              <div class="row">
-                                 
-                                 <!-- Report data starts -->
-                                 <div class="col-md-4 col-sm-4">
-                                    <div class="report-data">
-                                       <div class="row">
-                                          <div class="col-md-4 col-sm-4 col-xs-4">
-                                             <!-- Icon -->
-                                             <div class="report-icon">
-                                                <i class="fa fa-building-o color"></i>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-8 col-md-8 col-xs-8">
-                                             <!-- Details -->
-                                             <span class="report-big color">150 +</span> <span>Companies</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Report data ends -->
-                                 
-                                 <!-- Report data starts -->
-                                 <div class="col-md-4 col-sm-4">
-                                    <div class="report-data">
-                                       <div class="row">
-                                          <div class="col-md-4 col-sm-4 col-xs-4">
-                                             <!-- Icon -->
-                                             <div class="report-icon">
-                                                <i class="fa fa-signal color"></i>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-8 col-md-8 col-xs-8">
-                                             <!-- Details -->
-                                             <span class="report-big color">50.60%</span> <span>Growth</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Report data ends -->
-
-                                 <!-- Report data starts -->
-                                 <div class="col-md-4 col-sm-4">
-                                    <div class="report-data">
-                                       <div class="row">
-                                          <div class="col-md-4 col-sm-4 col-xs-4">
-                                             <!-- Icon -->
-                                             <div class="report-icon">
-                                                <i class="fa fa-truck color"></i>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-8 col-md-8 col-xs-8">
-                                             <!-- Details -->
-                                             <span class="report-big color">100 +</span> <span>Employees</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Report data ends -->
-                                 
-                              </div>
-                              
-                           </div>
-                        </div> 
-                     
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>      
-      <!-- Catchy ends -->
-      
-      <!-- CTA Starts -->
-      <div class="blocky">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="cta">
-                     <div class="row">
-                        <div class="col-md-8 col-sm-8">
-                           <h5><i class="fa fa-angle-right"></i> Lorem trist iquest <span class="color">siamet diam</span> ipsum dolor sitamt</h5>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                           <div class="cta-buttons pull-right">
-                              <a href="#" class="btn btn-info btn-lg">Download</a> &nbsp; <a href="#" class="btn btn-danger btn-lg">Get It Now</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>               
-            </div>
-         </div>
-      </div>
-      <!-- CTA Ends -->

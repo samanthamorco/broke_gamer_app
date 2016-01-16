@@ -19,9 +19,9 @@ gem 'thematic'
 gem 'devise'
 gem 'unirest'
 gem 'dotenv-rails'
-gem 'will_paginate', '~> 3.0'
 gem 'activemodel'
 gem 'groupdate'
+gem 'chartkick'
 
 # gem 'activemodel-associations'
 

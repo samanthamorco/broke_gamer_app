@@ -41,8 +41,13 @@
       alert("Changes Saved");
     }
 
-    $scope.deleteGame = function() {
-      
+    $scope.deleteGame = function(id, index) {
+      $scope.wishes.splice(index, 1);
+      $http.delete('/api/v1/wishes/' + id + '.json').then(function(response){
+        var wishlistCallback = response.data;
+        console.log(response.data);
+        $scope.wishes.push(wishlistCallback);
+      });
     }
     
 

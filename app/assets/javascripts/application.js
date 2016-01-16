@@ -18,6 +18,8 @@
 //= require angular-animate
 //= require ng-infinite-scroll
 //= require sortable
+//= require raphael
+//= require morris
 //= require theme/bootstrap
 //= require theme/custom
 //= require theme/filter

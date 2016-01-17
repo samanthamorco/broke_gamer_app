@@ -4,3 +4,4 @@
   json.rating review.rating
   json.comments review.comments
   json.user_id review.user_id
+  json.upvotes review.upvotes

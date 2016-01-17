@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113045958) do
+ActiveRecord::Schema.define(version: 20160117221358) do
 
   create_table "deals", force: :cascade do |t|
     t.decimal  "price",                    precision: 8, scale: 2
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160113045958) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "product_id", limit: 4
+    t.integer  "upvotes",    limit: 4,     default: 0
   end
 
   create_table "roles", force: :cascade do |t|

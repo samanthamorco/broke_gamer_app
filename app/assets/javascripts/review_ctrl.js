@@ -25,6 +25,7 @@
           comments: reviewComments,
           product_id: reviewProductId,
           date: Date.now(),
+          upvotes: 0,
         };
         console.log(reviewInfo);
         $http.post("/api/v1/reviews.json", reviewInfo).then(function(response){
@@ -33,6 +34,11 @@
           $scope.errorMessages = error.data.errors;
         });
       }
+    }
+
+    $scope.reviewUpvote = function(id) {
+      console.log(id);
+      console.log("hello")
     }
     
 

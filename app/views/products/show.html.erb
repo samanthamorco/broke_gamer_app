@@ -112,7 +112,7 @@
                       <% if @deals_all == nil %>
                         This game has not been on sale before.
                       <% else %>
-                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {height: "400px", width: "800px", library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}}} %>
+                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {width: "2000px", library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}}} %>
                        <% end %>
 
                       </div>
@@ -128,7 +128,11 @@
 
                          
                           <div ng-repeat="review in reviews" class="cwell">
-                            <div class="arrow"><img src="http://www.clker.com/cliparts/a/5/4/e/11949844622098606321arrow1_sergio_luiz_arauj_01.svg.med.png" class="resize"></div>
+                            <div class="arrow">
+                            <div ngClick="reviewUpvote(review.id)" style="cursor:pointer"><img src="http://i.imgur.com/0BtQCab.jpg" class="resize"></div>
+                            <div>{{review.upvotes}}</div>
+                            <div><img src="http://wp.iosfans.com/wp-content/uploads/2013/02/Down-vote-arrow-237x250.png" class="resize"></div>
+                            </div>
                             <div class="reviewBox">
                             <p><strong>Date:</strong> {{review.date | date:'MM/dd/yyyy'}}</p>
                             <p><strong>Rating:</strong> {{review.rating}}/5</p>
@@ -140,7 +144,8 @@
                               <h3><strong>Add Review:</strong></h3>
 <!--        <ul>
         <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
-      </ul>  -->
+      </ul>  -->          
+                      <% if current_user %>
                             <div>
                               Rating: 
                               <label><input type="radio" ng-model="reviewRating" value="1">1</label>
@@ -153,7 +158,11 @@
                               Comments: <input type="field" ng-model="reviewComments" size="100" wrap="hard">
                             </div>
 
+
                             <button ng-click="addReview(reviewComments, reviewRating, <%= @product.id %>)">Submit</button>
+                          <% else %>
+                          Please log in to add a review.
+                          <% end %>
                           </div>
 
                         </div>

@@ -30,3 +30,19 @@
     max-height: 200px;
     overflow-x: hidden;
 }
+
+.arrow {
+  width: 100px;
+  position: absolute;
+}
+
+.reviewBox{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 110px;
+  word-wrap: break-word
+}
+
+.resize{
+  width: 100px;
+}

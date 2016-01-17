@@ -1,13 +1,10 @@
 class Deal < ActiveRecord::Base
-  # include Her::Model
-  # include ActiveModel::Model
-  # include ActiveModel::Naming
-  # include ActiveModel::Conversion
-  # include ActiveModel::Associations
 
   belongs_to :user
   has_many :wishlistitems
   # belongs_to :product
+  validates :product_id, :price, :url, :date, presence: true
+  validates :price, numericality: true
 
   def self.sort(param)
     if param == "newest"
@@ -34,6 +31,7 @@ class Deal < ActiveRecord::Base
   def self.total_products(deals, page)
     @products = []
     @prices = []
+    #the code would break if there weren't 9 items on a page to view, so this code helps with that.
     if ((deals.length / page.to_i) - 9) < 1
       i = (deals.length / page.to_i).to_i
     else
@@ -41,6 +39,7 @@ class Deal < ActiveRecord::Base
     end
 
     
+    # This weird code is due to Best Buy's limitation on their API. You can only make 5 calls per second, so I used a second API key to display more than 5 deals per page.
     count = 0
     i.times do
       deal = deals[(9 * (page.to_i - 1) + count)]

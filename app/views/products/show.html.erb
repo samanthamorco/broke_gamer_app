@@ -98,7 +98,7 @@
                     <div id="myTabContent" class="tab-content">
                       <!-- Description -->
                       <div class="tab-pane fade in active" id="tab1">
-                        <h5><strong><%= @product.name %></strong></h5>
+                        <h3><strong><%= @product.name %></strong></h3>
                         <p><%= @product.longDescription %></p>
                         
                       </div>
@@ -106,56 +106,41 @@
                       <!-- Sepcs -->
                       <div class="tab-pane fade" id="tab2">
 
-                      <!-- <h3>History of Game Deals</h3> -->
+                      <h3><strong>History of Game Deals</strong></h3>
+                        <hr />
 
                       <% if @deals_all == nil %>
                         This game has not been on sale before.
                       <% else %>
-                         <%= line_chart @deals_all.group_by_month(:created_at).minimum(:price), {height: "500px", width: "750px", library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}}} %>
+                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {height: "400px", width: "800px", library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}}} %>
                        <% end %>
-                        <!-- <h5><strong>Product Specs:</strong></h5>
-                        <table class="table table-striped">
-                          <tbody>
-                            <tr>
-                              <td><strong>Publisher</strong></td>
-                              <td><%= @product.manufacturer %></td>
-                            </tr>
-                            <tr>
-                              <td><strong>Platform</strong></td>
-                              <td><%= @product.platform %></td>
-                            </tr>
-         
-                                                                                        
-                          </tbody>
-                        </table> -->
 
                       </div>
 
                       <!-- Review -->
+                          
+
                       <div class="tab-pane fade" id="tab3">
-                        <h5><strong>Product Reviews :</strong></h5>
+                        <div ng-app="app">
+                          <div ng-controller="reviewCtrl" ng-init="setup(<%= @product.id %>)">
+                        <h3><strong>Product Reviews :</strong></h3>
                         <hr />
-                        <% if @reviews.empty? %>
-                        There are no reviews yet! Be the first one to write a review.
-                        <% else %>
-                          <% @reviews.each do |review| %>
-                          <div class="item-review">
-                            <h5><%= review.user.email %> - <span class="color"><%= review.rating %>/5</span></h5>
-                            <p class="rmeta"><%= review.date %></p>
-                            <p><%= review.comments %></p>
+
+                         
+                          <div ng-repeat="review in reviews" class="cwell">
+                            <div class="arrow"><img src="http://www.clker.com/cliparts/a/5/4/e/11949844622098606321arrow1_sergio_luiz_arauj_01.svg.med.png" class="resize"></div>
+                            <div class="reviewBox">
+                            <p><strong>Date:</strong> {{review.date | date:'MM/dd/yyyy'}}</p>
+                            <p><strong>Rating:</strong> {{review.rating}}/5</p>
+                            <p><strong>Comments:</strong> {{review.comments}}</p>
+                            </div>
                           </div>
-                        <% end %>
-                        <% end %>
 
-
-
-<!--                         <div ng-app="app">
-                          <div ng-controller="reviewCtrl" ng-init="setup()">
                             <div>
-                              <h3>Add Review:</h3>
-       <ul>
+                              <h3><strong>Add Review:</strong></h3>
+<!--        <ul>
         <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
-      </ul> 
+      </ul>  -->
                             <div>
                               Rating: 
                               <label><input type="radio" ng-model="reviewRating" value="1">1</label>
@@ -165,31 +150,19 @@
                               <label><input type="radio" ng-model="reviewRating" value="5">5</label>
                             </div>      
                             <div>
-                              Comments: <input ng-model="reviewComments">
-                            </div>
-                            <div>
-                              Product ID: <label><input type="hidden" ng-model="reviewProductId" value="<%= @product.id %>">{{product.id}}</label>
-                            </div>
-                            <div>
+                              Comments: <input type="field" ng-model="reviewComments" size="100" wrap="hard">
                             </div>
 
-                            <button ng-click="addReview(reviewComments, reviewRating)">Submit</button>
+                            <button ng-click="addReview(reviewComments, reviewRating, <%= @product.id %>)">Submit</button>
                           </div>
-
-                          
-                          <div ng-repeat="review in reviews">
-                            <p>Rating: {{review.rating}}</p>
-                            <p>Comments: {{review.comments}}</p>
-                          </div>
-
 
                         </div>
-                      </div> -->
+                      </div>
+
 
 
                         <hr />
-<!--                         <h5><strong><p><a href="/reviews/new?id=<%= @product.id %>">Write A Review</a></p></strong></h5> -->
-                        <a href="/reviews/new?id=<%= @product.id %>"><button type="button" class="btn btn-custom">Write A Review</button></a>
+                        <!-- a href="/reviews/new?id=<%= @product.id %>"><button type="button" class="btn btn-custom">Write A Review</button></a> -->
                         <hr />
 
                       </div>
@@ -232,190 +205,7 @@
                          </li>
                      </ul>
                   </div>
-                  
-                  <!-- Sidebar items (featured items)-->
-<!-- 
-                   <div class="sidebar-items">
-
-                     <h5>Featured Items</h5>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/2.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">HTC One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$199</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/3.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">Sony One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$399</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/4.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">Nokia One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$159</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-
-                     <div class="sitem">
-                       <div class="onethree-left">
-                         <a href="single-item.html"><img src="/assets/theme/items/5.png" alt="" class="img-responsive"/></a>
-                       </div>
-                       <div class="onethree-right">
-                         <a href="single-item.html">Samsung One V</a>
-                         <p>Aenean ullamcorper justo tincidunt justo aliquet.</p>
-                         <p class="bold">$299</p>
-                       </div>
-                       <div class="clearfix"></div>
-                     </div>
-                                             
-                   </div>
-               </div>
-            </div>
-            
-            <div class="sep-bor"></div>
-         </div>
-      </div>
-      -->
-      
-      <!-- Recent posts Starts -->
-<!--   
-      <div class="recent-posts blocky">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="section-title">
-                     <h4><i class="fa fa-desktop color"></i> &nbsp;Whats New</h4>
-                  </div>    
-                  
-          <div id="item-carousel" class="carousel slide" data-ride="carousel">
-              
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/2.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/3.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/4.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/5.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/6.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/7.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/8.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="s-item">
-                    <a href="single-item.html">
-                      <img src="/assets/theme/items/9.png" class="img-responsive" alt="" />
-                    </a>
-                    <div class="s-caption">
-                      <h4><a href="#">Finibus Bonorum</a></h4>
-                      <p>Clintock, a Lat Hampden-Sydney College in Virginia.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          
-            <!-- Controls -->
-<!--           <a class="left c-control" href="#item-carousel" data-slide="prev">
-            <i class="fa fa-chevron-left"></i>
-          </a>
-          <a class="right c-control" href="#item-carousel" data-slide="next">
-            <i class="fa fa-chevron-right"></i>
-          </a>
-
-        </div> -->
+                
           
                </div>
             </div>

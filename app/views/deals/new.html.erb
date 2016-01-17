@@ -1,33 +1,39 @@
-
-
 <div class="container">
   <h1>New Deal Information</h1>
 
   <%= form_tag("/products/#{params[:id]}", method: "post") do %>
+
+  <% if @deal && @deal.errors.any? %>
+    <% @deal.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  <% end %>
+<div class="col-md-6 col-sm-7">
+<div class="cwell">
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag(:price, "New Price:") %><br>
-    <%= text_field_tag :price %>
+    <%= text_field_tag :price, "", class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag(:url, "Link to Deal:") %><br>
-    <%= text_field_tag :url %>
+    <%= text_field_tag :url, "", class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag(:comments, "Comments (if applicable):") %><br>
-    <%= text_area_tag :comments %>
+    <%= text_area_tag :comments, "", class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag(:date, "Date deal expires (approximate):") %><br>
-    <%= text_field_tag :date, "YYYY/MM/DD format please" %>
-  <!-- <%= datetime_field(:date, :date) %>-->
+    <%= text_field_tag :date, "", class: "form-control datepicker" %>
    </div>
 
   <div>
-    <%= submit_tag ("Submit") %>
+    <%= submit_tag ("Submit"), class: "btn btn-info" %>
+  </div>
+  </div>
   </div>
   <% end %>
-
 </div>

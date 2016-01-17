@@ -18,10 +18,8 @@
                <div class="col-md-3">
                   <div class="sidey">
                      <ul class="nav">
-<!--                          <li><a href="account.html">My Account</a></li>
- -->                         <li><a href="/wishes">Wish List</a></li>
-<!--                          <li><a href="editprofile.html">Edit Profile</a></li>
- -->                     </ul>
+                          <li><a href="/wishes">Wish List</a></li>
+                      </ul>
                   </div>
                </div>
     <div class="col-md-9">
@@ -37,10 +35,10 @@
       </thead>
       <tbody ui:sortable="sortableOptions" ng-model="wishes">
       <tr ng-repeat="wish in wishes" style="cursor: move;">
-        <!-- <td>{{wishlistitem.priority}}</td> -->
+        <!-- <td>{{wish.priority}}</td> -->
         <td> {{$index + 1}} </td>
         <td><a href="/products/{{wish.product_id}}">{{wish.product_name}}</a></td>
-        <td>{{wish.price}}</td>
+        <td>{{wish.price | currency:"$"}}</td>
         <td><a href="#" ng-click="deleteGame(wish.id, $index)">Delete</a></td>
       </tr>
       </tbody>

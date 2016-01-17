@@ -18,9 +18,7 @@ class DealsController < ApplicationController
   end
 
   def create
-    # @deal = Deal.new(deal_params)
-    param_date = params[:date]
-    date = Date.parse(param_date)
+    date = DateTime.strptime(params[:date],'%m/%d/%Y').strftime("%Y-%m-%d")
     @deal = Deal.new(product_id: params[:product_id], price: params[:price], url: params[:url], comment: params[:comments], user_id: current_user.id, date: date)  
     if @deal.save
       if current_user.role_id == 2
@@ -56,8 +54,6 @@ class DealsController < ApplicationController
   end
 
   def index
-    # @products = []
-    # @prices = []
     if params[:order]
       @deals = Deal.sort(params[:order])
     else
@@ -69,10 +65,7 @@ class DealsController < ApplicationController
     else
       page = 1
     end
-
-
     @total_pages = Deal.total_pages(@deals)
-
     total_products = Deal.total_products(@deals, page)
     @products = total_products[0]
     @prices = total_products[1]

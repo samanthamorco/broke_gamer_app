@@ -3,17 +3,19 @@
 
   <% product = Product.find(params[:id]) %>
   <%= form_tag("/wishes", method: "post") do %>
+
+<div class="col-md-6 col-sm-7">
+<div class="cwell">
   <div>
     <%= hidden_field_tag :product_id, "#{params[:id]}" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag(:product_name, "Game:") %>
-    <%= text_field_tag :product_name %>
-<!--     <%= text_field_tag :product_name, "#{product.name}" %>
- -->  </div>
-  <div>
+    <%= text_field_tag :product_name, "", class: "form-control" %>
+  </div>
+  <div class="form-group">
     <%= label_tag(:price, "Price Desired:") %>
-    <%= text_field_tag :price %>
+    <%= text_field_tag :price, "", class: "form-control" %>
   </div>
 
   <div>
@@ -21,4 +23,6 @@
   </div>
   <% end %>
 
+</div>
+</div>
 </div>

@@ -16,7 +16,7 @@ def initialize(hash)
   @id = hash["sku"]
   @shortDescription = hash["shortDescription"]
   @longDescription = hash["longDescription"]
-  @salePrice = hash["salePrice"]
+  @salePrice = hash["regularPrice"]
   @image = hash["image"]
   @manufacturer = hash["manufacturer"]
   @categoryPath = hash["categoryPath"]
@@ -30,7 +30,7 @@ end
 
 def self.all
   products = []
-  products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,salePrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
+  products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,regularPrice,onSale&pageSize=12&page=1&format=json&apiKey=#{ENV['API_KEY']}").body
   products_many = products_hash["products"]
   products_many.each do |game|
     products << Product.new(game)
@@ -52,7 +52,7 @@ def self.system(system_type, page)
 
   systems.each do |system, id|
     if system_type == system
-      products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,productID,salePrice,onSale,relatedProducts.sku&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
+      products_hash = Unirest.get("http://api.bestbuy.com/v1/products(categoryPath.id=#{id})?show=sku,image,name,shortDescription,productID,regularPrice,onSale,relatedProducts.sku&pageSize=12&page=#{page}&format=json&apiKey=#{ENV['API_KEY']}").body
       $total_pages = products_hash["totalPages"]
       products_many = products_hash["products"]
       products_many.each do |game|
@@ -65,14 +65,14 @@ end
 end
 
 def self.find(id)
-  product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{id})?show=name,sku,salePrice,longDescription,manufacturer,categoryPath,platform,relatedProducts.sku,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
+  product_hash = Unirest.get("http://api.bestbuy.com/v1/products(sku=#{id})?show=name,sku,regularPrice,longDescription,manufacturer,categoryPath,platform,relatedProducts.sku,releaseDate,image&format=json&apiKey=#{ENV['API_KEY']}").body
   product_initial = product_hash["products"]
   product = Product.new(product_initial.first)
 end
 
 def self.search(search_params, page)
   products = []
-  products_hash = Unirest.get("http://api.bestbuy.com/v1/products((name=#{search_params}*)&categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,salePrice,onSale&pageSize=50&page=#{page}&format=json&apiKey=#{ENV['API_KEYS']}").body
+  products_hash = Unirest.get("http://api.bestbuy.com/v1/products((name=#{search_params}*)&categoryPath.id=abcat0700000)?show=name,genre,sku,image,shortDescription,regularPrice,onSale&pageSize=50&page=#{page}&format=json&apiKey=#{ENV['API_KEYS']}").body
     products_many = products_hash["products"]
     products_many.each do |game|
         products << Product.new(game)

@@ -3,20 +3,30 @@
 
   angular.module("app").controller("reviewCtrl", function($scope, $http){
 
-    $scope.setup = function() {
+    $scope.setup = function(id) {
       $http.get("/api/v1/reviews.json").then(function(response){
-        $scope.reviews = response.data;
-        console.log(response.data)
+        var data = response.data;
+        var reviews = [];
+        for(var i = 0; i < data.length; i++) {
+          if (id === data[i].product_id){
+            reviews.push(data[i]);
+          };
+
+        };       
+
+        $scope.reviews = reviews;
       });
     }
 
-    $scope.addReview = function(reviewComments, reviewRating) {
+    $scope.addReview = function(reviewComments, reviewRating, reviewProductId) {
       if (reviewComments) {
         var reviewInfo = {
           rating: reviewRating,
           comments: reviewComments,
+          product_id: reviewProductId,
+          date: Date.now(),
         };
-        console.log(reviewInfo)
+        console.log(reviewInfo);
         $http.post("/api/v1/reviews.json", reviewInfo).then(function(response){
           $scope.reviews.push(reviewInfo);
         }, function(error){
@@ -24,9 +34,7 @@
         });
       }
     }
-
-
-
+    
 
   });
 

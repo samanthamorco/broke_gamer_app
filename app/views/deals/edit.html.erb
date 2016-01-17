@@ -1,28 +1,30 @@
 <%= form_tag "/deals/pending", method: :patch do %>
 
 Fill out the following form to add a game to the list:
-<div>
+<div class="col-md-6 col-sm-7">
+<div class="cwell">
+<div class="form-group">
   <%= hidden_field_tag :id, @deal.id %>
 </div>
-<div>
+<div class="form-group">
   <%= label_tag :product_id, "Game ID:" %>
-  <%= text_field_tag :product_id, @deal.product_id %>
+  <%= text_field_tag :product_id, @deal.product_id, class: "form-control" %>
 </div>
-<div>
+<div class="form-group">
   <%= label_tag :price, "Deal Price:" %>
-  <%= text_field_tag :price, @deal.price %>
+  <%= text_field_tag :price, @deal.price, class: "form-control" %>
 </div>
-<div>
+<div class="form-group">
   <%= label_tag :url, "Deal URL:" %>
-  <%= text_field_tag :url, @deal.url %>
+  <%= text_field_tag :url, @deal.url, class: "form-control" %>
 </div>
-<div>
+<div class="form-group">
   <%= label_tag :comment, "Comments:" %>
-  <%= text_field_tag :comment, @deal.comment %>
+  <%= text_field_tag :comment, @deal.comment, class: "form-control" %>
 </div>
 
 
-<div>
+<div class="form-group">
   <%= label_tag :status, "Status:" %>
   <%= radio_button_tag(:status, "pending") %> 
   <%= label_tag(:status, "pending") %>
@@ -38,3 +40,5 @@ Fill out the following form to add a game to the list:
 </div>
 
 <% end %>
+</div>
+</div>

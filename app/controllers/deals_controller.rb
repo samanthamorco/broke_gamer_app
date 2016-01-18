@@ -23,10 +23,12 @@ class DealsController < ApplicationController
     if @deal.save
       if current_user.role_id == 2
         @deal = @deal.update(status: "pending")
+        flash[:success] = "Thank you. Deal will be added upon moderator review."
       else
         @deal = @deal.update(status: "active")
-      end     
-      flash[:success] = "Deal Added"
+        flash[:success] = "Deal Added"
+      end  
+
       redirect_to "/products/#{params[:product_id]}"
     else
       flash[:danger] = "Error!"
@@ -57,7 +59,7 @@ class DealsController < ApplicationController
     if params[:order]
       @deals = Deal.sort(params[:order])
     else
-      @deals = Deal.where(status: "active")
+      @deals = Deal.sort("newest")
     end
 
     if params[:page]

@@ -112,7 +112,7 @@
                       <% if @deals_all == nil %>
                         This game has not been on sale before.
                       <% else %>
-                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {width: "100%", library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}}} %>
+                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}, "width": "925", "height": "300", discrete: true}} %>
                        <% end %>
 
                       </div>
@@ -127,11 +127,11 @@
                         <hr />
 
                          
-                          <div ng-repeat="review in reviews" class="cwell">
+                          <div ng-repeat="review in reviews | orderBy:upvotes" class="cwell">
                             <div class="arrow">
-                            <div ng-Click="reviewUpvote(review.id, $index)" style="cursor:pointer"><img src="http://i.imgur.com/0BtQCab.jpg" class="resize"></div>
-                            <div class="upvotes">{{review.upvotes}}</div>
-                            <div><img src="http://wp.iosfans.com/wp-content/uploads/2013/02/Down-vote-arrow-237x250.png" class="resize"></div>
+                              <div ng-Click="reviewUpvote(review.id, $index)" style="cursor:pointer"><img src="http://i.imgur.com/0BtQCab.jpg" class="resize"></div>
+                              <div class="upvotes">{{review.upvotes}}</div>
+                              <div ng-Click="reviewDownvote(review.id, $index)" style="cursor:pointer"><img src="http://wp.iosfans.com/wp-content/uploads/2013/02/Down-vote-arrow-237x250.png" class="resize"></div>
                             </div>
                             <div class="reviewBox">
                             <p><strong>Date:</strong> {{review.date | date:'MM/dd/yyyy'}}</p>

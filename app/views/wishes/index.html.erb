@@ -34,7 +34,7 @@
         <th>Delete?</th>
       </thead>
       <tbody ui:sortable="sortableOptions" ng-model="wishes">
-      <tr ng-repeat="wish in wishes" style="cursor: move;">
+      <tr ng-model="wishes" ng-repeat="wish in wishes" style="cursor: move;">
         <!-- <td>{{wish.priority}}</td> -->
         <td> {{$index + 1}} </td>
         <td><a href="/products/{{wish.product_id}}">{{wish.product_name}}</a></td>

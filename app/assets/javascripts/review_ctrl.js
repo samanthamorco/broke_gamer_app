@@ -36,11 +36,30 @@
       }
     }
 
-    $scope.reviewUpvote = function(id) {
-      console.log(id);
-      console.log("hello")
+    $scope.reviewUpvote = function(id, index) {
+      var update = {
+        upvotes: ($scope.reviews[index].upvotes + 1)
+      };
+      console.log(update);
+      // console.log(update.class);
+      $http.patch('/api/v1/reviews/' + id + '.json', update).then(function(response){
+        $scope.reviews[id].upvotes.patch(update);
+      });
+    }
+
+    $scope.reviewDownvote = function(id, index) {
+      var update = {
+        upvotes: ($scope.reviews[index].upvotes - 1)
+      };
+      console.log(update);
+      // console.log(update.class);
+      $http.patch('/api/v1/reviews/' + id + '.json', update).then(function(response){
+        $scope.reviews[id].upvotes.patch(update);
+      });
     }
     
+    window.$scope = $scope;
+
 
   });
 

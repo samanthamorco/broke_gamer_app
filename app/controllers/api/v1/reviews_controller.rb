@@ -8,10 +8,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-    # @review = Review.new(review_params)
-    # @review = Review.new(comments: params[:comments], rating: params[:rating])
     @review = Review.new(date: Time.now, user_id: current_user.id, comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
-    # @review = Review.new(comments: params[:comments], rating: params[:rating], product_id: params[:product_id])
     if @review.save
       flash[:success] = "Review Added"
       render json: @reviews
@@ -23,11 +20,22 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def index
-    
-    # @reviews = Review.where(product_id: params[:id])
     @reviews = Review.all
   end
 
   def show
+    @review = Review.find(params[:id])
+  end
+
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find_by(id: params[:id])
+    p params[:id]
+    p @review
+    @review.update(upvotes: params[:upvotes])
+    p @review
   end
 end

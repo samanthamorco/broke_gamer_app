@@ -29,11 +29,11 @@
                  <% deals = Deal.where(product_id: game.id, status: "active") %>
                  <% deal = deals.order('price ASC').first %>
                  <!-- Item #1 -->
-                 <div class="col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-md-4 col-sm-6 col-xs-12 animated fadeIn">
                   <div class="item">
                     <!-- Item image -->
                     <div class="item-image">
-                      <a href="single-item.html"><img src="<%= game.image %>" alt="" class="img-responsive"/></a>
+                      <a href="/products/<%= game.id %>"><img src="<%= game.image %>" alt="" class="img-responsive"/></a>
                     </div>
                     <!-- Item details -->
                     <div class="item-details">

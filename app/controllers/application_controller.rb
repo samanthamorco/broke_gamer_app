@@ -19,7 +19,7 @@ protected
   end
 
   def authenticate_admin!
-    redirect_to "/" unless current_user && (current_user.admin? || current.user.mod?)
+    redirect_to "/index.html" unless current_user && (current_user.admin? || current.user.mod?)
     flash[:danger] = "You must be a moderator or admin to access this." unless current_user && (current_user.admin? || current.user.mod?)
   end
 

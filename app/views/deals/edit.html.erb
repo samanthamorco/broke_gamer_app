@@ -1,7 +1,7 @@
-<%= form_tag "/deals/pending", method: :patch do %>
+<div class="container"><%= form_tag "/deals/pending", method: :patch do %>
 
-Fill out the following form to add a game to the list:
-<div class="col-md-6 col-sm-7">
+<h3>Edit Game:</h3>
+<div class="col-md-8 col-sm-7">
 <div class="cwell">
 <div class="form-group">
   <%= hidden_field_tag :id, @deal.id %>
@@ -40,5 +40,6 @@ Fill out the following form to add a game to the list:
 </div>
 
 <% end %>
+</div>
 </div>
 </div>

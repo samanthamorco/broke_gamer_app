@@ -35,27 +35,6 @@
         });
       }
     }
-
-    $scope.reviewUpvote = function(id, index) {
-      var update = {
-        upvotes: ($scope.reviews[index].upvotes + 1)
-      };
-      console.log(update);
-      $http.patch('/api/v1/reviews/' + id + '.json', update).then(function(response){
-        $scope.reviews[id].upvotes.patch(update);
-      });
-    }
-
-    $scope.reviewDownvote = function(id, index) {
-      var update = {
-        upvotes: ($scope.reviews[index].upvotes - 1)
-      };
-      console.log(update);
-      $http.patch('/api/v1/reviews/' + id + '.json', update).then(function(response){
-        console.log(response.data);
-        $scope.reviews[id].upvotes.patch(update);
-      });
-    }
     
     window.$scope = $scope;
 

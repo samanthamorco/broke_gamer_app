@@ -109,10 +109,10 @@
                       <h3><strong>History of Game Deals</strong></h3>
                         <hr />
 
-                      <% if @deals_all == nil %>
-                        This game has not been on sale before.
+                      <% if @deals_all.length == 0 %>
+                        This game has never had a deal added. <a href="/deals/new?id=<%= @product.id %>">Be the first!</a>
                       <% else %>
-                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}, "width": "925", "height": "300", discrete: true}} %>
+                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}, "width": "800", "height": "300", discrete: true}} %>
                        <% end %>
 
                       </div>
@@ -127,11 +127,15 @@
                         <hr />
 
                          
-                          <div ng-repeat="review in reviews | orderBy:upvotes" class="cwell">
+                            <% if @reviews.length == 0 %>
+                            There are no reviews yet. Be the first!
+                            <% else %>
+                          <div ng-repeat="review in reviews" class="cwell">
                             <div class="arrow">
-                              <div ng-Click="reviewUpvote(review.id, $index)" style="cursor:pointer"><img src="http://i.imgur.com/0BtQCab.jpg" class="resize"></div>
+                              <!-- <div ng-Click="reviewUpvote(review.id, $index)" style="cursor:pointer"><img src="http://i.imgur.com/0BtQCab.jpg" class="resize"></div>
                               <div class="upvotes">{{review.upvotes}}</div>
-                              <div ng-Click="reviewDownvote(review.id, $index)" style="cursor:pointer"><img src="http://wp.iosfans.com/wp-content/uploads/2013/02/Down-vote-arrow-237x250.png" class="resize"></div>
+                              <div ng-Click="reviewDownvote(review.id, $index)" style="cursor:pointer"><img src="http://wp.iosfans.com/wp-content/uploads/2013/02/Down-vote-arrow-237x250.png" class="resize"></div> -->
+                              <img src="http://cliparts.co/cliparts/6ir/oy8/6iroy8zAT.png" class="resize">
                             </div>
                             <div class="reviewBox">
                             <p><strong>Date:</strong> {{review.date | date:'MM/dd/yyyy'}}</p>
@@ -139,12 +143,11 @@
                             <p><strong>Comments:</strong> {{review.comments}}</p>
                             </div>
                           </div>
+                          <% end %>
 
                             <div>
                               <h3><strong>Add Review:</strong></h3>
-<!--        <ul>
-        <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
-      </ul>  -->          
+         
                       <% if current_user %>
                             <div>
                               Rating: 

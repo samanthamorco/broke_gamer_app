@@ -36,7 +36,7 @@ class Api::V1::WishesController < ApplicationController
 
   def update
     @wish = Wish.find(params[:id])
-    @wish.update(priority: params[:priority])
+    @wish.update(priority: params[:priority], price: params[:price])
     render :index
   end
 end

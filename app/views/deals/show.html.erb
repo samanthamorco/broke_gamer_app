@@ -2,24 +2,37 @@
 
   <div class="container">
     <h1 class="modal-title">Verify Deals</h1>
-    <div class="spacing"><table class="table table-striped">
-      <th>
-        <td>Product ID</td>
-        <td>Price</td>
-        <td>Comment</td>
-        <td>Edit Deal</td>
-      </th>
+    <p>Click to make changes.</p>
+    <div ng-app="app">
+       <div ng-controller="dealCtrl" ng-init="setup()">
+          <table class="table table-striped">
+          <th>
+            <td>User</td>
+            <td>Product ID</td>
+            <td>Sale Price</td>
+            <td>Sale URL</td>
+            <td>Comments</td>
+            <td>Status</td>
+            <td>See Deal</td>
+          </th>
+          <tr ng-repeat="deal in deals">
+            <td></td>
+            <td>{{deal.user_id}}</td>
+            <td><a href="/products/{{deal.product_id}}">{{deal.product_id}}</a></td>
+            <td editable-text="deal.price">{{deal.price | currency:'$'}}</td>
+            <td editable-textarea="deal.url">{{deal.url}}</td>
+            <td editable-textarea="deal.comment">{{deal.comment}}</td>
+            <td editable-text="deal.status">{{ deal.status }}</td>
+            <td><a href="{{deal.url}}"><img src="http://icons.iconarchive.com/icons/pixelkit/gentle-edges/128/Game-Controller-icon.png" class="small"></a></td>
+          </tr>
 
-      <% @deals.each do |deal| %>
-      <tr>
-        <td></td>
-        <td><a href="/products/<%= deal.product_id %>"><%= deal.product_id %></a></td>
-        <td><%= deal.price %></td>
-        <td><%= deal.comment %></td>
-        <td><%= link_to "Edit", "/deals/#{deal.id}/edit" %></td>
-      </tr>
+          </table>
 
-      <% end %>
-    </table></div>
+    <button ng-click="updateDeals()">Save Changes</button>
+    </div>
+
+  </div>
+
+
   </div>
 </div>

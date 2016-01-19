@@ -38,4 +38,13 @@ class WishesController < ApplicationController
       render :new
     end
   end
+
+  def edit
+  end
+
+  def update
+    @wish = Wish.find(params[:id])
+    @wish.update(priority: params[:priority], price: params[:price])
+    render :index
+  end
 end

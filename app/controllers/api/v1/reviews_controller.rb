@@ -35,5 +35,6 @@ class Api::V1::ReviewsController < ApplicationController
     p @review
     @review.update(upvotes: params[:upvotes])
     p @review
+    render partial: '/api/v1/_reviews.json.jbuilder'
   end
 end

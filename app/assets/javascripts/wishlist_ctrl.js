@@ -1,5 +1,6 @@
 (function (){
   "use strict";
+  
 
   angular.module("app").controller("wishlistCtrl", function($scope, $http){
 
@@ -24,19 +25,18 @@
       var wish = $scope.wishes
       for (var i = 1; i <= $scope.wishes.length; i++) {
         if (i !== wish[i - 1].priority) {
+          var priority = i
+        } else {
+          var priority = wish[i - 1].priority
+        };
           var update = {
-            priority: i
+            priority: priority,
+            price: wish[i - 1].price,
           };
           console.log("the following should be the variable update:")
           console.log(update);
           $http.patch('/api/v1/wishes/' + wish[i - 1].id + '.json', update).then(function(response){
-            // var wishlistCallback = response.data;
-            // console.log(response.data);
-            // $scope.wishes.patch(wishlistCallback);
-
-            // console.log(test);
           });
-        }
       };
       alert("Changes Saved");
     }

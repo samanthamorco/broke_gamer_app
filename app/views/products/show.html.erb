@@ -112,7 +112,7 @@
                       <% if @deals_all.length == 0 %>
                         This game has never had a deal added. <a href="/deals/new?id=<%= @product.id %>">Be the first!</a>
                       <% else %>
-                         <%= line_chart @deals_all.group_by_month(:date).minimum(:price), {library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}, "width": "800", "height": "300", backgroundColor: "transparent", colors: ["#16cbe6"], discrete: true}} %>
+                         <%= line_chart @deals_all.group(:date).minimum(:price), {library: {hAxis: {title: "Date"}, vAxis: {title: "Price"}, "width": "800", "height": "300", backgroundColor: "transparent", colors: ["#16cbe6"], discrete: true}} %>
                        <% end %>
 
                       </div>

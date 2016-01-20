@@ -22,7 +22,7 @@
             <td editable-text="deal.price">{{deal.price | currency:'$'}}</td>
             <td editable-textarea="deal.url">{{deal.url}}</td>
             <td editable-textarea="deal.comment">{{deal.comment}}</td>
-            <td editable-text="deal.status">{{ deal.status }}</td>
+            <td editable-select="deal.status" e-ng-options="s.value as s.text for s in statuses">{{ deal.status }}</td>
             <td><a href="{{deal.url}}"><img src="http://i.imgur.com/PpQSV1k.png" target="_tab" class="small"></a></td>
           </tr>
 

@@ -19,7 +19,13 @@
     $scope.testDeals = function() {
       alert("Test success!");
     }
-    
+
+  $scope.statuses = [
+    {value: 'pending', text: 'pending'},
+    {value: 'active', text: 'active'},
+    {value: 'inactive', text: 'inactive'},
+  ];
+
     $scope.updateDeals = function() {
       var deal = $scope.deals;
       console.log("Hello!");

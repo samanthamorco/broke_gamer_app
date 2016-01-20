@@ -1,6 +1,10 @@
 <div class="container">
   <h1>Wishlist Entry</h1>
-
+  <% if @wish && @wish.errors.any? %>
+    <% @wish.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  <% end %>
   <% product = Product.find(params[:id]) %>
   <%= form_tag("/wishes", method: "post") do %>
 

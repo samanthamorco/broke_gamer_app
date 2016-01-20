@@ -18,11 +18,12 @@
     };
 
     $scope.test = function() {
-      console.log("cool");
+      console.log("hella cool");
     };
 
     $scope.updatePriority = function () {
-      var wish = $scope.wishes
+      var wish = $scope.wishes;
+      console.log(wish);
       for (var i = 1; i <= $scope.wishes.length; i++) {
         if (i !== wish[i - 1].priority) {
           var priority = i

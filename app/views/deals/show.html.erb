@@ -15,7 +15,7 @@
             <td>Status</td>
             <td>See Deal</td>
           </th>
-          <tr ng-repeat="deal in deals">
+          <tr ng-repeat="deal in deals" ng-model="deals">
             <td></td>
             <td>{{deal.user_id}}</td>
             <td><a href="/products/{{deal.product_id}}">{{deal.product_id}}</a></td>

@@ -19,10 +19,11 @@
  *= require theme/bootstrap
  *= require theme/ddlevelsmenu-base
  *= require theme/ddlevelsmenu-topbar
- *= require theme/font-awesome.min
  *= require theme/jquery.countdown
  *= require theme/settings
  *= require theme/style
  *= require_tree .
  *= require_self
+ *=  @import "font-awesome-sprockets";
+ *=  @import "font-awesome";
  */

@@ -1,7 +1,80 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!([
+  {email: "brokegamermod@gmail.com", encrypted_password: "$2a$10$gFd2opVvgeW.4VdIcgAIP./OvnRJowHgorSPB3WJ1wmYBs1xTh/TW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 24, current_sign_in_at: "2016-01-18 23:20:24", last_sign_in_at: "2016-01-18 20:04:21", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 1},
+  {email: "lolyachiru@yahoo.com", encrypted_password: "$2a$10$.1oAMZSd7b0o9Wj5gYVcieX9G9kSgW8jfz0syYxN1xmKhqL14H34q", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-12-13 23:16:06", last_sign_in_at: "2015-12-13 23:16:06", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2},
+  {email: "samanthamorco@gmail.com", encrypted_password: "$2a$10$X0uXykOT1rZQa0g93cCodeJDWxD341chlHHb/5iawZPwJo7.r7//y", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-01-10 23:28:29", last_sign_in_at: "2016-01-10 05:56:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 3},
+  {email: "samimorco@hotmail.com", encrypted_password: "$2a$10$3k/lwULwyUjBbpqo.iNqMeiMpQFvjyYXgWRjvGSI3OL8XDcDdBzlq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 9, current_sign_in_at: "2016-01-18 23:09:54", last_sign_in_at: "2016-01-17 23:58:58", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2}
+])
+Deal.create!([
+  {price: "14.99", url: "http://www.newegg.com/Product/Product.aspx?sdtid=8412595&SID=bd7a7b5ab27611e58e7f12e62f77c9760000&AID=10440897&PID=1225267&nm_mc=AFC-C8Junction&cm_mmc=AFC-C8Junction-_-cables-_-na-_-na&Item=N82E16879261585&cm_sp=", date: "2016-02-07 00:00:00", comment: "$39.99 - $25 off w/ promo code EMCKNPK54 = $14.99 + Free Shipping", user_id: 1, product_id: 5607062, status: "active"},
+  {price: "11.98", url: "http://www.amazon.com/gp/product/B00946FSJ4?tag=slicinc-20&ascsubtag=30d4a3a0a14c11e5bee056116f68fb5d0000&psc=1&redirect=true&ref_=ox_sc_act_title_1&smid=ATVPDKIKX0DER", date: "2016-02-07 00:00:00", comment: "FF13 sucked.", user_id: 4, product_id: 8723094, status: "active"},
+  {price: "3.0", url: "http://www.amazon.com/dp/B007VFHGZ4?tag=slicinc-20&ascsubtag=323f8fd0b27611e5a06402d43543af0c0000", date: "2015-12-13 03:48:49", comment: "this is actually for the PC version", user_id: 1, product_id: 6940069, status: "inactive"},
+  {price: "15.0", url: "https://store.xbox.com/en-US/Xbox-One/Games/Disney-Infinity-30-Edition/2ad927ff-bfe1-4e28-a4eb-6826a2c8aef0", date: "2015-12-20 23:09:00", comment: "", user_id: 1, product_id: 6893029, status: "inactive"},
+  {price: "34.99", url: "http://slickdeals.net/f/8412595-star-wars-battlefront-ps4-digital-download-voucher-35-more", date: "2015-12-13 03:48:49", comment: "$59.99 - $25 off w/ promo code EMCKNPK48 = $34.99 + Free Shipping", user_id: 1, product_id: 4212032, status: "inactive"},
+  {price: "1.99", url: "www.google.com", date: "2015-08-02 00:00:00", comment: "", user_id: 1, product_id: 4373940, status: "inactive"},
+  {price: "2.99", url: "https://www.nintendo.com/games/detail/xCugEaUTIAEnZTCE2Y8W_pSFvgoYIA0n", date: "2016-01-29 00:00:00", comment: "This is actually a fake deal made for the purposes of showing an example.", user_id: 1, product_id: 4373940, status: "active"},
+  {price: "34.99", url: "http://www.newegg.com/Product/Product.aspx?sdtid=8428727&SID=5816a050ba3611e5a1dbde4661984ff80000&AID=10440897&PID=1225267&nm_mc=AFC-C8Junction&cm_mmc=AFC-C8Junction-_-cables-_-na-_-na&Item=N82E16879221397&cm_sp=", date: "2016-02-01 00:00:00", comment: " after promo code EMCEFEM65. Shipping is free.", user_id: 1, product_id: 6627106, status: "active"},
+  {price: "34.99", url: "http://www.newegg.com/Product/Product.aspx?sdtid=8428727&SID=5816a050ba3611e5a1dbde4661984ff80001&AID=10440897&PID=1225267&nm_mc=AFC-C8Junction&cm_mmc=AFC-C8Junction-_-cables-_-na-_-na&Item=N82E16832133404&cm_sp=", date: "2016-03-02 00:00:00", comment: "With Promo Code: EMCEFEM65", user_id: 1, product_id: 6629008, status: "active"},
+  {price: "17.5", url: "https://store.playstation.com/#!/en-us/games/dragon-age-inquisition-deluxe-edition/cid=UP0006-CUSA00220_00-B000000000000438?scope=sceapp&smcid=sceapp:home", date: "2016-01-19 00:00:00", comment: "Save an extra 10% with PS Plus", user_id: 1, product_id: 4724703, status: "inactive"},
+  {price: "8.99", url: "ksdjfhskdfjhsdkj", date: "2015-09-14 04:59:33", comment: "dkjfhskjfhdkjsh", user_id: 4, product_id: 4373940, status: "inactive"},
+  {price: "12.99", url: "fdfd", date: "2015-10-14 04:59:33", comment: nil, user_id: nil, product_id: 4373940, status: "inactive"},
+  {price: "15.98", url: nil, date: "2015-12-14 04:59:33", comment: nil, user_id: nil, product_id: 4373940, status: "inactive"},
+  {price: "16.09", url: nil, date: "2015-11-14 04:59:33", comment: nil, user_id: nil, product_id: 4373940, status: "inactive"},
+  {price: "29.99", url: "http://www.nintendo.com/games/detail/M42P9zcGuIbXMejb0-znWL-dwFMCOQnS", date: "2016-01-30 00:00:00", comment: "", user_id: 1, product_id: 2299558, status: "active"},
+  {price: "9.99", url: "https://www.nintendo.com/games/detail/nZxp2wVrnyFu7IjfDg2PGzDsB7C0aicz", date: "2016-02-08 00:00:00", comment: "on Nintendo eShop", user_id: 1, product_id: 4344900, status: "active"},
+  {price: "19.98", url: "https://www.nintendo.com/games/detail/xCugEaUTIAEnZTCE2Y8W_pSFvgoYIA0n", date: "2016-02-12 00:00:00", comment: "Available on Nintendo eShop.", user_id: 1, product_id: 4373940, status: "inactive"},
+  {price: "35.94", url: "http://www.amazon.com/Animal-Crossing-Happy-Home-Designer-3DS/dp/B00ZS2HFVW/ref=sr_1_1?s=videogames&ie=UTF8&qid=1452993087&sr=1-1&keywords=animal+crossing+happy+home+designer", date: "2016-03-01 00:00:00", comment: "", user_id: 1, product_id: 8474119, status: "active"},
+  {price: "9.99", url: "http://www.nintendo.com/games/detail/imW5kA2_OfihD4LMloiS6PrObLg1Cj29", date: "2016-02-12 00:00:00", comment: "Available on Nintendo eShop.", user_id: 1, product_id: 9505212, status: "active"},
+  {price: "23.57", url: "http://www.amazon.com/gp/product/B00ZO1SO08?ref_=cm_sw_r_cp_awd_ZjXKwbSB2K02D", date: "2016-01-25 00:00:00", comment: "Price may vary due to Amazon, but it is definitely on sale.", user_id: 1, product_id: 9601146, status: "active"},
+  {price: "20.57", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2015-12-23 00:00:00", comment: "", user_id: 1, product_id: 9505126, status: "inactive"},
+  {price: "36.1", url: "http://www.amazon.com/Fallout-4-PC/dp/B00YQ2MM2M", date: "2016-01-30 00:00:00", comment: "", user_id: 1, product_id: 6790101, status: "active"},
+  {price: "8.99", url: "https://store.playstation.com/#!/en-us/games/metro-redux/cid=UP2047-CUSA00683_00-MCOMPLREDUXDISC1", date: "2016-01-19 00:00:00", comment: "This is a test to see how the table will be formatted. This is a test to see how the table will be formatted. This is a test to see how the table will be formatted. This is a test to see how the table will be formatted. ", user_id: 4, product_id: 7112004, status: "pending"},
+  {price: "29.99", url: "http://www.amazon.com/Need-Speed-Xbox-One/dp/B00XWQZPQ8?tag=slickdeals&ascsubtag=810170b8bda011e5afd3be1315072bba0000", date: "2016-01-31 00:00:00", comment: "", user_id: 1, product_id: 8825046, status: "active"},
+  {price: "29.99", url: "http://www.amazon.com/gp/product/B00DFT0WVU/?tag=slickdeals&ascsubtag=810170b8bda011e5afd3be1315072bba0001", date: "2016-01-31 00:00:00", comment: "", user_id: 1, product_id: 1390457, status: "active"},
+  {price: "13.23", url: "http://www.amazon.com/gp/product/B00OM6SAOQ", date: "2016-01-31 00:00:00", comment: "Note: This is an expansion. It requires A Realm Reborn to play.\r\n\r\nPrice has been jumping around.", user_id: 1, product_id: 1207007, status: "active"},
+  {price: "33.95", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2016-01-31 00:00:00", comment: "Price fluctuates.", user_id: 1, product_id: 9505126, status: "active"},
+  {price: "40.99", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2015-11-17 00:00:00", comment: "", user_id: 1, product_id: 9505126, status: "inactive"},
+  {price: "49.88", url: "http://www.amazon.com/Alekhines-Gun-Xbox-One/dp/B00ZN5E3QY/ref=sr_1_1_twi_gam_2?ie=UTF8&qid=1453158703&sr=8-1&keywords=alekhine%27s+gun", date: "2016-01-31 00:00:00", comment: "", user_id: 4, product_id: 4244600, status: "pending"},
+  {price: "27.99", url: "http://www.amazon.com/Angry-Birds-Star-Wars-PlayStation-4/dp/B00FF5KYME/ref=sr_1_1?ie=UTF8&qid=1453159102&sr=8-1&keywords=angry+birds+star+wars+ps4", date: "2016-01-31 00:00:00", comment: "Why would anyone buy this?", user_id: 4, product_id: 2853002, status: "pending"},
+  {price: "39.96", url: "http://www.amazon.com/Mario-Luigi-Paper-Jam-Nintendo-3DS/dp/B0171RL3RS/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453159188&sr=1-1&keywords=mario+and+luigi+paper+jam", date: "2016-01-31 00:00:00", comment: "This is a test.", user_id: 4, product_id: 9090676, status: "pending"},
+  {price: "42.99", url: nil, date: "2015-10-31 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"},
+  {price: "40.98", url: nil, date: "2015-09-15 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"}
+])
+Review.create!([
+  {date: "2015-12-12 00:00:00", rating: 4, comments: "Testing date 1-2-3", user_id: 1, product_id: 4348023, upvotes: 3},
+  {date: "2015-12-24 03:29:24", rating: 2, comments: "I like adults.", user_id: 1, product_id: 4348023, upvotes: 2},
+  {date: "2015-12-24 03:30:04", rating: 2, comments: "test", user_id: 1, product_id: 8723094, upvotes: 2},
+  {date: "2015-12-24 03:38:12", rating: 4, comments: "I love shooting bears.", user_id: 1, product_id: 4348023, upvotes: 2},
+  {date: "2015-12-24 03:56:40", rating: 5, comments: "this game is legit.", user_id: 1, product_id: 4348023, upvotes: 2},
+  {date: "2015-12-27 22:04:28", rating: 4, comments: "Adventure Time is a great show so I'm sure the game will be fun too. I haven't actually played it yet... whoops!", user_id: 1, product_id: 4373940, upvotes: 2},
+  {date: "2015-12-31 04:53:38", rating: 5, comments: "LSP is the best character.\n", user_id: 1, product_id: 4373940, upvotes: 2},
+  {date: "2015-12-31 04:54:59", rating: 4, comments: "The 3DS version is the best version since you can take it on the go!", user_id: 1, product_id: 4373940, upvotes: 2},
+  {date: "2015-12-31 04:55:39", rating: 1, comments: "This game is just a cash grab. Definitely not fun. Just watch the cartoon.", user_id: 1, product_id: 4373940, upvotes: 2},
+  {date: "2015-12-31 05:02:41", rating: 5, comments: "Yeah Uncharted!!! <3", user_id: 1, product_id: 2943094, upvotes: 2},
+  {date: "2015-12-31 05:09:20", rating: 3, comments: "Ehh... not a huge fan of MMOs.", user_id: 1, product_id: 1206718, upvotes: 2},
+  {date: "2016-01-16 21:11:06", rating: 5, comments: "This game is so much fun. I really like the Fate System, which reminds me of Social Links in Persona 3 and 4. The characters are more interesting, and there are no annoying characters like there were in the first game.", user_id: 1, product_id: 2299558, upvotes: 3},
+  {date: "2016-01-17 01:15:13", rating: 4, comments: "This is a fun game if you want to still play with your Animal Crossing villagers but are getting a little bored of New Leaf or any of the other sequels. It is also nice because it is not dependent on time, so you can skip to the next day and keep designing. It is a game I got bored of faster though.", user_id: 1, product_id: 8474119, upvotes: 5},
+  {date: "2016-01-17 01:15:57", rating: 5, comments: "Persona 4? Rhythm game? More of the awesome Persona 4 music that we all love? Nanako as a playable character?? What else could I ask for! This game is amazing!", user_id: 1, product_id: 9025026, upvotes: 2},
+  {date: "2016-01-17 01:43:01", rating: 5, comments: "I haven't even played this yet and I know it's a 5/5.", user_id: 1, product_id: 6790101, upvotes: 2},
+  {date: "2016-01-17 01:43:09", rating: 5, comments: "BEST. GAME. EVER.", user_id: 1, product_id: 6790101, upvotes: 2},
+  {date: "2016-01-17 22:16:25", rating: 1, comments: "This was just a cheap cash grab so Nintendo could sell Amiibos. Just play New Leaf.", user_id: 4, product_id: 8474119, upvotes: 0},
+  {date: "2016-01-17 22:17:26", rating: 5, comments: "I love this game!!! Designing everyone's homes is my favorite part of Animal Crossing, and now there's a whole game revolved around it!", user_id: 4, product_id: 8474119, upvotes: 0},
+  {date: "2016-01-18 05:14:44", rating: 4, comments: "The PS4 / PS3 versions are virtually identical gameplay wise. The biggest difference being graphics, draw distance, and (other character) frames of animation. If you are okay with a lower resolution, lower draw distance, and slightly more choppy experience, this version works well. I played ARR on ps3 for the first year, while large group content was a bit laggy, the game was certainly playable.", user_id: 1, product_id: 1207007, upvotes: 0},
+  {date: "2016-01-18 21:25:25", rating: 4, comments: "This is a test.", user_id: 1, product_id: 8474119, upvotes: 1},
+  {date: "2016-01-18 22:16:42", rating: 5, comments: "This is such a fun game! If you love Animal Crossing, definitely get this.", user_id: 1, product_id: 9505126, upvotes: 3},
+  {date: "2016-01-18 22:17:00", rating: 1, comments: "Nintendo is just trying to get money off of you guys. Don't buy this. Amiibos are expensive and worthless.", user_id: 1, product_id: 9505126, upvotes: 3},
+  {date: "2016-01-19 00:11:48", rating: 3, comments: "This is fun, but not as fun as Animal Crossing: New Leaf.", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-19 06:50:05", rating: 4, comments: "Fun times.", user_id: 1, product_id: 9505126, upvotes: 0}
+])
+Role.create!([
+  {name: "admin"},
+  {name: "standard"},
+  {name: "mod"}
+])
+Wish.create!([
+  {product_id: 9221019, product_name: "Corpse Party", price: "9.99", user_id: 2, priority: 1, notified: false},
+  {product_id: 7841207, product_name: "Rocksmith 2014 (PS4)", price: "28.99", user_id: 1, priority: 1, notified: false},
+  {product_id: 2299558, product_name: "Devil Survivor 2: Record Breaker", price: "25.0", user_id: 1, priority: 3, notified: true},
+  {product_id: 6790101, product_name: "Fallout 4", price: "25.0", user_id: 4, priority: 1, notified: false},
+  {product_id: 5838011, product_name: "Borderlands 2 (PS Vita)", price: "9.99", user_id: 1, priority: 2, notified: false},
+  {product_id: 2703138, product_name: "Cooking Mama 4", price: "12.99", user_id: 1, priority: 4, notified: false}
+])

@@ -22,6 +22,9 @@ gem 'dotenv-rails'
 gem 'activemodel'
 gem 'groupdate'
 gem 'chartkick'
+gem 'seed_dump'
+# gem 'font-awesome-sass'
+
 
 # gem 'activemodel-associations'
 

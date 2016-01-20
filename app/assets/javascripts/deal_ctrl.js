@@ -16,6 +16,10 @@
       });
     }
 
+    $scope.testDeals = function() {
+      alert("Test success!");
+    }
+    
     $scope.updateDeals = function() {
       var deal = $scope.deals;
       console.log("Hello!");

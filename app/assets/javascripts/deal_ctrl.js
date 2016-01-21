@@ -42,7 +42,7 @@
           $http.patch('/api/v1/deals/' + deal[i].id + '.json', update).then(function(response){
           });
       };
-      alert("Changes Saved");
+      // alert("Changes Saved");
     }
 
     window.$scope = $scope;

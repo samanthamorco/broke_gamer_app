@@ -39,7 +39,7 @@
           $http.patch('/api/v1/wishes/' + wish[i - 1].id + '.json', update).then(function(response){
           });
       };
-      alert("Changes Saved");
+      // alert("Changes Saved");
     }
 
     $scope.deleteGame = function(id, index) {

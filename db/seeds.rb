@@ -1,8 +1,8 @@
 User.create!([
-  {email: "brokegamermod@gmail.com", encrypted_password: "$2a$10$gFd2opVvgeW.4VdIcgAIP./OvnRJowHgorSPB3WJ1wmYBs1xTh/TW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 24, current_sign_in_at: "2016-01-18 23:20:24", last_sign_in_at: "2016-01-18 20:04:21", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 1},
+  {email: "brokegamermod@gmail.com", encrypted_password: "$2a$10$gFd2opVvgeW.4VdIcgAIP./OvnRJowHgorSPB3WJ1wmYBs1xTh/TW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 25, current_sign_in_at: "2016-01-21 19:25:56", last_sign_in_at: "2016-01-18 23:20:24", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 1},
   {email: "lolyachiru@yahoo.com", encrypted_password: "$2a$10$.1oAMZSd7b0o9Wj5gYVcieX9G9kSgW8jfz0syYxN1xmKhqL14H34q", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-12-13 23:16:06", last_sign_in_at: "2015-12-13 23:16:06", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2},
   {email: "samanthamorco@gmail.com", encrypted_password: "$2a$10$X0uXykOT1rZQa0g93cCodeJDWxD341chlHHb/5iawZPwJo7.r7//y", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-01-10 23:28:29", last_sign_in_at: "2016-01-10 05:56:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 3},
-  {email: "samimorco@hotmail.com", encrypted_password: "$2a$10$3k/lwULwyUjBbpqo.iNqMeiMpQFvjyYXgWRjvGSI3OL8XDcDdBzlq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 9, current_sign_in_at: "2016-01-18 23:09:54", last_sign_in_at: "2016-01-17 23:58:58", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2}
+  {email: "samimorco@hotmail.com", encrypted_password: "$2a$10$3k/lwULwyUjBbpqo.iNqMeiMpQFvjyYXgWRjvGSI3OL8XDcDdBzlq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 10, current_sign_in_at: "2016-01-21 06:42:45", last_sign_in_at: "2016-01-18 23:09:54", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2}
 ])
 Deal.create!([
   {price: "14.99", url: "http://www.newegg.com/Product/Product.aspx?sdtid=8412595&SID=bd7a7b5ab27611e58e7f12e62f77c9760000&AID=10440897&PID=1225267&nm_mc=AFC-C8Junction&cm_mmc=AFC-C8Junction-_-cables-_-na-_-na&Item=N82E16879261585&cm_sp=", date: "2016-02-07 00:00:00", comment: "$39.99 - $25 off w/ promo code EMCKNPK54 = $14.99 + Free Shipping", user_id: 1, product_id: 5607062, status: "active"},
@@ -31,13 +31,17 @@ Deal.create!([
   {price: "29.99", url: "http://www.amazon.com/Need-Speed-Xbox-One/dp/B00XWQZPQ8?tag=slickdeals&ascsubtag=810170b8bda011e5afd3be1315072bba0000", date: "2016-01-31 00:00:00", comment: "", user_id: 1, product_id: 8825046, status: "active"},
   {price: "29.99", url: "http://www.amazon.com/gp/product/B00DFT0WVU/?tag=slickdeals&ascsubtag=810170b8bda011e5afd3be1315072bba0001", date: "2016-01-31 00:00:00", comment: "", user_id: 1, product_id: 1390457, status: "active"},
   {price: "13.23", url: "http://www.amazon.com/gp/product/B00OM6SAOQ", date: "2016-01-31 00:00:00", comment: "Note: This is an expansion. It requires A Realm Reborn to play.\r\n\r\nPrice has been jumping around.", user_id: 1, product_id: 1207007, status: "active"},
-  {price: "33.95", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2016-01-31 00:00:00", comment: "Price fluctuates.", user_id: 1, product_id: 9505126, status: "active"},
   {price: "40.99", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2015-11-17 00:00:00", comment: "", user_id: 1, product_id: 9505126, status: "inactive"},
-  {price: "49.88", url: "http://www.amazon.com/Alekhines-Gun-Xbox-One/dp/B00ZN5E3QY/ref=sr_1_1_twi_gam_2?ie=UTF8&qid=1453158703&sr=8-1&keywords=alekhine%27s+gun", date: "2016-01-31 00:00:00", comment: "", user_id: 4, product_id: 4244600, status: "pending"},
+  {price: "48.88", url: "http://www.amazon.com/Alekhines-Gun-Xbox-One/dp/B00ZN5E3QY/ref=sr_1_1_twi_gam_2?ie=UTF8&qid=1453158703&sr=8-1&keywords=alekhine%27s+gun", date: "2016-01-31 00:00:00", comment: "This is a test.", user_id: 4, product_id: 4244600, status: "pending"},
   {price: "27.99", url: "http://www.amazon.com/Angry-Birds-Star-Wars-PlayStation-4/dp/B00FF5KYME/ref=sr_1_1?ie=UTF8&qid=1453159102&sr=8-1&keywords=angry+birds+star+wars+ps4", date: "2016-01-31 00:00:00", comment: "Why would anyone buy this?", user_id: 4, product_id: 2853002, status: "pending"},
-  {price: "39.96", url: "http://www.amazon.com/Mario-Luigi-Paper-Jam-Nintendo-3DS/dp/B0171RL3RS/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453159188&sr=1-1&keywords=mario+and+luigi+paper+jam", date: "2016-01-31 00:00:00", comment: "This is a test.", user_id: 4, product_id: 9090676, status: "pending"},
+  {price: "39.96", url: "http://www.amazon.com/Mario-Luigi-Paper-Jam-Nintendo-3DS/dp/B0171RL3RS/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453159188&sr=1-1&keywords=mario+and+luigi+paper+jam", date: "2016-01-31 00:00:00", comment: "This is a test.", user_id: 4, product_id: 9090676, status: "inactive"},
   {price: "42.99", url: nil, date: "2015-10-31 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"},
-  {price: "40.98", url: nil, date: "2015-09-15 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"}
+  {price: "40.98", url: nil, date: "2015-09-15 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"},
+  {price: "19.99", url: "fakdhfdkjhfdsk", date: "2015-11-02 00:00:00", comment: "", user_id: 1, product_id: 9178294, status: "inactive"},
+  {price: "29.0", url: "fdsfdfsdf", date: "2015-12-10 00:00:00", comment: "dfsdfsdfsd", user_id: 1, product_id: 9178294, status: "inactive"},
+  {price: "16.99", url: "dlkfjsdlkfjsdlkjf", date: "2016-01-06 00:00:00", comment: "ldksfjdslkfjsdlkj", user_id: 1, product_id: 9178294, status: "inactive"},
+  {price: "32.19", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2016-02-01 00:00:00", comment: "Price fluctuates. Keep track of the price by checking the link.", user_id: 1, product_id: 9505126, status: "active"},
+  {price: "19.99", url: "dfhsdfdskfjshdkj", date: "2016-01-31 00:00:00", comment: "This is just a text.", user_id: 4, product_id: 4244500, status: "inactive"}
 ])
 Review.create!([
   {date: "2015-12-12 00:00:00", rating: 4, comments: "Testing date 1-2-3", user_id: 1, product_id: 4348023, upvotes: 3},
@@ -63,7 +67,16 @@ Review.create!([
   {date: "2016-01-18 22:16:42", rating: 5, comments: "This is such a fun game! If you love Animal Crossing, definitely get this.", user_id: 1, product_id: 9505126, upvotes: 3},
   {date: "2016-01-18 22:17:00", rating: 1, comments: "Nintendo is just trying to get money off of you guys. Don't buy this. Amiibos are expensive and worthless.", user_id: 1, product_id: 9505126, upvotes: 3},
   {date: "2016-01-19 00:11:48", rating: 3, comments: "This is fun, but not as fun as Animal Crossing: New Leaf.", user_id: 1, product_id: 9505126, upvotes: 0},
-  {date: "2016-01-19 06:50:05", rating: 4, comments: "Fun times.", user_id: 1, product_id: 9505126, upvotes: 0}
+  {date: "2016-01-19 06:50:05", rating: 4, comments: "Fun times.", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-21 06:46:48", rating: 4, comments: "Best game evarrrrrr.", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-21 19:24:29", rating: 2, comments: "This is a cool game.", user_id: 4, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 01:40:45", rating: 3, comments: "Cool game.", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 02:07:14", rating: 5, comments: "Best gamer ever.", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 02:44:30", rating: 5, comments: "Cool.", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 02:55:32", rating: 5, comments: "This is a great game!", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 03:04:01", rating: 5, comments: "kuyuyyj", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 03:53:49", rating: 5, comments: "jgjh,kj.kh,h", user_id: 1, product_id: 9505126, upvotes: 0},
+  {date: "2016-01-22 17:34:34", rating: 5, comments: "Hello Daddy!", user_id: 1, product_id: 9505126, upvotes: 0}
 ])
 Role.create!([
   {name: "admin"},
@@ -72,9 +85,13 @@ Role.create!([
 ])
 Wish.create!([
   {product_id: 9221019, product_name: "Corpse Party", price: "9.99", user_id: 2, priority: 1, notified: false},
-  {product_id: 7841207, product_name: "Rocksmith 2014 (PS4)", price: "28.99", user_id: 1, priority: 1, notified: false},
-  {product_id: 2299558, product_name: "Devil Survivor 2: Record Breaker", price: "25.0", user_id: 1, priority: 3, notified: true},
+  {product_id: 7841207, product_name: "Rocksmith 2014 (PS4)", price: "30.0", user_id: 1, priority: 2, notified: false},
+  {product_id: 2299558, product_name: "Devil Survivor 2: Record Breaker", price: "15.0", user_id: 1, priority: 4, notified: true},
   {product_id: 6790101, product_name: "Fallout 4", price: "25.0", user_id: 4, priority: 1, notified: false},
-  {product_id: 5838011, product_name: "Borderlands 2 (PS Vita)", price: "9.99", user_id: 1, priority: 2, notified: false},
-  {product_id: 2703138, product_name: "Cooking Mama 4", price: "12.99", user_id: 1, priority: 4, notified: false}
+  {product_id: 5838011, product_name: "Borderlands 2 (PS Vita)", price: "8.99", user_id: 1, priority: 5, notified: false},
+  {product_id: 2703138, product_name: "Cooking Mama 4", price: "15.0", user_id: 1, priority: 1, notified: false},
+  {product_id: 9505126, product_name: "Animal Crossing: Amiibo Festival", price: "25.0", user_id: 4, priority: 1, notified: false},
+  {product_id: 9027349, product_name: "Persona 4: Dancing All Night Special Edition", price: "40.0", user_id: 4, priority: 1, notified: false},
+  {product_id: 1297008, product_name: "Legend of Zelda: Majora's Mask", price: "19.99", user_id: 4, priority: 1, notified: false},
+  {product_id: 8474119, product_name: "Animal Crossing", price: "40.0", user_id: 1, priority: 3, notified: true}
 ])

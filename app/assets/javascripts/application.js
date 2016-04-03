@@ -16,7 +16,6 @@
 //= require jquery-ui
 //= require angular
 //= require angular-animate
-//= require ng-infinite-scroll
 //= require sortable
 //= require xeditable
 //= require theme/bootstrap

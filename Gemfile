@@ -23,6 +23,7 @@ gem 'activemodel'
 gem 'groupdate'
 gem 'chartkick'
 gem 'seed_dump'
+# gem 'rspec'
 # gem 'font-awesome-sass'
 
 
@@ -54,7 +55,16 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
 end
+
+group :test, :development do
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

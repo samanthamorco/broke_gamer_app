@@ -10,18 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require animate
- *= require jquery-ui
- *= require jquery-ui.structure
- *= require jquery-ui.theme
- *= require xeditable
- *= require theme/animate.min
- *= require theme/bootstrap
- *= require theme/ddlevelsmenu-base
- *= require theme/ddlevelsmenu-topbar
- *= require theme/jquery.countdown
- *= require theme/settings
- *= require theme/style
  *= require_tree .
  *= require_self
  */

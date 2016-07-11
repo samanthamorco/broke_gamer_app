@@ -26,9 +26,9 @@
 }
 
 .scrollable-menu {
-    height: auto;
-    max-height: 200px;
-    overflow-x: hidden;
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
 }
 
 .arrow {
@@ -40,12 +40,11 @@
   display: inline-block;
   vertical-align: top;
   margin-left: 110px;
-  word-wrap: break-word
+  word-wrap: break-word;
 }
 
 .resize{
   width: 50%;
   height: 50%;
   margin-left: -20px;
-  // margin-top: 25%;
 }

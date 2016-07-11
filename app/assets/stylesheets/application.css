@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require animate
+ *= require jquery-ui
  *= require jquery-ui.structure
  *= require jquery-ui.theme
  *= require xeditable

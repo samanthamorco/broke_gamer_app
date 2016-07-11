@@ -1,8 +1,8 @@
 User.create!([
-  {email: "brokegamermod@gmail.com", encrypted_password: "$2a$10$gFd2opVvgeW.4VdIcgAIP./OvnRJowHgorSPB3WJ1wmYBs1xTh/TW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 25, current_sign_in_at: "2016-01-21 19:25:56", last_sign_in_at: "2016-01-18 23:20:24", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 1},
-  {email: "lolyachiru@yahoo.com", encrypted_password: "$2a$10$.1oAMZSd7b0o9Wj5gYVcieX9G9kSgW8jfz0syYxN1xmKhqL14H34q", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-12-13 23:16:06", last_sign_in_at: "2015-12-13 23:16:06", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2},
-  {email: "samanthamorco@gmail.com", encrypted_password: "$2a$10$X0uXykOT1rZQa0g93cCodeJDWxD341chlHHb/5iawZPwJo7.r7//y", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-01-10 23:28:29", last_sign_in_at: "2016-01-10 05:56:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 3},
-  {email: "samimorco@hotmail.com", encrypted_password: "$2a$10$3k/lwULwyUjBbpqo.iNqMeiMpQFvjyYXgWRjvGSI3OL8XDcDdBzlq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 10, current_sign_in_at: "2016-01-21 06:42:45", last_sign_in_at: "2016-01-18 23:09:54", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2}
+  {email: "brokegamermod@gmail.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 25, current_sign_in_at: "2016-01-21 19:25:56", last_sign_in_at: "2016-01-18 23:20:24", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 1},
+  {email: "lolyachiru@yahoo.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-12-13 23:16:06", last_sign_in_at: "2015-12-13 23:16:06", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2},
+  {email: "samanthamorco@gmail.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-01-10 23:28:29", last_sign_in_at: "2016-01-10 05:56:14", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 3},
+  {email: "samimorco@hotmail.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 10, current_sign_in_at: "2016-01-21 06:42:45", last_sign_in_at: "2016-01-18 23:09:54", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role_id: 2}
 ])
 Deal.create!([
   {price: "14.99", url: "http://www.newegg.com/Product/Product.aspx?sdtid=8412595&SID=bd7a7b5ab27611e58e7f12e62f77c9760000&AID=10440897&PID=1225267&nm_mc=AFC-C8Junction&cm_mmc=AFC-C8Junction-_-cables-_-na-_-na&Item=N82E16879261585&cm_sp=", date: "2016-02-07 00:00:00", comment: "$39.99 - $25 off w/ promo code EMCKNPK54 = $14.99 + Free Shipping", user_id: 1, product_id: 5607062, status: "active"},
@@ -17,8 +17,6 @@ Deal.create!([
   {price: "17.5", url: "https://store.playstation.com/#!/en-us/games/dragon-age-inquisition-deluxe-edition/cid=UP0006-CUSA00220_00-B000000000000438?scope=sceapp&smcid=sceapp:home", date: "2016-01-19 00:00:00", comment: "Save an extra 10% with PS Plus", user_id: 1, product_id: 4724703, status: "inactive"},
   {price: "8.99", url: "ksdjfhskdfjhsdkj", date: "2015-09-14 04:59:33", comment: "dkjfhskjfhdkjsh", user_id: 4, product_id: 4373940, status: "inactive"},
   {price: "12.99", url: "fdfd", date: "2015-10-14 04:59:33", comment: nil, user_id: nil, product_id: 4373940, status: "inactive"},
-  {price: "15.98", url: nil, date: "2015-12-14 04:59:33", comment: nil, user_id: nil, product_id: 4373940, status: "inactive"},
-  {price: "16.09", url: nil, date: "2015-11-14 04:59:33", comment: nil, user_id: nil, product_id: 4373940, status: "inactive"},
   {price: "29.99", url: "http://www.nintendo.com/games/detail/M42P9zcGuIbXMejb0-znWL-dwFMCOQnS", date: "2016-01-30 00:00:00", comment: "", user_id: 1, product_id: 2299558, status: "active"},
   {price: "9.99", url: "https://www.nintendo.com/games/detail/nZxp2wVrnyFu7IjfDg2PGzDsB7C0aicz", date: "2016-02-08 00:00:00", comment: "on Nintendo eShop", user_id: 1, product_id: 4344900, status: "active"},
   {price: "19.98", url: "https://www.nintendo.com/games/detail/xCugEaUTIAEnZTCE2Y8W_pSFvgoYIA0n", date: "2016-02-12 00:00:00", comment: "Available on Nintendo eShop.", user_id: 1, product_id: 4373940, status: "inactive"},
@@ -35,13 +33,6 @@ Deal.create!([
   {price: "48.88", url: "http://www.amazon.com/Alekhines-Gun-Xbox-One/dp/B00ZN5E3QY/ref=sr_1_1_twi_gam_2?ie=UTF8&qid=1453158703&sr=8-1&keywords=alekhine%27s+gun", date: "2016-01-31 00:00:00", comment: "This is a test.", user_id: 4, product_id: 4244600, status: "pending"},
   {price: "27.99", url: "http://www.amazon.com/Angry-Birds-Star-Wars-PlayStation-4/dp/B00FF5KYME/ref=sr_1_1?ie=UTF8&qid=1453159102&sr=8-1&keywords=angry+birds+star+wars+ps4", date: "2016-01-31 00:00:00", comment: "Why would anyone buy this?", user_id: 4, product_id: 2853002, status: "pending"},
   {price: "39.96", url: "http://www.amazon.com/Mario-Luigi-Paper-Jam-Nintendo-3DS/dp/B0171RL3RS/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453159188&sr=1-1&keywords=mario+and+luigi+paper+jam", date: "2016-01-31 00:00:00", comment: "This is a test.", user_id: 4, product_id: 9090676, status: "inactive"},
-  {price: "42.99", url: nil, date: "2015-10-31 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"},
-  {price: "40.98", url: nil, date: "2015-09-15 00:00:00", comment: nil, user_id: nil, product_id: 9505126, status: "inactive"},
-  {price: "19.99", url: "fakdhfdkjhfdsk", date: "2015-11-02 00:00:00", comment: "", user_id: 1, product_id: 9178294, status: "inactive"},
-  {price: "29.0", url: "fdsfdfsdf", date: "2015-12-10 00:00:00", comment: "dfsdfsdfsd", user_id: 1, product_id: 9178294, status: "inactive"},
-  {price: "16.99", url: "dlkfjsdlkfjsdlkjf", date: "2016-01-06 00:00:00", comment: "ldksfjdslkfjsdlkj", user_id: 1, product_id: 9178294, status: "inactive"},
-  {price: "32.19", url: "http://www.amazon.com/Animal-Crossing-amiibo-Festival-Bundle-Wii/dp/B00ZSHRPN0/ref=sr_1_1?s=videogames&ie=UTF8&qid=1453154809&sr=1-1&keywords=amiibo+festival", date: "2016-02-01 00:00:00", comment: "Price fluctuates. Keep track of the price by checking the link.", user_id: 1, product_id: 9505126, status: "active"},
-  {price: "19.99", url: "dfhsdfdskfjshdkj", date: "2016-01-31 00:00:00", comment: "This is just a text.", user_id: 4, product_id: 4244500, status: "inactive"}
 ])
 Review.create!([
   {date: "2015-12-12 00:00:00", rating: 4, comments: "Testing date 1-2-3", user_id: 1, product_id: 4348023, upvotes: 3},
